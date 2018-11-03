@@ -14,6 +14,8 @@ class GameScene: SKScene {
     private let gameCamera = Camera();
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
+    let m_Player = Character(type: .player);
+    
     override func didMove(to view: SKView) {
         // Setup Gesture Recognizers
         if let view = self.view {
@@ -35,6 +37,9 @@ class GameScene: SKScene {
         for bgWall in infiniteScroller.getBGWalls() {
             self.addChild(bgWall);
         }
+        
+        m_Player.generateCharacter(scene: self, imageNamed: "happy-icon");
+        self.addChild(m_Player);
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -44,6 +49,9 @@ class GameScene: SKScene {
         if (gameCamera.position.x >= gameCamera.position.x - self.size.width) {
             infiniteScroller.checkToMoveBG();
         }
+        
+        // Set player to follow the camera every frame
+        m_Player.position.x = gameCamera.position.x;
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {

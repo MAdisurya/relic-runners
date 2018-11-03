@@ -26,6 +26,7 @@
 		F4339ABA218D15E00016970A /* RREventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB9218D15E00016970A /* RREventListener.swift */; };
 		F4339ABC218D16090016970A /* RRGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABB218D16090016970A /* RRGameManager.swift */; };
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
+		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		F4339AB9218D15E00016970A /* RREventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREventListener.swift; sourceTree = "<group>"; };
 		F4339ABB218D16090016970A /* RRGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGameManager.swift; sourceTree = "<group>"; };
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				F4339AB1218D13740016970A /* Managers */,
 				7A33F68421865CF700CDFA96 /* Scenes */,
 				7A33F683218650A000CDFA96 /* Components */,
+				F4339ABF218DA2BD0016970A /* Enums */,
 				F4339AB6218D14B90016970A /* Other */,
 				7A33F66921864FEF00CDFA96 /* AppDelegate.swift */,
 				7A33F66D21864FEF00CDFA96 /* Actions.sks */,
@@ -136,6 +139,14 @@
 				F4339AB9218D15E00016970A /* RREventListener.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		F4339ABF218DA2BD0016970A /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				F4339AC0218DA2DF0016970A /* CharacterTypes.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
+				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
 				F4339ABA218D15E00016970A /* RREventListener.swift in Sources */,
 				F4339AB8218D14D00016970A /* RREvent.swift in Sources */,
 				F4339AB5218D14200016970A /* RREventManager.swift in Sources */,

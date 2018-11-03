@@ -15,6 +15,13 @@ class GameScene: SKScene {
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
     override func didMove(to view: SKView) {
+        // Setup Gesture Recognizers
+        if let view = self.view {
+            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
+            RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
+            RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
+        }
+        
         // Generate the camera and add to scene
         gameCamera.generateCamera(scene: self);
         self.addChild(gameCamera);
@@ -37,5 +44,17 @@ class GameScene: SKScene {
         if (gameCamera.position.x >= gameCamera.position.x - self.size.width) {
             infiniteScroller.checkToMoveBG();
         }
+    }
+    
+    @objc func tap(sender: UITapGestureRecognizer) {
+        RRGameManager.shared.getEventManager().broadcastEvent(event: "tap");
+    }
+    
+    @objc func swipeDown(sender: UISwipeGestureRecognizer) {
+        RRGameManager.shared.getEventManager().broadcastEvent(event: "swipeDown");
+    }
+    
+    @objc func swipeUp(sender: UISwipeGestureRecognizer) {
+        RRGameManager.shared.getEventManager().broadcastEvent(event: "swipeUp");
     }
 }

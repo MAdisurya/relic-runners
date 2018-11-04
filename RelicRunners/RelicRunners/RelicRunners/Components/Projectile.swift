@@ -10,9 +10,9 @@ import SpriteKit
 
 class Projectile: SKSpriteNode {
     
-    private let m_Speed = 10;
+    private let m_Speed: Double = 0.5;
     
-    func getSpeed() -> Int {
+    func getSpeed() -> Double {
         return m_Speed;
     }
     

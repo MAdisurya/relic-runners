@@ -28,6 +28,8 @@
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
 		F4C12FA4218EF0860024BC7D /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA3218EF0860024BC7D /* Projectile.swift */; };
+		F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA5218F0A430024BC7D /* Spawner.swift */; };
+		F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
 		F4C12FA3218EF0860024BC7D /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
+		F4C12FA5218F0A430024BC7D /* Spawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawner.swift; sourceTree = "<group>"; };
+		F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREnemyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				7A33F68B21865ED900CDFA96 /* BGSprite.swift */,
 				F4339ABD218D21830016970A /* Character.swift */,
 				F4C12FA3218EF0860024BC7D /* Projectile.swift */,
+				F4C12FA5218F0A430024BC7D /* Spawner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				F4339AB2218D13880016970A /* RRInputManager.swift */,
 				F4339AB4218D14200016970A /* RREventManager.swift */,
 				F4339ABB218D16090016970A /* RRGameManager.swift */,
+				F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -237,10 +243,12 @@
 				7A33F68621865D5700CDFA96 /* MainMenuScene.swift in Sources */,
 				7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */,
 				7A33F67021864FEF00CDFA96 /* GameScene.swift in Sources */,
+				F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */,
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
+				F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

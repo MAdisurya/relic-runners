@@ -11,9 +11,10 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private let gameCamera = Camera();
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
+    let gameCamera = Camera();
+    let m_Spawner = Spawner();
     let m_Player = Character(type: .player);
     
     override func didMove(to view: SKView) {
@@ -38,7 +39,14 @@ class GameScene: SKScene {
             self.addChild(bgWall);
         }
         
+        // Generate the enemy and obstacle spawner
+        m_Spawner.generateSpawner(scene: self);
+        // Add Spawner to the scene
+        self.addChild(m_Spawner);
+        
+        // Generate the player character
         m_Player.generateCharacter(scene: self, imageNamed: "happy-icon");
+        // Add the player character to the scene
         self.addChild(m_Player);
     }
     
@@ -52,6 +60,12 @@ class GameScene: SKScene {
         
         // Set player to follow the camera every frame
         m_Player.position.x = gameCamera.position.x - (size.width / 3);
+        
+        // Set Spawner to follow camera every frame
+        m_Spawner.position.x = gameCamera.position.x + (size.width / 2);
+        m_Spawner.spawnEnemy();
+        
+        RRGameManager.shared.getEnemyManager().garbageCollection(scene: self, camera: gameCamera);
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {

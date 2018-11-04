@@ -13,6 +13,8 @@ class Character: SKSpriteNode, RREventListener {
     var m_CharacterType: CharacterTypes!;
     var gameScene: SKScene!;
     
+    var m_Dead = false;
+    
     init(type characterType: CharacterTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 100, height: 100));
         
@@ -29,6 +31,7 @@ class Character: SKSpriteNode, RREventListener {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: gameScene.size.width / 7, height: gameScene.size.width / 7);
+        self.zPosition = 1.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
@@ -54,6 +57,23 @@ class Character: SKSpriteNode, RREventListener {
         }
     }
     
+    func die() {
+        m_Dead = true;
+        self.physicsBody?.contactTestBitMask = 0;
+        
+        let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
+        let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
+        
+        self.run(upAction) {
+            self.run(fallAction) {
+                self.destroy();
+                if (self.m_CharacterType == CharacterTypes.player) {
+                    RRGameManager.shared.getEventManager().broadcastEvent(event: "gameOver");
+                }
+            }
+        }
+    }
+    
     func destroy() {
         self.removeFromParent();
     }
@@ -73,11 +93,11 @@ class Character: SKSpriteNode, RREventListener {
             } else if (event == "tap") {
                 shootProjectile();
             } else if (event == "playerDestroyed") {
-                destroy();
+                die();
             }
         } else {
             if (event == "enemyDestroyed") {
-                destroy();
+                die();
             }
         }
     }

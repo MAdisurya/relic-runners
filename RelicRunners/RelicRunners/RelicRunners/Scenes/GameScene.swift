@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
@@ -17,14 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let m_Spawner = Spawner();
     let m_Player = Character(type: .player);
     
-    override func didMove(to view: SKView) {
-        // Setup Gesture Recognizers
-        if let view = self.view {
-            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
-            RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
-            RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
-        }
-        
+    override func sceneDidLoad() {
         // Generate the camera and add to scene
         gameCamera.generateCamera(scene: self);
         self.addChild(gameCamera);
@@ -50,6 +43,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(m_Player);
         
         self.physicsWorld.contactDelegate = self;
+        
+        RRGameManager.shared.getEventManager().registerEventListener(listener: self);
+    }
+    
+    override func didMove(to view: SKView) {
+        // Setup Gesture Recognizers
+        if let view = self.view {
+            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
+            RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
+            RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -61,7 +65,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Set player to follow the camera every frame
-        m_Player.position.x = gameCamera.position.x - (size.width / 3);
+        if (!m_Player.m_Dead) {
+            m_Player.position.x = gameCamera.position.x - (size.width / 3);
+        }
         
         // Set Spawner to follow camera every frame
         m_Spawner.position.x = gameCamera.position.x + (size.width / 2);
@@ -80,6 +86,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.enemy) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyDestroyed");
             RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
+        }
+    }
+    
+    func listen(event: String) {
+        if (event == "gameOver") {
+            if let nextScene = SKScene(fileNamed: "LoseScene") {
+                nextScene.scaleMode = .aspectFill;
+                goToScene(scene: nextScene);
+            }
         }
     }
     

@@ -27,6 +27,9 @@
 		F4339ABC218D16090016970A /* RRGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABB218D16090016970A /* RRGameManager.swift */; };
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
+		F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28B218F7A550085E43C /* BaseScene.swift */; };
+		F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28D218F8EC80085E43C /* LoseScene.swift */; };
+		F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4ABA28F218F8EE30085E43C /* LoseScene.sks */; };
 		F4C12FA4218EF0860024BC7D /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA3218EF0860024BC7D /* Projectile.swift */; };
 		F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA5218F0A430024BC7D /* Spawner.swift */; };
 		F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */; };
@@ -57,6 +60,9 @@
 		F4339ABB218D16090016970A /* RRGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGameManager.swift; sourceTree = "<group>"; };
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
+		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		F4ABA28D218F8EC80085E43C /* LoseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
+		F4ABA28F218F8EE30085E43C /* LoseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoseScene.sks; sourceTree = "<group>"; };
 		F4C12FA3218EF0860024BC7D /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F4C12FA5218F0A430024BC7D /* Spawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawner.swift; sourceTree = "<group>"; };
 		F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREnemyManager.swift; sourceTree = "<group>"; };
@@ -127,10 +133,13 @@
 		7A33F68421865CF700CDFA96 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F4ABA28B218F7A550085E43C /* BaseScene.swift */,
 				7A33F66B21864FEF00CDFA96 /* GameScene.sks */,
 				7A33F66F21864FEF00CDFA96 /* GameScene.swift */,
 				7A33F68721865D8500CDFA96 /* MainMenuScene.sks */,
 				7A33F68521865D5700CDFA96 /* MainMenuScene.swift */,
+				F4ABA28F218F8EE30085E43C /* LoseScene.sks */,
+				F4ABA28D218F8EC80085E43C /* LoseScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -227,6 +236,7 @@
 				7A33F67721864FF100CDFA96 /* Assets.xcassets in Resources */,
 				7A33F67A21864FF100CDFA96 /* LaunchScreen.storyboard in Resources */,
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
+				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
 				7A33F66E21864FEF00CDFA96 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +266,9 @@
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */,
+				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
 				F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */,
+				F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

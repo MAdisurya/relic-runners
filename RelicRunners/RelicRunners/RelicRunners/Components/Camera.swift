@@ -10,18 +10,11 @@ import SpriteKit
 
 class Camera: SKCameraNode {
     
-//    private var gameScene: SKScene!
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    init(scene: SKScene) {
-//        super.init();
-//
-//        self.gameScene = scene;
-//    }
-    private let moveSpeed: CGFloat = 10;
+    private var moveSpeed: CGFloat = 10;
+    
+    func setCameraSpeed(speed: CGFloat) {
+        moveSpeed = speed;
+    }
     
     func generateCamera(scene: SKScene) -> Void {
         // Generate the camera properties

@@ -1,19 +1,19 @@
 //
-//  MainMenuScene.swift
+//  LoseScene.swift
 //  RelicRunners
 //
-//  Created by Mario Adisurya on 29/10/18.
+//  Created by Mario Adisurya on 5/11/18.
 //  Copyright © 2018 Mario Adisurya. All rights reserved.
 //
 
 import SpriteKit
 
-class MainMenuScene: BaseScene {
+class LoseScene: BaseScene {
     
-    var playButton: SKLabelNode!;
+    var playAgainButton: SKLabelNode!
     
     override func didMove(to view: SKView) {
-        playButton = self.childNode(withName: "play-button") as? SKLabelNode;
+        playAgainButton = self.childNode(withName: "play-again-button") as? SKLabelNode;
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -21,7 +21,7 @@ class MainMenuScene: BaseScene {
         let location = touch.location(in: self);
         let touchedNode = self.atPoint(location);
         
-        if (touchedNode.name == playButton.name) {
+        if (touchedNode.name == playAgainButton.name) {
             if let newScene = SKScene(fileNamed: "GameScene") {
                 newScene.scaleMode = .aspectFill;
                 goToScene(scene: newScene);

@@ -51,7 +51,7 @@ class GameScene: SKScene {
         }
         
         // Set player to follow the camera every frame
-        m_Player.position.x = gameCamera.position.x;
+        m_Player.position.x = gameCamera.position.x - (size.width / 3);
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {

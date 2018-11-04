@@ -27,8 +27,8 @@ class Camera: SKCameraNode {
         // Generate the camera properties
         self.position = CGPoint(x: 0, y: 0);
         
-        self.xScale = 1.0;
-        self.yScale = 1.0;
+        self.xScale = 1;
+        self.yScale = 1;
     }
     
     func moveCamera() -> Void {

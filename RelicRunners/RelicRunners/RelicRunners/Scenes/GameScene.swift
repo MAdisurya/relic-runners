@@ -74,6 +74,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.enemy) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playerDestroyed");
         }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.obstacle) {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerDestroyed");
+        }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.enemy) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyDestroyed");
             RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");

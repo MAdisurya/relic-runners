@@ -11,6 +11,7 @@ import SpriteKit
 class RREnemyManager {
     
     private var enemyRegister: [Character] = [];
+    private var obstacleRegister: [Obstacle] = [];
     
     func registerEnemy(enemy: Character) {
         if (enemy.m_CharacterType == CharacterTypes.enemy) {
@@ -18,10 +19,20 @@ class RREnemyManager {
         }
     }
     
+    func registerObstacle(obstacle: Obstacle) {
+        obstacleRegister.append(obstacle);
+    }
+    
     func garbageCollection(scene: SKScene, camera: Camera) {
         for enemy in enemyRegister {
             if (camera.position.x > enemy.position.x + scene.size.width) {
                 enemy.destroy();
+            }
+        }
+        
+        for obstacle in obstacleRegister {
+            if (camera.position.x > obstacle.position.x + scene.size.width) {
+                obstacle.destroy();
             }
         }
     }

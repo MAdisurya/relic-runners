@@ -31,6 +31,7 @@
 		F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA5218F0A430024BC7D /* Spawner.swift */; };
 		F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */; };
 		F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */; };
+		F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FAB218F38470024BC7D /* Obstacle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		F4C12FA5218F0A430024BC7D /* Spawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawner.swift; sourceTree = "<group>"; };
 		F4C12FA7218F141F0024BC7D /* RREnemyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREnemyManager.swift; sourceTree = "<group>"; };
 		F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBitMask.swift; sourceTree = "<group>"; };
+		F4C12FAB218F38470024BC7D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				F4339ABD218D21830016970A /* Character.swift */,
 				F4C12FA3218EF0860024BC7D /* Projectile.swift */,
 				F4C12FA5218F0A430024BC7D /* Spawner.swift */,
+				F4C12FAB218F38470024BC7D /* Obstacle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */,
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
+				F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */,
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RREnemyManager.swift in Sources */,

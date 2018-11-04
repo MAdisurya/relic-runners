@@ -13,7 +13,7 @@ class Spawner: SKNode {
     var gameScene: SKScene!;
     
     private var lastSpawnPos: CGFloat = 0;
-    private var distanceTillNextSpawn: CGFloat = 960;
+    private var distanceTillNextSpawn: CGFloat = 1280;
     
     func generateSpawner(scene: SKScene) -> Void {
         self.gameScene = scene;
@@ -28,6 +28,18 @@ class Spawner: SKNode {
             newEnemy.position.x = self.position.x;
             newEnemy.position.y = newEnemy.size.height * CGFloat(placeToSpawn);
             gameScene.addChild(newEnemy);
+            
+            for i in -1...1 {
+                if (i != placeToSpawn) {
+                    let newObstacle = Obstacle();
+                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "sad-face");
+                    newObstacle.position.x = self.position.x;
+                    newObstacle.position.y = newObstacle.size.height * CGFloat(i);
+                    
+                    RRGameManager.shared.getEnemyManager().registerObstacle(obstacle: newObstacle);
+                    gameScene.addChild(newObstacle);
+                }
+            }
             
             RRGameManager.shared.getEnemyManager().registerEnemy(enemy: newEnemy);
             

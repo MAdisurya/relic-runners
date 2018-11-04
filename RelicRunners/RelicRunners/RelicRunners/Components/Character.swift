@@ -29,14 +29,14 @@ class Character: SKSpriteNode, RREventListener {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: gameScene.size.width / 7, height: gameScene.size.width / 7);
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100));
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;
         
         if (m_CharacterType == CharacterTypes.player) {
             self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-            self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy;
+            self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.obstacle;
         } else {
             self.physicsBody?.categoryBitMask = CategoryBitMask.enemy;
             self.physicsBody?.contactTestBitMask = CategoryBitMask.projectile | CategoryBitMask.player;

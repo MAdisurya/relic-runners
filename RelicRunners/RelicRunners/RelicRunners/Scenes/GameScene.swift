@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
@@ -48,6 +48,8 @@ class GameScene: SKScene {
         m_Player.generateCharacter(scene: self, imageNamed: "happy-icon");
         // Add the player character to the scene
         self.addChild(m_Player);
+        
+        self.physicsWorld.contactDelegate = self;
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -66,6 +68,16 @@ class GameScene: SKScene {
         m_Spawner.spawnEnemy();
         
         RRGameManager.shared.getEnemyManager().garbageCollection(scene: self, camera: gameCamera);
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.enemy) {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerDestroyed");
+        }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.enemy) {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
+        }
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {

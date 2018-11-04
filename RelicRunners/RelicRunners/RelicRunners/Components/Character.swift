@@ -28,7 +28,19 @@ class Character: SKSpriteNode, RREventListener {
     func generateCharacter(scene: SKScene, imageNamed image: String) -> Void {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
-        self.size = CGSize(width: gameScene.size.width / 6, height: gameScene.size.width / 6);
+        self.size = CGSize(width: gameScene.size.width / 7, height: gameScene.size.width / 7);
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100));
+        self.physicsBody?.isDynamic = true;
+        self.physicsBody?.affectedByGravity = false;
+        self.physicsBody?.collisionBitMask = 0;
+        
+        if (m_CharacterType == CharacterTypes.player) {
+            self.physicsBody?.categoryBitMask = CategoryBitMask.player;
+            self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy;
+        } else {
+            self.physicsBody?.categoryBitMask = CategoryBitMask.enemy;
+            self.physicsBody?.contactTestBitMask = CategoryBitMask.projectile | CategoryBitMask.player;
+        }
     }
     
     func shootProjectile() {
@@ -38,7 +50,7 @@ class Character: SKSpriteNode, RREventListener {
         
         let action = SKAction.move(by: CGVector(dx: gameScene.size.width, dy: 0), duration: projectile.getSpeed());
         projectile.run(action) {
-            projectile.removeFromParent();
+            projectile.destroy();
         }
     }
     
@@ -60,6 +72,12 @@ class Character: SKSpriteNode, RREventListener {
                 }
             } else if (event == "tap") {
                 shootProjectile();
+            } else if (event == "playerDestroyed") {
+                destroy();
+            }
+        } else {
+            if (event == "enemyDestroyed") {
+                destroy();
             }
         }
     }

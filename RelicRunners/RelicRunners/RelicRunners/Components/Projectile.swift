@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Projectile: SKSpriteNode {
+class Projectile: SKSpriteNode, RREventListener {
     
     private let m_Speed: Double = 0.5;
     
@@ -19,5 +19,19 @@ class Projectile: SKSpriteNode {
     func generateProjectile(character: Character, imageNamed image: String) -> Void {
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: character.size.width / 4, height: character.size.height / 4);
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
+        self.physicsBody?.isDynamic = false;
+        self.physicsBody?.categoryBitMask = CategoryBitMask.projectile;
+        self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy;
+    }
+    
+    func destroy() {
+        self.removeFromParent();
+    }
+    
+    func listen(event: String) {
+        if (event == "projectileDestroyed") {
+            destroy();
+        }
     }
 }

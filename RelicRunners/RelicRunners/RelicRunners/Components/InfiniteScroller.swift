@@ -29,7 +29,7 @@ class InfiniteScroller {
         // Loop to generate 3 BGSprites for infinite background scrolling
         for i in 0...2 {
             let bgSprite = BGSprite();
-            bgSprite.generateBackground(scene: gameScene, imageNamed: "placeholderBG", name: "bg"+String(i));
+            bgSprite.generateBackground(scene: gameScene, imageNamed: "background", name: "bg"+String(i));
             
             // Set individual bgSprite positions
             bgSprite.position = CGPoint(x: gameScene.size.width * CGFloat(i), y: 0);

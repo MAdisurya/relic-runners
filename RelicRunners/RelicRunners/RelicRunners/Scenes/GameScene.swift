@@ -38,7 +38,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         self.addChild(m_Spawner);
         
         // Generate the player character
-        m_Player.generateCharacter(scene: self, imageNamed: "happy-icon");
+        m_Player.generateCharacter(scene: self, imageNamed: "archer");
         // Add the player character to the scene
         self.addChild(m_Player);
         

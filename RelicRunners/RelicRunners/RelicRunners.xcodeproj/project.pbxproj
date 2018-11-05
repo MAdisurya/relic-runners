@@ -13,7 +13,6 @@
 		7A33F67021864FEF00CDFA96 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F66F21864FEF00CDFA96 /* GameScene.swift */; };
 		7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F67121864FEF00CDFA96 /* GameViewController.swift */; };
 		7A33F67521864FEF00CDFA96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A33F67321864FEF00CDFA96 /* Main.storyboard */; };
-		7A33F67721864FF100CDFA96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A33F67621864FF100CDFA96 /* Assets.xcassets */; };
 		7A33F67A21864FF100CDFA96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A33F67821864FF100CDFA96 /* LaunchScreen.storyboard */; };
 		7A33F6822186509B00CDFA96 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F6812186509B00CDFA96 /* Camera.swift */; };
 		7A33F68621865D5700CDFA96 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68521865D5700CDFA96 /* MainMenuScene.swift */; };
@@ -27,6 +26,7 @@
 		F4339ABC218D16090016970A /* RRGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABB218D16090016970A /* RRGameManager.swift */; };
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
+		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28B218F7A550085E43C /* BaseScene.swift */; };
 		F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28D218F8EC80085E43C /* LoseScene.swift */; };
 		F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4ABA28F218F8EE30085E43C /* LoseScene.sks */; };
@@ -45,7 +45,6 @@
 		7A33F66F21864FEF00CDFA96 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		7A33F67121864FEF00CDFA96 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7A33F67421864FEF00CDFA96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A33F67621864FF100CDFA96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A33F67921864FF100CDFA96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A33F67B21864FF100CDFA96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A33F6812186509B00CDFA96 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -60,6 +59,8 @@
 		F4339ABB218D16090016970A /* RRGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGameManager.swift; sourceTree = "<group>"; };
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
+		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		F4544074218FAF05005719E4 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = ../../../../../../../Downloads/Silkscreen/slkscr.ttf; sourceTree = "<group>"; };
 		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F4ABA28D218F8EC80085E43C /* LoseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
 		F4ABA28F218F8EE30085E43C /* LoseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoseScene.sks; sourceTree = "<group>"; };
@@ -105,13 +106,14 @@
 				7A33F683218650A000CDFA96 /* Components */,
 				F4339ABF218DA2BD0016970A /* Enums */,
 				F4339AB6218D14B90016970A /* Other */,
+				F4544072218FAED2005719E4 /* Assets.xcassets */,
 				7A33F66921864FEF00CDFA96 /* AppDelegate.swift */,
 				7A33F66D21864FEF00CDFA96 /* Actions.sks */,
 				7A33F67121864FEF00CDFA96 /* GameViewController.swift */,
 				7A33F67321864FEF00CDFA96 /* Main.storyboard */,
-				7A33F67621864FF100CDFA96 /* Assets.xcassets */,
 				7A33F67821864FF100CDFA96 /* LaunchScreen.storyboard */,
 				7A33F67B21864FF100CDFA96 /* Info.plist */,
+				F4544074218FAF05005719E4 /* slkscr.ttf */,
 			);
 			path = RelicRunners;
 			sourceTree = "<group>";
@@ -233,9 +235,9 @@
 			files = (
 				7A33F67521864FEF00CDFA96 /* Main.storyboard in Resources */,
 				7A33F66C21864FEF00CDFA96 /* GameScene.sks in Resources */,
-				7A33F67721864FF100CDFA96 /* Assets.xcassets in Resources */,
 				7A33F67A21864FF100CDFA96 /* LaunchScreen.storyboard in Resources */,
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
+				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
 				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
 				7A33F66E21864FEF00CDFA96 /* Actions.sks in Resources */,
 			);

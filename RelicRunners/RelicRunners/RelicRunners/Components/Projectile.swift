@@ -19,7 +19,7 @@ class Projectile: SKSpriteNode, RREventListener {
     func generateProjectile(character: Character, imageNamed image: String) -> Void {
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: character.size.width / 4, height: character.size.height / 4);
-        self.zPosition = 1.0;
+        self.zPosition = 2.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
         self.physicsBody?.isDynamic = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.projectile;

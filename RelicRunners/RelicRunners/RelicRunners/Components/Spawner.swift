@@ -24,7 +24,7 @@ class Spawner: SKNode {
             let newEnemy = Character(type: .enemy);
             let placeToSpawn = Int.random(in: -1...1);
             
-            newEnemy.generateCharacter(scene: gameScene, imageNamed: "angry-face");
+            newEnemy.generateCharacter(scene: gameScene, imageNamed: "skeleton");
             newEnemy.position.x = self.position.x;
             newEnemy.position.y = newEnemy.size.height * CGFloat(placeToSpawn);
             gameScene.addChild(newEnemy);
@@ -32,7 +32,7 @@ class Spawner: SKNode {
             for i in -1...1 {
                 if (i != placeToSpawn) {
                     let newObstacle = Obstacle();
-                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "sad-face");
+                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
                     newObstacle.position.x = self.position.x;
                     newObstacle.position.y = newObstacle.size.height * CGFloat(i);
                     

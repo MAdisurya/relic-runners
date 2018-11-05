@@ -48,7 +48,7 @@ class Character: SKSpriteNode, RREventListener {
     
     func shootProjectile() {
         let projectile = Projectile();
-        projectile.generateProjectile(character: self, imageNamed: "bullet-bill");
+        projectile.generateProjectile(character: self, imageNamed: "arrow");
         self.addChild(projectile);
         
         let action = SKAction.move(by: CGVector(dx: gameScene.size.width, dy: 0), duration: projectile.getSpeed());

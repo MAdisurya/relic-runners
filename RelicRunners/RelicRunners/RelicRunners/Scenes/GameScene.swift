@@ -13,9 +13,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
     
-    let gameCamera = Camera();
-    let m_Spawner = Spawner();
-    let m_Player = Character(type: .player);
+    private let gameCamera = Camera();
+    private let m_Spawner = Spawner();
+    private let m_Player = Character(type: .player);
     
     override func sceneDidLoad() {
         // Generate the camera and add to scene
@@ -40,7 +40,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         // Generate the player character
         m_Player.generateCharacter(scene: self, imageNamed: "archer");
         // Add the player character to the scene
-        self.addChild(m_Player);
+        gameCamera.addChild(m_Player);
         
         self.physicsWorld.contactDelegate = self;
         
@@ -64,13 +64,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             infiniteScroller.checkToMoveBG();
         }
         
-        // Set player to follow the camera every frame
-        if (!m_Player.m_Dead) {
-            m_Player.position.x = gameCamera.position.x - (size.width / 3);
-        }
-        
-        // Set Spawner to follow camera every frame
-        m_Spawner.position.x = gameCamera.position.x + (size.width / 2);
+        // Update spawner position every frame to follow camera;
+        m_Spawner.position.x = gameCamera.position.x + (self.size.height / 2);
+        // Spawn enemies
         m_Spawner.spawnEnemy();
         
         RRGameManager.shared.getEnemyManager().garbageCollection(scene: self, camera: gameCamera);

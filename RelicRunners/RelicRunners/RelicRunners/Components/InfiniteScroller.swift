@@ -42,7 +42,7 @@ class InfiniteScroller {
         // Loop through each BG Sprite
         for bgSprite in bgWalls {
             // If BG Sprite position is outside the screen space then move BG Sprite to end
-            if (bgSprite.position.x < ((gameScene.camera?.position.x)! - gameScene.size.width)) {
+            if (bgSprite.position.x < (gameScene.camera?.position.x)! - gameScene.size.width) {
                 sectionIndex += 1;
                 moveBGWall(wall: bgSprite, to: CGPoint(x: gameScene.size.width * (sectionIndex+2), y: 0));
             }

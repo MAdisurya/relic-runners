@@ -60,7 +60,6 @@
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		F4544074218FAF05005719E4 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = ../../../../../../../Downloads/Silkscreen/slkscr.ttf; sourceTree = "<group>"; };
 		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F4ABA28D218F8EC80085E43C /* LoseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
 		F4ABA28F218F8EE30085E43C /* LoseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoseScene.sks; sourceTree = "<group>"; };
@@ -113,7 +112,6 @@
 				7A33F67321864FEF00CDFA96 /* Main.storyboard */,
 				7A33F67821864FF100CDFA96 /* LaunchScreen.storyboard */,
 				7A33F67B21864FF100CDFA96 /* Info.plist */,
-				F4544074218FAF05005719E4 /* slkscr.ttf */,
 			);
 			path = RelicRunners;
 			sourceTree = "<group>";

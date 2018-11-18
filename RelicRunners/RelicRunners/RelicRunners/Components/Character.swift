@@ -13,12 +13,15 @@ class Character: SKSpriteNode, RREventListener {
     var m_CharacterType: CharacterTypes!;
     var gameScene: SKScene!;
     
+    var m_CurrentLane = 0;
     var m_Dead = false;
+    var m_MoveAmount: CGFloat!;
     
     init(type characterType: CharacterTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 100, height: 100));
         
         self.m_CharacterType = characterType;
+        self.m_MoveAmount = self.size.width * 0.8;
         
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -30,9 +33,10 @@ class Character: SKSpriteNode, RREventListener {
     func generateCharacter(scene: SKScene, imageNamed image: String) -> Void {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
-        self.size = CGSize(width: gameScene.size.width / 7, height: gameScene.size.width / 7);
-        self.zPosition = 1.0;
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
+        self.size = CGSize(width: gameScene.size.width / 5, height: gameScene.size.width / 5);
+        self.position = CGPoint(x: -gameScene.size.width / 3, y: 0);
+        self.zPosition = 2.5;
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;
@@ -80,17 +84,25 @@ class Character: SKSpriteNode, RREventListener {
     
     func listen(event: String) {
         if (m_CharacterType == CharacterTypes.player) {
+            // Set zPosition to 1 if on the top lane to make sure character is behind obstacles
+            self.zPosition = (m_CurrentLane == 1) ? 1.0 : 2.5;
+            
             if (event == "swipeUp") {
-                if (self.position.y <= 50) {
-                    let action = SKAction.move(by: CGVector(dx: 0, dy: self.size.height), duration: 0.5);
+                // Handle swipe up event
+                if (m_CurrentLane < 1) {
+                    m_CurrentLane += 1;
+                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount), duration: 0.5);
                     self.run(action);
                 }
             } else if (event == "swipeDown") {
-                if (self.position.y >= -50) {
-                    let action = SKAction.move(by: CGVector(dx: -0, dy: -self.size.height), duration: 0.5);
+                // Handle swipe down event
+                if (m_CurrentLane > -1) {
+                    m_CurrentLane -= 1;
+                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount), duration: 0.5);
                     self.run(action);
                 }
             } else if (event == "tap") {
+                // Handle tap event
                 shootProjectile();
             } else if (event == "playerDestroyed") {
                 die();

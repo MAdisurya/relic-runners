@@ -17,24 +17,27 @@ class Spawner: SKNode {
     
     func generateSpawner(scene: SKScene) -> Void {
         self.gameScene = scene;
+        self.zPosition = 1.0;
     }
     
     func spawnEnemy() -> Void {
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let newEnemy = Character(type: .enemy);
-            let placeToSpawn = Int.random(in: -1...1);
+            let placeToSpawn = Int.random(in: -2...0);
             
             newEnemy.generateCharacter(scene: gameScene, imageNamed: "skeleton");
             newEnemy.position.x = self.position.x;
-            newEnemy.position.y = newEnemy.size.height * CGFloat(placeToSpawn);
+            newEnemy.position.y = (newEnemy.m_MoveAmount) * CGFloat(placeToSpawn+1);
+            newEnemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
             gameScene.addChild(newEnemy);
             
-            for i in -1...1 {
+            for i in -2...0 {
                 if (i != placeToSpawn) {
                     let newObstacle = Obstacle();
                     newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
                     newObstacle.position.x = self.position.x;
-                    newObstacle.position.y = newObstacle.size.height * CGFloat(i);
+                    newObstacle.position.y = newEnemy.m_MoveAmount * CGFloat(i+1);
+                    newObstacle.zPosition = -CGFloat(i) + 1;
                     
                     RRGameManager.shared.getEnemyManager().registerObstacle(obstacle: newObstacle);
                     gameScene.addChild(newObstacle);

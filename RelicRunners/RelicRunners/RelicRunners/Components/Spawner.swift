@@ -10,19 +10,20 @@ import SpriteKit
 
 class Spawner: SKNode {
     
-    var gameScene: SKScene!;
+    var gameScene: GameScene!;
     
     private var lastSpawnPos: CGFloat = 0;
     private var distanceTillNextSpawn: CGFloat = 1280;
     
-    func generateSpawner(scene: SKScene) -> Void {
+    func generateSpawner(scene: GameScene) -> Void {
         self.gameScene = scene;
         self.zPosition = 1.0;
     }
     
-    func spawnEnemy() -> Void {
+    func spawn() -> Void {
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let newEnemy = Character(type: .enemy);
+            let point = SKNode();
             let placeToSpawn = Int.random(in: -2...0);
             
             newEnemy.generateCharacter(scene: gameScene, imageNamed: "skeleton");
@@ -39,12 +40,16 @@ class Spawner: SKNode {
                     newObstacle.position.y = newEnemy.m_MoveAmount * CGFloat(i+1);
                     newObstacle.zPosition = -CGFloat(i) + 1;
                     
-                    RRGameManager.shared.getEnemyManager().registerObstacle(obstacle: newObstacle);
+                    RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: newObstacle);
                     gameScene.addChild(newObstacle);
                 }
             }
             
-            RRGameManager.shared.getEnemyManager().registerEnemy(enemy: newEnemy);
+            point.position = self.position;
+            point.name = "point";
+            gameScene.addChild(point);
+            
+            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: newEnemy);
             
             lastSpawnPos = self.position.x;
         }

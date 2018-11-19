@@ -10,10 +10,17 @@ import SpriteKit
 
 class Camera: SKCameraNode {
     
-    private var moveSpeed: CGFloat = 10;
+    private var moveSpeed: CGFloat = 5;
+    private var maxMoveSpeed: CGFloat = 10;
+    
+    func getCameraSpeed() -> CGFloat {
+        return moveSpeed;
+    }
     
     func setCameraSpeed(speed: CGFloat) {
-        moveSpeed = speed;
+        if (moveSpeed < maxMoveSpeed) {
+            moveSpeed = speed;
+        }
     }
     
     func generateCamera(scene: SKScene) -> Void {

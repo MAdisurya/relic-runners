@@ -11,7 +11,7 @@ import SpriteKit
 class Character: SKSpriteNode, RREventListener {
     
     var m_CharacterType: CharacterTypes!;
-    var gameScene: SKScene!;
+    var gameScene: GameScene!;
     
     var m_CurrentLane = 0;
     var m_Dead = false;
@@ -30,11 +30,11 @@ class Character: SKSpriteNode, RREventListener {
         fatalError("init(coder:) has not been implemented");
     }
     
-    func generateCharacter(scene: SKScene, imageNamed image: String) -> Void {
+    func generateCharacter(scene: GameScene, imageNamed image: String) -> Void {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: gameScene.size.width / 5, height: gameScene.size.width / 5);
-        self.position = CGPoint(x: -gameScene.size.width / 3, y: 0);
+        self.position = CGPoint(x: 0, y: 0);
         self.zPosition = 2.5;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
         self.physicsBody?.isDynamic = true;
@@ -55,7 +55,7 @@ class Character: SKSpriteNode, RREventListener {
         projectile.generateProjectile(character: self, imageNamed: "arrow");
         self.addChild(projectile);
         
-        let action = SKAction.move(by: CGVector(dx: gameScene.size.width, dy: 0), duration: projectile.getSpeed());
+        let action = SKAction.move(by: CGVector(dx: 1180, dy: 0), duration: projectile.getSpeed());
         projectile.run(action) {
             projectile.destroy();
         }
@@ -63,12 +63,17 @@ class Character: SKSpriteNode, RREventListener {
     
     func die() {
         m_Dead = true;
-        self.physicsBody?.contactTestBitMask = 0;
+        self.physicsBody?.categoryBitMask = 0;
         
         let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
         let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
         
         self.run(upAction) {
+            // Add to game score
+            RRGameManager.shared.getScoreManager().addScore(amount: 1);
+            // Update score label
+            self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+            
             self.run(fallAction) {
                 self.destroy();
                 if (self.m_CharacterType == CharacterTypes.player) {

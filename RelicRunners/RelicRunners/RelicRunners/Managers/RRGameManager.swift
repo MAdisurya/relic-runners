@@ -17,7 +17,8 @@ class RRGameManager {
     // Initialize instances of all managers
     let m_EventManager = RREventManager();
     let m_InputManager = RRInputManager();
-    let m_EnemyManager = RREnemyManager();
+    let m_ScoreManager = RRScoreManager();
+    let m_GarbageCollector = RRGarbageCollector();
     
     // Getter functions for Managers
     func getEventManager() -> RREventManager {
@@ -28,7 +29,11 @@ class RRGameManager {
         return m_InputManager;
     }
     
-    func getEnemyManager() -> RREnemyManager {
-        return m_EnemyManager;
+    func getScoreManager() -> RRScoreManager {
+        return m_ScoreManager;
+    }
+    
+    func getGarbageCollector() -> RRGarbageCollector {
+        return m_GarbageCollector;
     }
 }

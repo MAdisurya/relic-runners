@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class RREnemyManager {
+class RRGarbageCollector {
     
     private var enemyRegister: [Character] = [];
     private var obstacleRegister: [Obstacle] = [];
@@ -25,13 +25,13 @@ class RREnemyManager {
     
     func garbageCollection(scene: SKScene, camera: Camera) {
         for enemy in enemyRegister {
-            if (camera.position.x > enemy.position.x + scene.size.width) {
+            if (camera.position.x > enemy.position.x + scene.size.height) {
                 enemy.destroy();
             }
         }
         
         for obstacle in obstacleRegister {
-            if (camera.position.x > obstacle.position.x + scene.size.width) {
+            if (camera.position.x > obstacle.position.x + scene.size.height) {
                 obstacle.destroy();
             }
         }

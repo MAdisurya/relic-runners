@@ -69,10 +69,24 @@ class Character: SKSpriteNode, RREventListener {
         let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
         
         self.run(upAction) {
-            // Add to game score
-            RRGameManager.shared.getScoreManager().addScore(amount: 1);
-            // Update score label
-            self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+            self.run(fallAction) {
+                self.destroy();
+                if (self.m_CharacterType == CharacterTypes.player) {
+                    RRGameManager.shared.getEventManager().broadcastEvent(event: "gameOver");
+                }
+            }
+        }
+    }
+    
+    func die(completion: @escaping () -> Void) {
+        m_Dead = true;
+        self.physicsBody?.categoryBitMask = 0;
+        
+        let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
+        let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
+        
+        self.run(upAction) {
+            completion();
             
             self.run(fallAction) {
                 self.destroy();
@@ -114,7 +128,12 @@ class Character: SKSpriteNode, RREventListener {
             }
         } else {
             if (event == "enemyDestroyed") {
-                die();
+                die() {
+                    // Add to game score
+                    RRGameManager.shared.getScoreManager().addScore(amount: 1);
+                    // Update score label
+                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+                }
             }
         }
     }

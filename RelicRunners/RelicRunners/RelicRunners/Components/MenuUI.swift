@@ -10,10 +10,13 @@ import SpriteKit
 
 class MenuUI: RREventListener {
     
+    let m_Player: Character!;
+    
     let m_Title = SKSpriteNode();
     let m_TapLabel = SKLabelNode();
     
-    init() {
+    init(player: Character) {
+        self.m_Player = player;
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
     
@@ -31,25 +34,59 @@ class MenuUI: RREventListener {
         m_TapLabel.fontName = "Silkscreen";
         m_TapLabel.fontSize = 36;
         
+        blink(node: m_TapLabel);
+    }
+    
+    func blink(node: SKNode) {
         let fadeOut = SKAction.fadeOut(withDuration: 0.01);
         let wait = SKAction.wait(forDuration: 1);
         let fadeIn = SKAction.fadeIn(withDuration: 0.01);
-        let sequence = SKAction.sequence([fadeOut, wait, fadeIn, wait]);
+        let sequence = SKAction.sequence([wait, fadeOut, wait, fadeIn]);
         let repeatForever = SKAction.repeatForever(sequence);
         
-        m_TapLabel.run(repeatForever);
+        node.run(repeatForever);
+    }
+    
+    func animateIn(completion: @escaping () -> Void) {
+        let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
+        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+        
+        m_Title.removeAllActions();
+        m_TapLabel.removeAllActions();
+        m_Title.run(downAnim);
+        m_TapLabel.run(upAnim) {
+            completion();
+        };
+    }
+    
+    func animateOut(completion: @escaping () -> Void) {
+        let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
+        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+        
+        m_Title.removeAllActions();
+        m_TapLabel.removeAllActions();
+        m_Title.run(upAnim);
+        m_TapLabel.run(downAnim) {
+            completion();
+        };
     }
     
     func listen(event: String) {
         if (event == "tap") {
             if (RRGameManager.shared.getGameState() == .PAUSE) {
-                let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
-                let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+                // Reset the player
+                self.m_Player.physicsBody?.categoryBitMask = CategoryBitMask.player;
+                self.m_Player.position = CGPoint(x: -m_Player.gameScene.size.width, y: 0);
+                self.m_Player.zPosition = 2.5;
+                self.m_Player.m_CurrentLane = 0;
+                self.m_Player.gameScene.camera?.addChild(self.m_Player);
+                self.m_Player.animateIn();
                 
-                m_Title.removeAllActions();
-                m_TapLabel.removeAllActions();
-                m_Title.run(upAnim);
-                m_TapLabel.run(downAnim) {
+                // Reset the score
+                RRGameManager.shared.getScoreManager().resetScore();
+                self.m_Player.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+                
+                animateOut() {
                     RRGameManager.shared.setGameState(state: .PLAY);
                 };
             }

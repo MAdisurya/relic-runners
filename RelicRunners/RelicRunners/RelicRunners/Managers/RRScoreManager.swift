@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mario Adisurya. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 class RRScoreManager {
     
@@ -20,11 +20,18 @@ class RRScoreManager {
         m_Score += amount;
     }
     
+    func resetScore() {
+        m_Score = 0;
+    }
+    
     func storeScore() {
-        let userDefaults = UserDefaults.standard;
-        
-        // Store score in user default
-        userDefaults.set(m_Score, forKey: "rr-game-score");
+        // Only store score if current score is greater than stored score
+        if (m_Score > retrieveScore()) {
+            let userDefaults = UserDefaults.standard;
+            
+            // Store score in user default
+            userDefaults.set(m_Score, forKey: "rr-game-score");
+        }
     }
     
     func retrieveScore() -> Int {

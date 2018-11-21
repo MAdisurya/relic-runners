@@ -12,11 +12,11 @@ import GameplayKit
 class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
+    private lazy var m_MenuUI = MenuUI(player: m_Player);
     
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
     private let m_Player = Character(type: .player);
-    private let m_MenuUI = MenuUI();
     private let m_ScoreLabel = SKLabelNode();
     
     override func sceneDidLoad() {
@@ -48,9 +48,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Generate the player character
         m_Player.generateCharacter(scene: self, imageNamed: "archer");
-        m_Player.position.x = -self.size.width / 3;
+        m_Player.position.x = -self.size.width;
         // Add the player character to the scene
-        gameCamera.addChild(m_Player);
+//        gameCamera.addChild(m_Player);
         
         self.physicsWorld.contactDelegate = self;
         
@@ -67,7 +67,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Setup the score label
         m_ScoreLabel.zPosition = 10.0;
-        m_ScoreLabel.text = "0";
+        m_ScoreLabel.text = String(RRGameManager.shared.getScoreManager().retrieveScore());
         m_ScoreLabel.fontName = "Silkscreen Bold";
         m_ScoreLabel.fontSize = 96;
         m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
@@ -123,10 +123,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     func listen(event: String) {
         if (event == "gameOver") {
-            if let nextScene = SKScene(fileNamed: "LoseScene") {
-                nextScene.scaleMode = .aspectFill;
-                goToScene(scene: nextScene);
-            }
+            RRGameManager.shared.getScoreManager().storeScore();
+            
+            m_MenuUI.animateIn() {
+                RRGameManager.shared.setGameState(state: .PAUSE);
+                RRGameManager.shared.getGarbageCollector().destroyAll();
+                self.m_MenuUI.blink(node: self.m_MenuUI.m_TapLabel);
+            };
         }
     }
     

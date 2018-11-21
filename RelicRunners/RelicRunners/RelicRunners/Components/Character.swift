@@ -101,6 +101,11 @@ class Character: SKSpriteNode, RREventListener {
         self.removeFromParent();
     }
     
+    func animateIn() {
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width / 3, y: 0), duration: 0.5);
+        self.run(move);
+    }
+    
     func listen(event: String) {
         if (m_CharacterType == CharacterTypes.player) {
             // Set zPosition to 1 if on the top lane to make sure character is behind obstacles

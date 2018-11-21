@@ -23,6 +23,16 @@ class RRGarbageCollector {
         obstacleRegister.append(obstacle);
     }
     
+    func destroyAll() {
+        for enemy in enemyRegister {
+            enemy.destroy();
+        }
+        
+        for obstacle in obstacleRegister {
+            obstacle.destroy();
+        }
+    }
+    
     func garbageCollection(scene: SKScene, camera: Camera) {
         for enemy in enemyRegister {
             if (camera.position.x > enemy.position.x + scene.size.height) {

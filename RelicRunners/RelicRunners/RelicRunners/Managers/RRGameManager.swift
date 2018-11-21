@@ -8,17 +8,33 @@
 
 import Foundation
 
+public enum GameState {
+    case PLAY
+    case PAUSE
+}
+
 class RRGameManager {
     
     static let shared = RRGameManager();
     
     private init() {}
     
+    // Initialize instance of GameState
+    private var gameState: GameState = .PAUSE;
+    
     // Initialize instances of all managers
-    let m_EventManager = RREventManager();
-    let m_InputManager = RRInputManager();
-    let m_ScoreManager = RRScoreManager();
-    let m_GarbageCollector = RRGarbageCollector();
+    private let m_EventManager = RREventManager();
+    private let m_InputManager = RRInputManager();
+    private let m_ScoreManager = RRScoreManager();
+    private let m_GarbageCollector = RRGarbageCollector();
+    
+    func getGameState() -> GameState {
+        return gameState;
+    }
+    
+    func setGameState(state: GameState) {
+        gameState = state;
+    }
     
     // Getter functions for Managers
     func getEventManager() -> RREventManager {

@@ -122,7 +122,9 @@ class Character: SKSpriteNode, RREventListener {
                 }
             } else if (event == "tap") {
                 // Handle tap event
-                shootProjectile();
+                if (RRGameManager.shared.getGameState() == .PLAY) {
+                    shootProjectile();
+                }
             } else if (event == "playerDestroyed") {
                 die();
             }

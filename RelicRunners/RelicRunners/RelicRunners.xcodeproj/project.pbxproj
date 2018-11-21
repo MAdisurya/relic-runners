@@ -36,6 +36,9 @@
 		F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */; };
 		F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */; };
 		F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FAB218F38470024BC7D /* Obstacle.swift */; };
+		F4E608D521A524EC00A5E7D5 /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4E608D421A524EC00A5E7D5 /* slkscr.ttf */; };
+		F4E608D721A524F700A5E7D5 /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4E608D621A524F700A5E7D5 /* slkscrb.ttf */; };
+		F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGarbageCollector.swift; sourceTree = "<group>"; };
 		F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBitMask.swift; sourceTree = "<group>"; };
 		F4C12FAB218F38470024BC7D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		F4E608D421A524EC00A5E7D5 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = ../../../../../../../../Downloads/Silkscreen/slkscr.ttf; sourceTree = "<group>"; };
+		F4E608D621A524F700A5E7D5 /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscrb.ttf; path = ../../../../../../../../Downloads/Silkscreen/slkscrb.ttf; sourceTree = "<group>"; };
+		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 				7A33F683218650A000CDFA96 /* Components */,
 				F4339ABF218DA2BD0016970A /* Enums */,
 				F4339AB6218D14B90016970A /* Other */,
+				F4E608D321A523E600A5E7D5 /* Fonts */,
 				F4544072218FAED2005719E4 /* Assets.xcassets */,
 				7A33F66921864FEF00CDFA96 /* AppDelegate.swift */,
 				7A33F66D21864FEF00CDFA96 /* Actions.sks */,
@@ -128,6 +135,7 @@
 				F4C12FA3218EF0860024BC7D /* Projectile.swift */,
 				F4C12FA5218F0A430024BC7D /* Spawner.swift */,
 				F4C12FAB218F38470024BC7D /* Obstacle.swift */,
+				F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -174,6 +182,15 @@
 				F4339AC0218DA2DF0016970A /* CharacterTypes.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		F4E608D321A523E600A5E7D5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F4E608D621A524F700A5E7D5 /* slkscrb.ttf */,
+				F4E608D421A524EC00A5E7D5 /* slkscr.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,11 +251,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E608D521A524EC00A5E7D5 /* slkscr.ttf in Resources */,
 				7A33F67521864FEF00CDFA96 /* Main.storyboard in Resources */,
 				7A33F66C21864FEF00CDFA96 /* GameScene.sks in Resources */,
 				7A33F67A21864FF100CDFA96 /* LaunchScreen.storyboard in Resources */,
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
 				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
+				F4E608D721A524F700A5E7D5 /* slkscrb.ttf in Resources */,
 				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
 				7A33F66E21864FEF00CDFA96 /* Actions.sks in Resources */,
 			);
@@ -252,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C12FA4218EF0860024BC7D /* Projectile.swift in Sources */,
+				F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */,
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
 				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
 				F4339ABA218D15E00016970A /* RREventListener.swift in Sources */,

@@ -16,6 +16,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
     private let m_Player = Character(type: .player);
+    private let m_MenuUI = MenuUI();
     private let m_ScoreLabel = SKLabelNode();
     
     override func sceneDidLoad() {
@@ -33,6 +34,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             self.addChild(bgWall);
         }
         
+        // Generate the MenuUI elements
+        m_MenuUI.generateTitle(sceneSize: self.size);
+        m_MenuUI.generateTapLabel(sceneSize: self.size);
+        // Add MenuUI elements to the camera
+        gameCamera.addChild(m_MenuUI.m_Title);
+        gameCamera.addChild(m_MenuUI.m_TapLabel);
+        
         // Generate the enemy and obstacle spawner
         m_Spawner.generateSpawner(scene: self);
         // Add Spawner to the scene
@@ -40,8 +48,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Generate the player character
         m_Player.generateCharacter(scene: self, imageNamed: "archer");
+        m_Player.position.x = -self.size.width / 3;
         // Add the player character to the scene
-        self.addChild(m_Player);
+        gameCamera.addChild(m_Player);
         
         self.physicsWorld.contactDelegate = self;
         
@@ -57,10 +66,11 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         }
         
         // Setup the score label
-        m_ScoreLabel.position = CGPoint(x: 0, y: 0);
         m_ScoreLabel.zPosition = 10.0;
         m_ScoreLabel.text = "0";
-        m_ScoreLabel.fontSize = 64;
+        m_ScoreLabel.fontName = "Silkscreen Bold";
+        m_ScoreLabel.fontSize = 96;
+        m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
         gameCamera.addChild(m_ScoreLabel);
     }
     
@@ -75,7 +85,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Check if should add to score
         if let point = self.childNode(withName: "point") {
-            if (m_Player.position.x > point.position.x) {
+            if (gameCamera.position.x - (self.size.width / 3) > point.position.x) {
                 // Increase camera speed after score is increased
                 gameCamera.setCameraSpeed(speed: gameCamera.getCameraSpeed() + (CGFloat(RRGameManager.shared.getScoreManager().getScore()) * 0.1))
                 // Remove point from game scene
@@ -83,13 +93,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             }
         }
         
-        // Update player position every frame to follow the camera
-        m_Player.position.x = gameCamera.position.x - (self.size.width / 3);
-        
         // Update spawner position every frame to follow camera
         m_Spawner.position.x = gameCamera.position.x + (self.size.height / 2);
         // Spawn enemies, obstacles, and points
-        m_Spawner.spawn();
+        if (RRGameManager.shared.getGameState() == .PLAY) {
+            m_Spawner.spawn();
+        }
         
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);
     }

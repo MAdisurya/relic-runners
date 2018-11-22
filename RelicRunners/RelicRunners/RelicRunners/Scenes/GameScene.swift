@@ -29,9 +29,15 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Generate the Background
         infiniteScroller.generateBGSprites();
-        // Add the BG walls to the scene
+        // Add the bgs to the scene
         for bgWall in infiniteScroller.getBGWalls() {
             self.addChild(bgWall);
+        }
+        for bgFloor in infiniteScroller.getBGFloors() {
+            self.addChild(bgFloor);
+        }
+        for fgRock in infiniteScroller.getFGRocks() {
+            self.addChild(fgRock);
         }
         
         // Generate the MenuUI elements
@@ -124,6 +130,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     func listen(event: String) {
         if (event == "gameOver") {
             RRGameManager.shared.getScoreManager().storeScore();
+            // Add UI back to the game camera
+            gameCamera.addChild(m_MenuUI.m_Title);
+            gameCamera.addChild(m_MenuUI.m_TapLabel);
             
             m_MenuUI.animateIn() {
                 RRGameManager.shared.setGameState(state: .PAUSE);

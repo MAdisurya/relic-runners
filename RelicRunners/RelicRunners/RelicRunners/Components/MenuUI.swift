@@ -88,6 +88,8 @@ class MenuUI: RREventListener {
                 
                 animateOut() {
                     RRGameManager.shared.setGameState(state: .PLAY);
+                    self.m_Title.removeFromParent();
+                    self.m_TapLabel.removeFromParent();
                 };
             }
         }

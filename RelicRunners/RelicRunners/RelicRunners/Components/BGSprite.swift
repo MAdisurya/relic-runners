@@ -13,6 +13,5 @@ class BGSprite: SKSpriteNode {
     func generateBackground(scene: SKScene, imageNamed image: String, name: String) -> Void {
         self.name = name;
         self.texture = SKTexture(imageNamed: image);
-        self.size = CGSize(width: scene.size.width, height: scene.size.height);
     }
 }

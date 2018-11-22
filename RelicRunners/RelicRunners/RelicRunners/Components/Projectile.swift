@@ -20,7 +20,7 @@ class Projectile: SKSpriteNode, RREventListener {
         self.texture = SKTexture(imageNamed: image);
         self.size = CGSize(width: character.size.width / 4, height: character.size.height / 4);
         self.zPosition = 2.0;
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.projectile;
         self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy;

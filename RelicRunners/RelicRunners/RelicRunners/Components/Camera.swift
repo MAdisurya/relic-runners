@@ -13,6 +13,8 @@ class Camera: SKCameraNode {
     private var moveSpeed: CGFloat = 5;
     private var maxMoveSpeed: CGFloat = 10;
     
+    let defaultSpeed: CGFloat = 5;
+    
     func getCameraSpeed() -> CGFloat {
         return moveSpeed;
     }
@@ -21,6 +23,10 @@ class Camera: SKCameraNode {
         if (moveSpeed < maxMoveSpeed) {
             moveSpeed = speed;
         }
+    }
+    
+    func resetCameraSpeed() {
+        moveSpeed = defaultSpeed;
     }
     
     func generateCamera(scene: SKScene) -> Void {

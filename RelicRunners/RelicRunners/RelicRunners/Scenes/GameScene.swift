@@ -130,6 +130,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     func listen(event: String) {
         if (event == "gameOver") {
             RRGameManager.shared.getScoreManager().storeScore();
+            // Set game camera speed back to default
+            gameCamera.resetCameraSpeed();
             // Add UI back to the game camera
             gameCamera.addChild(m_MenuUI.m_Title);
             gameCamera.addChild(m_MenuUI.m_TapLabel);

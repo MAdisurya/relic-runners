@@ -11,8 +11,9 @@ import SpriteKit
 class Boss: Character {
     
     internal var m_Health = 20;
-    internal var m_ScoreAmount = 20;
-    internal var m_BossSpawnPosition: CGFloat = 2000;
+    internal let m_ScoreAmount = 20;
+    internal let m_ScoreRequirement = 2;
+    internal let m_BossSpawnPosition: CGFloat = 2000;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);

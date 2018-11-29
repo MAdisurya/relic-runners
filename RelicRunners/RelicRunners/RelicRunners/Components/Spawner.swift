@@ -65,11 +65,15 @@ class Spawner: SKNode {
             return;
         }
         
-        if (self.position.x >= boss.m_BossSpawnPosition) {
+        if (self.position.x >= boss.m_BossSpawnPosition && RRGameManager.shared.getScoreManager().getScore() > boss.m_ScoreRequirement) {
+            let wait = SKAction.wait(forDuration: 3);
+            
             // Spawn boss if spawner is at the boss spawn position
-            boss.position = CGPoint(x: gameScene.size.width, y: 0);
-            gameScene.camera?.addChild(boss);
-            boss.animateInFromRight();
+            self.run(wait) {
+                boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
+                self.gameScene.camera?.addChild(boss);
+                boss.animateInFromRight();
+            }
             
             // Set boss spawned to true
             bossSpawned = true;

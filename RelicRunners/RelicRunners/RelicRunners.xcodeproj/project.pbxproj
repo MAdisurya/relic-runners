@@ -26,6 +26,7 @@
 		F4339ABC218D16090016970A /* RRGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABB218D16090016970A /* RRGameManager.swift */; };
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
+		F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4531B3A21AB941B0003FFBF /* Boss.swift */; };
 		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46109C021A253A0004CFB18 /* RRScoreManager.swift */; };
 		F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28B218F7A550085E43C /* BaseScene.swift */; };
@@ -63,6 +64,7 @@
 		F4339ABB218D16090016970A /* RRGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGameManager.swift; sourceTree = "<group>"; };
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
+		F4531B3A21AB941B0003FFBF /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F46109C021A253A0004CFB18 /* RRScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRScoreManager.swift; sourceTree = "<group>"; };
 		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
@@ -73,8 +75,8 @@
 		F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGarbageCollector.swift; sourceTree = "<group>"; };
 		F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBitMask.swift; sourceTree = "<group>"; };
 		F4C12FAB218F38470024BC7D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
-		F4DE7DB321A96F8800F0761B /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = ../../../../../Downloads/Silkscreen/slkscr.ttf; sourceTree = "<group>"; };
-		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscrb.ttf; path = ../../../../../Downloads/Silkscreen/slkscrb.ttf; sourceTree = "<group>"; };
+		F4DE7DB321A96F8800F0761B /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
+		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
 		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 		7A33F683218650A000CDFA96 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F4531B3921AB94070003FFBF /* Bosses */,
 				7A33F6812186509B00CDFA96 /* Camera.swift */,
 				7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */,
 				7A33F68B21865ED900CDFA96 /* BGSprite.swift */,
@@ -183,6 +186,14 @@
 				F4339AC0218DA2DF0016970A /* CharacterTypes.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		F4531B3921AB94070003FFBF /* Bosses */ = {
+			isa = PBXGroup;
+			children = (
+				F4531B3A21AB941B0003FFBF /* Boss.swift */,
+			);
+			path = Bosses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +293,7 @@
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,
+				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
 				F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */,
 				F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */,

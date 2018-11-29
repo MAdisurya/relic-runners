@@ -18,7 +18,7 @@ class Character: SKSpriteNode, RREventListener {
     var m_MoveAmount: CGFloat!;
     
     init(type characterType: CharacterTypes) {
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 100, height: 100));
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 128, height: 128));
         
         self.m_CharacterType = characterType;
         self.m_MoveAmount = self.size.width * 0.8;
@@ -33,7 +33,8 @@ class Character: SKSpriteNode, RREventListener {
     func generateCharacter(scene: GameScene, imageNamed image: String) -> Void {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
-        self.size = CGSize(width: gameScene.size.width / 5, height: gameScene.size.width / 5);
+        self.texture?.filteringMode = .nearest;
+        self.size = CGSize(width: 128, height: 128);
         self.position = CGPoint(x: 0, y: 0);
         self.zPosition = 2.5;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
@@ -101,8 +102,13 @@ class Character: SKSpriteNode, RREventListener {
         self.removeFromParent();
     }
     
-    func animateIn() {
+    func animateInFromLeft() {
         let move = SKAction.move(to: CGPoint(x: -gameScene.size.width / 3, y: 0), duration: 0.5);
+        self.run(move);
+    }
+    
+    func animateInFromRight() {
+        let move = SKAction.move(to: CGPoint(x: gameScene.size.width / 3, y: 0), duration: 0.5);
         self.run(move);
     }
     
@@ -130,11 +136,11 @@ class Character: SKSpriteNode, RREventListener {
                 if (RRGameManager.shared.getGameState() == .PLAY) {
                     shootProjectile();
                 }
-            } else if (event == "playerDestroyed") {
+            } else if (event == "playerHit") {
                 die();
             }
         } else {
-            if (event == "enemyDestroyed") {
+            if (event == "enemyHit") {
                 die() {
                     // Add to game score
                     RRGameManager.shared.getScoreManager().addScore(amount: 1);

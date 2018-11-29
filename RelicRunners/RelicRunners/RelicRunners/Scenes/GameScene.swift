@@ -17,6 +17,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
     private let m_Player = Character(type: .player);
+    private let m_Boss = Boss(type: .enemy);
     private let m_ScoreLabel = SKLabelNode();
     
     override func sceneDidLoad() {
@@ -57,6 +58,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_Player.position.x = -self.size.width;
         // Add the player character to the scene
 //        gameCamera.addChild(m_Player);
+        
+        // Generate the boss
+        m_Boss.generateCharacter(scene: self, imageNamed: "skeleton");
         
         self.physicsWorld.contactDelegate = self;
         
@@ -104,20 +108,30 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         // Spawn enemies, obstacles, and points
         if (RRGameManager.shared.getGameState() == .PLAY) {
             m_Spawner.spawn();
+            m_Spawner.spawnBoss(boss: m_Boss);
         }
+        
+        
         
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.enemy) {
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerHit");
         }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.obstacle) {
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerHit");
+        }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.boss) {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playerHit");
         }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.enemy) {
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyHit");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
+        }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.boss) {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "bossHit");
             RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
         }
     }

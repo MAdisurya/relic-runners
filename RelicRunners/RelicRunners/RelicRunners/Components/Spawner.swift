@@ -14,6 +14,7 @@ class Spawner: SKNode {
     
     private var lastSpawnPos: CGFloat = 0;
     private var distanceTillNextSpawn: CGFloat = 1280;
+    private var bossSpawned = false;
     
     func generateSpawner(scene: GameScene) -> Void {
         self.gameScene = scene;
@@ -21,6 +22,10 @@ class Spawner: SKNode {
     }
     
     func spawn() -> Void {
+        if (bossSpawned) {
+            return;
+        }
+        
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let newEnemy = Character(type: .enemy);
             let point = SKNode();
@@ -52,6 +57,22 @@ class Spawner: SKNode {
             RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: newEnemy);
             
             lastSpawnPos = self.position.x;
+        }
+    }
+    
+    func spawnBoss(boss: Boss) {
+        if (bossSpawned) {
+            return;
+        }
+        
+        if (self.position.x >= boss.m_BossSpawnPosition) {
+            // Spawn boss if spawner is at the boss spawn position
+            boss.position = CGPoint(x: gameScene.size.width, y: 0);
+            gameScene.camera?.addChild(boss);
+            boss.animateInFromRight();
+            
+            // Set boss spawned to true
+            bossSpawned = true;
         }
     }
 }

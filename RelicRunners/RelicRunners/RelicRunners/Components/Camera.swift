@@ -40,4 +40,8 @@ class Camera: SKCameraNode {
     func moveCamera() -> Void {
         self.position = CGPoint(x: self.position.x + moveSpeed, y: 0);
     }
+    
+    func stopCamera() -> Void {
+        moveSpeed = 0;
+    }
 }

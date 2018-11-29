@@ -80,7 +80,7 @@ class MenuUI: RREventListener {
                 self.m_Player.zPosition = 2.5;
                 self.m_Player.m_CurrentLane = 0;
                 self.m_Player.gameScene.camera?.addChild(self.m_Player);
-                self.m_Player.animateIn();
+                self.m_Player.animateInFromLeft();
                 
                 // Reset the score
                 RRGameManager.shared.getScoreManager().resetScore();

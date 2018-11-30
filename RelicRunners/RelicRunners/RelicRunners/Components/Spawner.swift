@@ -66,10 +66,21 @@ class Spawner: SKNode {
         }
         
         if (self.position.x >= boss.m_BossSpawnPosition && RRGameManager.shared.getScoreManager().getScore() > boss.m_ScoreRequirement) {
-            let wait = SKAction.wait(forDuration: 3);
+            // Actions
+            let fadeOut = SKAction.fadeOut(withDuration: 1);
+            let fadeIn = SKAction.fadeIn(withDuration: 1);
+            let sequence = SKAction.sequence([fadeIn, fadeOut]);
+            let blink = SKAction.repeat(sequence, count: 3);
             
-            // Spawn boss if spawner is at the boss spawn position
-            self.run(wait) {
+            // Initialize boss alert UI
+            let bossAlert = SKSpriteNode(imageNamed: "relicrunners-bossalert");
+            bossAlert.size = CGSize(width: gameScene.size.width, height: gameScene.size.width / 2);
+            bossAlert.alpha = 0;
+            bossAlert.zPosition = 8
+            gameScene.camera?.addChild(bossAlert);
+            
+            // Boss spawns in after blink animation completed
+            bossAlert.run(blink) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
                 self.gameScene.camera?.addChild(boss);
                 boss.animateInFromRight();

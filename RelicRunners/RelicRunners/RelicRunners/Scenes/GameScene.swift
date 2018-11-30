@@ -16,7 +16,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
-    private let m_Player = Character(type: .player);
+    private let m_Player = Player(type: .player);
     private let m_Boss = Boss(type: .enemy);
     private let m_ScoreLabel = SKLabelNode();
     
@@ -126,13 +126,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.boss) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playerHit");
         }
-        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.enemy) {
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.enemy) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyHit");
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "weaponDestroyed");
         }
-        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.projectile | CategoryBitMask.boss) {
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.boss) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "bossHit");
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "projectileDestroyed");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "weaponDestroyed");
         }
     }
     

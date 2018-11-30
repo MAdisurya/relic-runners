@@ -12,8 +12,7 @@ class Boss: Character {
     
     internal var m_Health = 20;
     internal let m_ScoreAmount = 20;
-    internal let m_ScoreRequirement = 2;
-    internal let m_BossSpawnPosition: CGFloat = 2000;
+    internal let m_SpawnScoreRequirement = 2;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
@@ -21,7 +20,7 @@ class Boss: Character {
         self.size = CGSize(width: 256, height: 256);
         
         self.physicsBody?.categoryBitMask = CategoryBitMask.boss;
-        self.physicsBody?.contactTestBitMask = CategoryBitMask.projectile | CategoryBitMask.player;
+        self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
     }
     
     override func listen(event: String) {

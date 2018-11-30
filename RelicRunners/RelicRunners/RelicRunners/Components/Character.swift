@@ -47,13 +47,13 @@ class Character: SKSpriteNode, RREventListener {
             self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.obstacle;
         } else {
             self.physicsBody?.categoryBitMask = CategoryBitMask.enemy;
-            self.physicsBody?.contactTestBitMask = CategoryBitMask.projectile | CategoryBitMask.player;
+            self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
         }
     }
     
     func shootProjectile() {
         let projectile = Projectile();
-        projectile.generateProjectile(character: self, imageNamed: "arrow");
+        projectile.generate(character: self, imageNamed: "arrow");
         self.addChild(projectile);
         
         let action = SKAction.move(by: CGVector(dx: 1180, dy: 0), duration: projectile.getSpeed());
@@ -113,33 +113,7 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     func listen(event: String) {
-        if (m_CharacterType == CharacterTypes.player) {
-            // Set zPosition to 1 if on the top lane to make sure character is behind obstacles
-            self.zPosition = (m_CurrentLane == 1) ? 1.0 : 2.5;
-            
-            if (event == "swipeUp") {
-                // Handle swipe up event
-                if (m_CurrentLane < 1) {
-                    m_CurrentLane += 1;
-                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount), duration: 0.5);
-                    self.run(action);
-                }
-            } else if (event == "swipeDown") {
-                // Handle swipe down event
-                if (m_CurrentLane > -1) {
-                    m_CurrentLane -= 1;
-                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount), duration: 0.5);
-                    self.run(action);
-                }
-            } else if (event == "tap") {
-                // Handle tap event
-                if (RRGameManager.shared.getGameState() == .PLAY) {
-                    shootProjectile();
-                }
-            } else if (event == "playerHit") {
-                die();
-            }
-        } else {
+         if (m_CharacterType == CharacterTypes.enemy) {
             if (event == "enemyHit") {
                 die() {
                     // Add to game score

@@ -34,6 +34,7 @@
 		F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919D21B1E1DC00B09143 /* Weapon.swift */; };
 		F47191A021B1E59B00B09143 /* PowerUpTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919F21B1E59B00B09143 /* PowerUpTypes.swift */; };
 		F47191A221B1EA6F00B09143 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47191A121B1EA6F00B09143 /* Player.swift */; };
+		F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */; };
 		F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28B218F7A550085E43C /* BaseScene.swift */; };
 		F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28D218F8EC80085E43C /* LoseScene.swift */; };
 		F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4ABA28F218F8EE30085E43C /* LoseScene.sks */; };
@@ -76,6 +77,7 @@
 		F471919D21B1E1DC00B09143 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		F471919F21B1E59B00B09143 /* PowerUpTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpTypes.swift; sourceTree = "<group>"; };
 		F47191A121B1EA6F00B09143 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDrop.swift; sourceTree = "<group>"; };
 		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F4ABA28D218F8EC80085E43C /* LoseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
 		F4ABA28F218F8EE30085E43C /* LoseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoseScene.sks; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				F471919C21B1E1CC00B09143 /* Weapons */,
+				F4886C2D21B64ED6000E0DA2 /* Power Up Drops */,
 				F471919721B1E04C00B09143 /* Power Ups */,
 				F4531B3921AB94070003FFBF /* Bosses */,
 				7A33F6812186509B00CDFA96 /* Camera.swift */,
@@ -222,6 +225,14 @@
 				F471919D21B1E1DC00B09143 /* Weapon.swift */,
 			);
 			path = Weapons;
+			sourceTree = "<group>";
+		};
+		F4886C2D21B64ED6000E0DA2 /* Power Up Drops */ = {
+			isa = PBXGroup;
+			children = (
+				F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */,
+			);
+			path = "Power Up Drops";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
 				F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */,
+				F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */,
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,

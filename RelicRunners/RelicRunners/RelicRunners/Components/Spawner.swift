@@ -13,7 +13,9 @@ class Spawner: SKNode {
     var gameScene: GameScene!;
     
     private var lastSpawnPos: CGFloat = 0;
-    private var distanceTillNextSpawn: CGFloat = 1280;
+    private var lastPowerUpSpawnPos: CGFloat = 0;
+    private let distanceTillNextSpawn: CGFloat = 1280;
+    private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
     func generateSpawner(scene: GameScene) -> Void {
@@ -26,6 +28,7 @@ class Spawner: SKNode {
             return;
         }
         
+        // Handle spawning of enemy and obstacles
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let newEnemy = Character(type: .enemy);
             let point = SKNode();
@@ -57,6 +60,20 @@ class Spawner: SKNode {
             RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: newEnemy);
             
             lastSpawnPos = self.position.x;
+        }
+        
+        // Handle spawning of power ups
+        if (self.position.x >= lastPowerUpSpawnPos + distanceTillNextPowerUp) {
+            let random = UInt32.random(in: 0..<PowerUpTypes.none.rawValue);
+            if let powerUp = PowerUpTypes(rawValue: random) {
+                let newPowerUp = PowerUpDrop(powerUpType: powerUp);
+                
+                newPowerUp.position = self.position;
+                gameScene.addChild(newPowerUp);
+                lastPowerUpSpawnPos = self.position.x;
+                
+                RRGameManager.shared.getGarbageCollector().registerPowerUp(powerUp: newPowerUp);
+            }
         }
     }
     

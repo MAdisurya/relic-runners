@@ -6,12 +6,10 @@
 //  Copyright © 2018 Mario Adisurya. All rights reserved.
 //
 
-enum PowerUpTypes {
+enum PowerUpTypes: UInt32 {
     case multiStrike
+    case speedUp
     case damageBoost
     case invinciblility
-    case largeBullet
-    case speedUp
-    case shrink
     case none
 }

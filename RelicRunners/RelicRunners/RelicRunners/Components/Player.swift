@@ -53,14 +53,6 @@ class Player: Character {
                         case .multiStrike:
                             m_MultiStrike.execute(spreadAmount: self.size.width * 1.5);
                             break;
-                        case .damageBoost:
-                            break;
-                        case .invinciblility:
-                            break;
-                        case .largeBullet:
-                            break;
-                        case .shrink:
-                            break;
                         default:
                             shootProjectile();
                             break;

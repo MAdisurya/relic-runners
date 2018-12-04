@@ -16,7 +16,7 @@ class Player: Character {
     // Weapons
 //    private let arrow = Projectile();
     
-    private var m_PowerUpType: PowerUpTypes = .multiStrike;
+    private var m_PowerUpType: PowerUpTypes = .speedUp;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
@@ -28,19 +28,21 @@ class Player: Character {
         if (m_CharacterType == CharacterTypes.player) {
             // Set zPosition to 1 if on the top lane to make sure character is behind obstacles
             self.zPosition = (m_CurrentLane == 1) ? 1.0 : 2.5;
+            // Double player speed if power up type is speedUp
+            m_Speed = (m_PowerUpType == .speedUp) ? 0.25 : defaultSpeed;
             
             if (event == "swipeUp") {
                 // Handle swipe up event
                 if (m_CurrentLane < 1) {
                     m_CurrentLane += 1;
-                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount), duration: 0.5);
+                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "swipeDown") {
                 // Handle swipe down event
                 if (m_CurrentLane > -1) {
                     m_CurrentLane -= 1;
-                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount), duration: 0.5);
+                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "tap") {
@@ -50,6 +52,14 @@ class Player: Character {
                     switch (m_PowerUpType) {
                         case .multiStrike:
                             m_MultiStrike.execute(spreadAmount: self.size.width * 1.5);
+                            break;
+                        case .damageBoost:
+                            break;
+                        case .invinciblility:
+                            break;
+                        case .largeBullet:
+                            break;
+                        case .shrink:
                             break;
                         default:
                             shootProjectile();

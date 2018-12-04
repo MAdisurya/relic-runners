@@ -15,16 +15,16 @@ class MultiStrike: PowerUp {
     func execute(spreadAmount spread: CGFloat) {
         for i in 0..<m_WeaponsCount {
             // Register weapon into weapons array
-            let newWeapon = Projectile();
+            let newWeapon = Weapon(imageName: "arrow");
             
             // Generate the weapon
-            newWeapon.generate(character: m_Character, imageNamed: newWeapon.getImageName());
+            newWeapon.generate(character: m_Character);
             
             // Add weapon to character
             m_Character.addChild(newWeapon);
             
             // Actions
-            let strike = SKAction.move(by: CGVector(dx: 1180, dy: spread * CGFloat(i-1)), duration: newWeapon.getSpeed());
+            let strike = SKAction.move(by: CGVector(dx: newWeapon.getDistance(), dy: spread * CGFloat(i-1)), duration: newWeapon.getSpeed());
             
             // Run action
             newWeapon.run(strike) {

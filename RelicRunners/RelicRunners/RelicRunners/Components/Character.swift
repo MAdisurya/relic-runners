@@ -17,11 +17,19 @@ class Character: SKSpriteNode, RREventListener {
     var m_Dead = false;
     var m_MoveAmount: CGFloat!;
     
+    internal var m_Speed: Double = 0.5;
+    
+    // Default values
+    internal var defaultSpeed: Double!;
+    
     init(type characterType: CharacterTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 128, height: 128));
         
         self.m_CharacterType = characterType;
         self.m_MoveAmount = self.size.width * 0.8;
+        
+        // Assign default values
+        self.defaultSpeed = m_Speed;
         
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -52,11 +60,11 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     func shootProjectile() {
-        let projectile = Projectile();
-        projectile.generate(character: self, imageNamed: "arrow");
+        let projectile = Weapon(imageName: "arrow");
+        projectile.generate(character: self);
         self.addChild(projectile);
         
-        let action = SKAction.move(by: CGVector(dx: 1180, dy: 0), duration: projectile.getSpeed());
+        let action = SKAction.move(by: CGVector(dx: projectile.getDistance(), dy: 0), duration: projectile.getSpeed());
         projectile.run(action) {
             projectile.destroy();
         }

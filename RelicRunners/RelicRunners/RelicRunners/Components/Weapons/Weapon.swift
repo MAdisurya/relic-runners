@@ -10,11 +10,16 @@ import SpriteKit
 
 class Weapon: SKSpriteNode, RREventListener {
     
-    internal let m_Speed: Double = 0.5;
-    internal var m_ImageName: String = "arrow";
+    internal var m_Speed: Double!;
+    internal var m_Distance: CGFloat!;
+    internal var m_ImageName: String!;
     
-    init() {
+    init(imageName image: String, speed: Double = 0.5, distance: CGFloat = 1180) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 64, height: 64));
+        
+        self.m_ImageName = image;
+        self.m_Speed = speed;
+        self.m_Distance = distance;
         
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -27,12 +32,16 @@ class Weapon: SKSpriteNode, RREventListener {
         return m_Speed;
     }
     
+    func getDistance() -> CGFloat {
+        return m_Distance;
+    }
+    
     func getImageName() -> String {
         return m_ImageName;
     }
     
-    func generate(character: Character, imageNamed image: String) {
-        self.texture = SKTexture(imageNamed: image);
+    func generate(character: Character) {
+        self.texture = SKTexture(imageNamed: m_ImageName);
         self.size = CGSize(width: character.size.width / 4, height: character.size.height / 4);
         self.zPosition = 2.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));

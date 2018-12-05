@@ -12,4 +12,5 @@ protocol RREventListener {
     
     // Will be invoked whenever an event is broadcast
     func listen(event: String) -> Void;
+    func listen<T>(event: inout T) -> Void;
 }

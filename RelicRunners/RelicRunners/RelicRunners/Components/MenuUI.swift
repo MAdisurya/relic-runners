@@ -94,4 +94,8 @@ class MenuUI: RREventListener {
             }
         }
     }
+    
+    func listen<T>(event: inout T) {
+        
+    }
 }

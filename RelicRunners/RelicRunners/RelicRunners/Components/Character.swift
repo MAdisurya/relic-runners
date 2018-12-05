@@ -132,4 +132,8 @@ class Character: SKSpriteNode, RREventListener {
             }
         }
     }
+    
+    func listen<T>(event: inout T) {
+        
+    }
 }

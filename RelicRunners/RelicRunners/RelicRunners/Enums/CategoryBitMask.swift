@@ -12,4 +12,5 @@ enum CategoryBitMask {
     static let weapon: UInt32 = 0b0100;
     static let obstacle: UInt32 = 0b1000;
     static let boss: UInt32 = 0b1010;
+    static let powerUp: UInt32 = 0b1100;
 }

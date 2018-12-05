@@ -15,7 +15,14 @@ class PowerUpDrop: SKSpriteNode {
     init(powerUpType type: PowerUpTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 64, height: 64));
         
-        self.zPosition = 1;
+        self.zPosition = 0.8;
+        // Set up physics body for triggers
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
+        self.physicsBody?.isDynamic = true;
+        self.physicsBody?.affectedByGravity = false;
+        self.physicsBody?.collisionBitMask = 0;
+        self.physicsBody?.categoryBitMask = CategoryBitMask.powerUp;
+        self.physicsBody?.contactTestBitMask = CategoryBitMask.player;
         
         self.m_PowerUpType = type;
         
@@ -42,6 +49,11 @@ class PowerUpDrop: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Getters
+    func getPowerUpType() -> PowerUpTypes {
+        return m_PowerUpType;
     }
     
     func destroy() {

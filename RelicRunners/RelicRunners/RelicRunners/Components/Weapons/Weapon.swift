@@ -60,4 +60,8 @@ class Weapon: SKSpriteNode, RREventListener {
             destroy();
         }
     }
+    
+    func listen<T>(event: inout T) {
+        
+    }
 }

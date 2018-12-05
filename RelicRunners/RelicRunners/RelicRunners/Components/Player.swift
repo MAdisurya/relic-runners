@@ -16,7 +16,17 @@ class Player: Character {
     // Weapons
 //    private let arrow = Projectile();
     
-    private var m_PowerUpType: PowerUpTypes = .speedUp;
+    private var m_PowerUpType: PowerUpTypes = .none;
+    
+    // Getters
+    func getPowerUpType() -> PowerUpTypes {
+        return m_PowerUpType;
+    }
+    
+    // Setters
+    func setPowerUpType(powerUpType type: PowerUpTypes) {
+        m_PowerUpType = type;
+    }
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
@@ -59,8 +69,19 @@ class Player: Character {
                     }
                 }
             } else if (event == "playerHit") {
-                die();
+                if (m_PowerUpType != .invinciblility) {
+                    die();
+                }
             }
+        }
+    }
+    
+    override func listen<T>(event: inout T) {
+        super.listen(event: &event);
+        
+        // Listen to Power up broadcasts
+        if let powerUp = event as? PowerUpDrop {
+            m_PowerUpType = powerUp.getPowerUpType();
         }
     }
 }

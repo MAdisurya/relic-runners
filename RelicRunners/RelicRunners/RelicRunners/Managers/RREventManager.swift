@@ -21,4 +21,10 @@ class RREventManager {
             eventListener.listen(event: event);
         }
     }
+    
+    func broadcastEvent<T>(event: inout T) {
+        for eventListener in m_EventListeners {
+            eventListener.listen(event: &event);
+        }
+    }
 }

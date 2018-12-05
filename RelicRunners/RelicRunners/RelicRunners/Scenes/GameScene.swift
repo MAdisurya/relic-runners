@@ -111,8 +111,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             m_Spawner.spawnBoss(boss: m_Boss);
         }
         
-        
-        
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);
     }
     
@@ -133,6 +131,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.boss) {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "bossHit");
             RRGameManager.shared.getEventManager().broadcastEvent(event: "weaponDestroyed");
+        }
+        if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.player | CategoryBitMask.powerUp)
+        {
+            if var powerUp = contact.bodyB.node as? PowerUpDrop {
+                RRGameManager.shared.getEventManager().broadcastEvent(event: &powerUp);
+                powerUp.destroy();
+            }
         }
     }
     
@@ -156,6 +161,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
                 self.m_MenuUI.blink(node: self.m_MenuUI.m_TapLabel);
             };
         }
+    }
+    
+    func listen<T>(event: inout T) {
+        
     }
     
     @objc func tap(sender: UITapGestureRecognizer) {

@@ -18,6 +18,7 @@ class Character: SKSpriteNode, RREventListener {
     var m_MoveAmount: CGFloat!;
     
     internal var m_Speed: Double = 0.5;
+    internal let m_GoldAmount: Int = Int.random(in: 1...5);
     
     // Default values
     internal var defaultSpeed: Double!;
@@ -128,6 +129,11 @@ class Character: SKSpriteNode, RREventListener {
                     RRGameManager.shared.getScoreManager().addScore(amount: 1);
                     // Update score label
                     self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+                    
+                    // Add to gold
+                    RRGameManager.shared.getScoreManager().addGold(amount: self.m_GoldAmount);
+                    // Update gold label
+                    self.gameScene.updateGoldLabel(gold: String(RRGameManager.shared.getScoreManager().getGold()));
                 }
             }
         }

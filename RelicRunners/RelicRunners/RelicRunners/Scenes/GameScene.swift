@@ -18,7 +18,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_Spawner = Spawner();
     private let m_Player = Player(type: .player);
     private let m_Boss = Boss(type: .enemy);
+    
     private let m_ScoreLabel = SKLabelNode();
+    private let m_GoldLabel = SKLabelNode();
     
     override func sceneDidLoad() {
         // Generate the camera and add to scene
@@ -82,6 +84,16 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_ScoreLabel.fontSize = 96;
         m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
         gameCamera.addChild(m_ScoreLabel);
+        
+        // Setup the gold label
+        RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
+        m_GoldLabel.zPosition = 10.0;
+        m_GoldLabel.text = String(RRGameManager.shared.getScoreManager().retrieveGold());
+        m_GoldLabel.fontName = "Silkscreen Bold";
+        m_GoldLabel.fontSize = 64;
+        m_GoldLabel.fontColor = UIColor.yellow;
+        m_GoldLabel.position = CGPoint(x: self.size.width / 3, y: self.size.width / 5);
+        gameCamera.addChild(m_GoldLabel);
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -142,13 +154,20 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     }
     
     func updateScoreLabel(score: String) {
-        // Set score to score label
+        // Set score label to score
         m_ScoreLabel.text = score;
+    }
+    
+    func updateGoldLabel(gold: String) {
+        // Set gold label to gold
+        m_GoldLabel.text = gold;
     }
     
     func listen(event: String) {
         if (event == "gameOver") {
+            // Store persistant values
             RRGameManager.shared.getScoreManager().storeScore();
+            RRGameManager.shared.getScoreManager().storeGold();
             // Set game camera speed back to default
             gameCamera.resetCameraSpeed();
             // Add UI back to the game camera

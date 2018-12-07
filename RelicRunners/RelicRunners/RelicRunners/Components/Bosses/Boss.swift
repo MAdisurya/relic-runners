@@ -12,7 +12,7 @@ class Boss: Character {
     
     internal var m_Health = 20;
     internal let m_ScoreAmount = 20;
-    internal let m_SpawnScoreRequirement = 2;
+    internal let m_SpawnScoreRequirement = 10;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);

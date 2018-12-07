@@ -43,7 +43,7 @@ class InfiniteScroller {
             let fgRock = BGSprite();
             
             bgFloor.generateBackground(scene: gameScene, imageNamed: "relicrunners-floor", name: "bgfloor"+String(i));
-            bgWall.generateBackground(scene: gameScene, imageNamed: "relicrunners-bgwall", name: "bgwall"+String(i));
+            bgWall.generateBackground(scene: gameScene, imageNamed: "relicrunners-bgwall3", name: "bgwall"+String(i));
             fgRock.generateBackground(scene: gameScene, imageNamed: "relicrunners-fgrock", name: "fgrock"+String(i));
             
             // Set individual bg sizes
@@ -57,6 +57,8 @@ class InfiniteScroller {
             fgRock.position = CGPoint(x: gameScene.size.width * CGFloat(i), y: -gameScene.size.width / 4)
             bgFloor.zPosition = -1;
             fgRock.zPosition = 8;
+            
+            bgWall.texture?.filteringMode = .nearest;
             
             bgFloors.append(bgFloor);
             bgWalls.append(bgWall);

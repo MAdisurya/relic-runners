@@ -75,6 +75,16 @@ class Character: SKSpriteNode, RREventListener {
         m_Dead = true;
         self.physicsBody?.categoryBitMask = 0;
         
+        // Gold indicator to pop up after character death
+        if (m_CharacterType == CharacterTypes.enemy) {
+            let m_GoldIndicator = UIIndicator();
+            m_GoldIndicator.generate(pos: self.position, imageName: "coin-tails", text: "+" + String(m_GoldAmount));
+            gameScene.addChild(m_GoldIndicator);
+            m_GoldIndicator.animate() {
+                m_GoldIndicator.destroy();
+            };
+        }
+        
         let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
         let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
         
@@ -91,6 +101,16 @@ class Character: SKSpriteNode, RREventListener {
     func die(completion: @escaping () -> Void) {
         m_Dead = true;
         self.physicsBody?.categoryBitMask = 0;
+        
+        // Gold indicator to pop up after character death
+        if (m_CharacterType == CharacterTypes.enemy) {
+            let m_GoldIndicator = UIIndicator();
+            m_GoldIndicator.generate(pos: self.position, imageName: "coin-tails", text: "+" + String(m_GoldAmount));
+            gameScene.addChild(m_GoldIndicator);
+            m_GoldIndicator.animate() {
+                m_GoldIndicator.destroy();
+            };
+        }
         
         let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
         let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);

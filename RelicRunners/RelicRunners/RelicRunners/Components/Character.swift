@@ -141,6 +141,30 @@ class Character: SKSpriteNode, RREventListener {
         self.run(move);
     }
     
+    func animateOutLeft() {
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: 0), duration: 0.5);
+        self.run(move);
+    }
+    
+    func animateOutLeft(completion: @escaping () -> Void) {
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: 0), duration: 0.5);
+        self.run(move) {
+            completion();
+        };
+    }
+    
+    func animateOutRight() {
+        let move = SKAction.move(to: CGPoint(x: gameScene.size.width, y: 0), duration: 0.5);
+        self.run(move);
+    }
+    
+    func animateOutRight(completion: @escaping () -> Void) {
+        let move = SKAction.move(to: CGPoint(x: gameScene.size.width, y: 0), duration: 0.5);
+        self.run(move) {
+            completion();
+        };
+    }
+    
     func listen(event: String) {
          if (m_CharacterType == CharacterTypes.enemy) {
             if (event == "enemyHit") {
@@ -148,7 +172,7 @@ class Character: SKSpriteNode, RREventListener {
                     // Add to game score
                     RRGameManager.shared.getScoreManager().addScore(amount: 1);
                     // Update score label
-                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+//                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
                     
                     // Add to gold
                     RRGameManager.shared.getScoreManager().addGold(amount: self.m_GoldAmount);

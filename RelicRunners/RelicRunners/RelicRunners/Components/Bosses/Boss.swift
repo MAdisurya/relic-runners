@@ -11,7 +11,7 @@ import SpriteKit
 class Boss: Character {
     
     internal var m_Health = 20;
-    internal let m_ScoreAmount = 20;
+    internal let m_ScoreAmount = 1;
     internal let m_SpawnScoreRequirement = 10;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
@@ -33,7 +33,7 @@ class Boss: Character {
                     // Add to game score
                     RRGameManager.shared.getScoreManager().addScore(amount: self.m_ScoreAmount);
                     // Update score label
-                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+//                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
                 }
             }
         }

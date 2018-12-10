@@ -78,12 +78,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         }
         
         // Setup the score label
-        m_ScoreLabel.zPosition = 10.0;
-        m_ScoreLabel.text = String(RRGameManager.shared.getScoreManager().retrieveScore());
-        m_ScoreLabel.fontName = "Silkscreen Bold";
-        m_ScoreLabel.fontSize = 96;
-        m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
-        gameCamera.addChild(m_ScoreLabel);
+//        m_ScoreLabel.zPosition = 10.0;
+//        m_ScoreLabel.text = String(RRGameManager.shared.getScoreManager().retrieveScore());
+//        m_ScoreLabel.fontName = "Silkscreen Bold";
+//        m_ScoreLabel.fontSize = 96;
+//        m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
+//        gameCamera.addChild(m_ScoreLabel);
         
         // Setup the gold label
         RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
@@ -107,6 +107,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Check if should add to score
         if let point = self.childNode(withName: "point") {
+            // Check if player has passed the point
             if (gameCamera.position.x - (self.size.width / 3) > point.position.x) {
                 // Increase camera speed after score is increased
                 gameCamera.setCameraSpeed(speed: gameCamera.getCameraSpeed() + (CGFloat(RRGameManager.shared.getScoreManager().getScore()) * 0.1))
@@ -117,7 +118,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Update spawner position every frame to follow camera
         m_Spawner.position.x = gameCamera.position.x + (self.size.height / 2);
-        // Spawn enemies, obstacles, and points
+        // Spawn enemies, obstacles, points, bosses
         if (RRGameManager.shared.getGameState() == .PLAY) {
             m_Spawner.spawn();
             m_Spawner.spawnBoss(boss: m_Boss);
@@ -165,6 +166,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     func listen(event: String) {
         if (event == "gameOver") {
+            // Set game state to pause
+            RRGameManager.shared.setGameState(state: .PAUSE);
             // Store persistant values
             RRGameManager.shared.getScoreManager().storeScore();
             RRGameManager.shared.getScoreManager().storeGold();
@@ -174,8 +177,16 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             gameCamera.addChild(m_MenuUI.m_Title);
             gameCamera.addChild(m_MenuUI.m_TapLabel);
             
+            // Despawn boss if boss is spawned and not dead
+            if (!m_Boss.m_Dead && m_Spawner.isBossSpawned()) {
+                m_Boss.animateOutRight() {
+                    // Remove boss from game scene
+                    self.m_Boss.destroy();
+                    self.m_Spawner.setBossSpawned(spawned: false);
+                };
+            }
+            
             m_MenuUI.animateIn() {
-                RRGameManager.shared.setGameState(state: .PAUSE);
                 RRGameManager.shared.getGarbageCollector().destroyAll();
                 self.m_MenuUI.blink(node: self.m_MenuUI.m_TapLabel);
             };

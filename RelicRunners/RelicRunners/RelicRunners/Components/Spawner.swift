@@ -18,6 +18,16 @@ class Spawner: SKNode {
     private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
+    // Getters
+    func isBossSpawned() -> Bool {
+        return bossSpawned;
+    }
+    
+    // Setters
+    func setBossSpawned(spawned: Bool) {
+        bossSpawned = spawned;
+    }
+    
     func generateSpawner(scene: GameScene) -> Void {
         self.gameScene = scene;
         self.zPosition = 1.0;
@@ -100,6 +110,7 @@ class Spawner: SKNode {
             bossAlert.run(blink) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
                 self.gameScene.camera?.addChild(boss);
+                
                 boss.animateInFromRight();
             }
             

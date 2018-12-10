@@ -32,10 +32,20 @@ class Player: Character {
         super.generateCharacter(scene: scene, imageNamed: image);
     }
     
+    func reset() {
+        self.physicsBody?.categoryBitMask = CategoryBitMask.player;
+        self.position = CGPoint(x: -gameScene.size.width, y: 0);
+        self.zPosition = 2.5;
+        self.m_CurrentLane = 0;
+        self.m_PowerUpType = .none;
+        self.gameScene.camera?.addChild(self);
+        self.animateInFromLeft();
+    }
+    
     override func listen(event: String) {
         super.listen(event: event);
         
-        if (m_CharacterType == CharacterTypes.player) {
+        if (m_CharacterType == CharacterTypes.player && RRGameManager.shared.getGameState() == .PLAY) {
             // Set zPosition to 1 if on the top lane to make sure character is behind obstacles
             self.zPosition = (m_CurrentLane == 1) ? 1.0 : 2.5;
             // Double player speed if power up type is speedUp

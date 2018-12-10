@@ -10,12 +10,14 @@ import SpriteKit
 
 class MenuUI: RREventListener {
     
-    let m_Player: Character!;
+    let m_Player: Player!;
     
     let m_Title = SKSpriteNode();
     let m_TapLabel = SKLabelNode();
     
-    init(player: Character) {
+    private var allowedToTap = true;
+    
+    init(player: Player) {
         self.m_Player = player;
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -73,21 +75,20 @@ class MenuUI: RREventListener {
     
     func listen(event: String) {
         if (event == "tap") {
-            if (RRGameManager.shared.getGameState() == .PAUSE) {
+            if (RRGameManager.shared.getGameState() == .PAUSE && allowedToTap) {
                 // Reset the player
-                self.m_Player.physicsBody?.categoryBitMask = CategoryBitMask.player;
-                self.m_Player.position = CGPoint(x: -m_Player.gameScene.size.width, y: 0);
-                self.m_Player.zPosition = 2.5;
-                self.m_Player.m_CurrentLane = 0;
-                self.m_Player.gameScene.camera?.addChild(self.m_Player);
-                self.m_Player.animateInFromLeft();
+                m_Player.reset();
                 
                 // Reset the score
                 RRGameManager.shared.getScoreManager().resetScore();
                 self.m_Player.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
                 
+                // Disable taps
+                allowedToTap = false;
+                
                 animateOut() {
                     RRGameManager.shared.setGameState(state: .PLAY);
+                    self.allowedToTap = true;
                     self.m_Title.removeFromParent();
                     self.m_TapLabel.removeFromParent();
                 };

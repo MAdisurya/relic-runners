@@ -26,12 +26,12 @@ class UIIndicator: SKNode {
         m_Icon.texture = SKTexture(imageNamed: image);
         m_Icon.texture?.filteringMode = .nearest;
         m_Text.fontName = "Silkscreen Bold";
-        m_Text.fontSize = 32;
+        m_Text.fontSize = 64;
         m_Text.text = text;
         
-        m_Icon.position = CGPoint(x: -32, y: 0);
-        m_Icon.size = CGSize(width: 32, height: 32);
-        m_Text.position = CGPoint(x: 32, y: -8);
+        m_Icon.position = CGPoint(x: -64, y: 0);
+        m_Icon.size = CGSize(width: 64, height: 64);
+        m_Text.position = CGPoint(x: 64, y: -8);
         
         self.position = pos;
         self.zPosition = 9;

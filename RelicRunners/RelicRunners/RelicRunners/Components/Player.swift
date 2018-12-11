@@ -30,6 +30,9 @@ class Player: Character {
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
+        
+        self.xScale = 0.65;
+        self.yScale = 0.65;
     }
     
     func reset() {
@@ -55,14 +58,14 @@ class Player: Character {
                 // Handle swipe up event
                 if (m_CurrentLane < 1) {
                     m_CurrentLane += 1;
-                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount), duration: m_Speed);
+                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount * self.xScale), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "swipeDown") {
                 // Handle swipe down event
                 if (m_CurrentLane > -1) {
                     m_CurrentLane -= 1;
-                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount), duration: m_Speed);
+                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount * self.xScale), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "tap") {

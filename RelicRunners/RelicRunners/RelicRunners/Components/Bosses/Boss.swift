@@ -18,6 +18,8 @@ class Boss: Character {
         super.generateCharacter(scene: scene, imageNamed: image);
         
         self.size = CGSize(width: 256, height: 256);
+        self.xScale = 0.75;
+        self.yScale = 0.75;
         
         self.physicsBody?.categoryBitMask = CategoryBitMask.boss;
         self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;

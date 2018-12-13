@@ -22,6 +22,11 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
     
+    // Getters
+    func getSpawner() -> Spawner {
+        return m_Spawner;
+    }
+    
     override func sceneDidLoad() {
         // Generate the camera and add to scene
         gameCamera.generateCamera(scene: self);

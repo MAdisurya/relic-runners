@@ -53,7 +53,7 @@ class Spawner: SKNode {
             for i in -2...0 {
                 if (i != placeToSpawn) {
                     let newObstacle = Obstacle();
-                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
+                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "relicrunners-spike");
                     newObstacle.position.x = self.position.x;
                     newObstacle.position.y = newEnemy.m_MoveAmount * CGFloat(i+1);
                     newObstacle.zPosition = -CGFloat(i) + 1;
@@ -78,7 +78,7 @@ class Spawner: SKNode {
             if let powerUp = PowerUpTypes(rawValue: random) {
                 let newPowerUp = PowerUpDrop(powerUpType: powerUp);
                 
-                newPowerUp.position = self.position;
+                newPowerUp.position = CGPoint(x: self.position.x, y: self.position.y - 48);
                 gameScene.addChild(newPowerUp);
                 lastPowerUpSpawnPos = self.position.x;
                 
@@ -88,14 +88,14 @@ class Spawner: SKNode {
     }
     
     func spawnBoss(boss: Boss) {
-        if (bossSpawned) {
+        if (bossSpawned || boss.m_Dead) {
             return;
         }
         
         if (RRGameManager.shared.getScoreManager().getScore() > boss.m_SpawnScoreRequirement) {
             // Actions
-            let fadeOut = SKAction.fadeOut(withDuration: 1);
-            let fadeIn = SKAction.fadeIn(withDuration: 1);
+            let fadeOut = SKAction.fadeOut(withDuration: 0.5);
+            let fadeIn = SKAction.fadeIn(withDuration: 0.5);
             let sequence = SKAction.sequence([fadeIn, fadeOut]);
             let blink = SKAction.repeat(sequence, count: 3);
             

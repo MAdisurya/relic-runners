@@ -17,6 +17,7 @@ class Obstacle: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
         self.physicsBody?.isDynamic = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
+        self.texture?.filteringMode = .nearest;
     }
     
     func destroy() {

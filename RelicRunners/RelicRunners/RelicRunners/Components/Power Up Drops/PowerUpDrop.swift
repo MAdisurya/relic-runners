@@ -13,7 +13,7 @@ class PowerUpDrop: SKSpriteNode {
     internal var m_PowerUpType: PowerUpTypes = .none;
     
     init(powerUpType type: PowerUpTypes) {
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 64, height: 64));
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 72, height: 72));
         
         self.zPosition = 0.8;
         // Set up physics body for triggers

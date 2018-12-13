@@ -36,6 +36,8 @@ class Boss: Character {
                     RRGameManager.shared.getScoreManager().addScore(amount: self.m_ScoreAmount);
                     // Update score label
 //                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+                    // Update bossSpawned
+                    self.gameScene.getSpawner().setBossSpawned(spawned: false);
                 }
             }
         }

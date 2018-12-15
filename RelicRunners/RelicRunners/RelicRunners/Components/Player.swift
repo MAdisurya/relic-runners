@@ -31,18 +31,33 @@ class Player: Character {
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
         
-        self.xScale = 0.65;
-        self.yScale = 0.65;
+        self.size = CGSize(width: 256, height: 256);
+        
+        self.xScale = 0.85;
+        self.yScale = 0.85;
+        
+        // Sprite animations
+        let atlas = SKTextureAtlas(named: "archer-run");
+        var textures: [SKTexture] = [];
+        
+        for textureName in atlas.textureNames {
+            atlas.textureNamed(textureName).filteringMode = .nearest;
+            textures.append(atlas.textureNamed(textureName));
+        }
+        
+        let run = SKAction.animate(with: textures, timePerFrame: 0.1);
+        let runForever = SKAction.repeatForever(run);
+        
+        self.run(runForever);
     }
     
     func reset() {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-        self.position = CGPoint(x: -gameScene.size.width, y: 0);
+        self.position = CGPoint(x: -gameScene.size.width, y: 32);
         self.zPosition = 2.5;
         self.m_CurrentLane = 0;
         self.m_PowerUpType = .none;
         self.gameScene.camera?.addChild(self);
-        self.animateInFromLeft();
     }
     
     override func listen(event: String) {
@@ -74,7 +89,7 @@ class Player: Character {
                     // Attack based on power up type
                     switch (m_PowerUpType) {
                         case .multiStrike:
-                            m_MultiStrike.execute(spreadAmount: self.size.width * 1.5);
+                            m_MultiStrike.execute(spreadAmount: self.size.width);
                             break;
                         default:
                             shootProjectile();

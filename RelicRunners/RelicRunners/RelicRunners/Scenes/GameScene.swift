@@ -27,6 +27,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         return m_Spawner;
     }
     
+    func getCamera() -> Camera {
+        return gameCamera;
+    }
+    
     override func sceneDidLoad() {
         // Generate the camera and add to scene
         gameCamera.generateCamera(scene: self);
@@ -44,8 +48,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         for bgFloor in infiniteScroller.getBGFloors() {
             self.addChild(bgFloor);
         }
-        for fgRock in infiniteScroller.getFGRocks() {
-            self.addChild(fgRock);
+        for fgWall in infiniteScroller.getFGWalls() {
+            self.addChild(fgWall);
         }
         
         // Generate the MenuUI elements
@@ -122,7 +126,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         }
         
         // Update spawner position every frame to follow camera
-        m_Spawner.position.x = gameCamera.position.x + (self.size.height / 2);
+        m_Spawner.position.x = gameCamera.position.x + self.size.width;
         // Spawn enemies, obstacles, points, bosses
         if (RRGameManager.shared.getGameState() == .PLAY) {
             m_Spawner.spawn();

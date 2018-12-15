@@ -53,7 +53,7 @@ class Spawner: SKNode {
             for i in -2...0 {
                 if (i != placeToSpawn) {
                     let newObstacle = Obstacle();
-                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "relicrunners-spike");
+                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
                     newObstacle.position.x = self.position.x;
                     newObstacle.position.y = newEnemy.m_MoveAmount * CGFloat(i+1);
                     newObstacle.zPosition = -CGFloat(i) + 1;
@@ -78,7 +78,7 @@ class Spawner: SKNode {
             if let powerUp = PowerUpTypes(rawValue: random) {
                 let newPowerUp = PowerUpDrop(powerUpType: powerUp);
                 
-                newPowerUp.position = CGPoint(x: self.position.x, y: self.position.y - 48);
+                newPowerUp.position = CGPoint(x: self.position.x, y: -newPowerUp.size.height / 2);
                 gameScene.addChild(newPowerUp);
                 lastPowerUpSpawnPos = self.position.x;
                 
@@ -98,6 +98,8 @@ class Spawner: SKNode {
             let fadeIn = SKAction.fadeIn(withDuration: 0.5);
             let sequence = SKAction.sequence([fadeIn, fadeOut]);
             let blink = SKAction.repeat(sequence, count: 3);
+            let wait = SKAction.wait(forDuration: 3);
+            let BlinkThenWait = SKAction.sequence([blink, wait]);
             
             // Initialize boss alert UI
             let bossAlert = SKSpriteNode(imageNamed: "relicrunners-bossalert");
@@ -107,9 +109,10 @@ class Spawner: SKNode {
             gameScene.camera?.addChild(bossAlert);
             
             // Boss spawns in after blink animation completed
-            bossAlert.run(blink) {
+            bossAlert.run(BlinkThenWait) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
                 self.gameScene.camera?.addChild(boss);
+                self.gameScene.getCamera().stopCamera();
                 
                 boss.animateInFromRight();
             }

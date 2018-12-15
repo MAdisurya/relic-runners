@@ -15,7 +15,7 @@ class MultiStrike: PowerUp {
     func execute(spreadAmount spread: CGFloat) {
         for i in 0..<m_WeaponsCount {
             // Register weapon into weapons array
-            let newWeapon = Weapon(imageName: "arrow");
+            let newWeapon = Weapon(imageName: "arrow-1");
             
             // Generate the weapon
             newWeapon.generate(character: m_Character);

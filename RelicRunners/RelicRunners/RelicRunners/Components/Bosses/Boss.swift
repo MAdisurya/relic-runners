@@ -12,14 +12,14 @@ class Boss: Character {
     
     internal var m_Health = 20;
     internal let m_ScoreAmount = 1;
-    internal let m_SpawnScoreRequirement = 10;
+    internal let m_SpawnScoreRequirement = 1;
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
         
-        self.size = CGSize(width: 256, height: 256);
-        self.xScale = 0.75;
-        self.yScale = 0.75;
+        self.size = CGSize(width: 512, height: 512);
+        self.xScale = 0.85;
+        self.yScale = 0.85;
         
         self.physicsBody?.categoryBitMask = CategoryBitMask.boss;
         self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
@@ -38,6 +38,8 @@ class Boss: Character {
 //                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
                     // Update bossSpawned
                     self.gameScene.getSpawner().setBossSpawned(spawned: false);
+                    // Move camera
+                    self.gameScene.getCamera().setCameraSpeed(speed: self.gameScene.getCamera().getHeldMoveSpeed());
                 }
             }
         }

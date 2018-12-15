@@ -78,6 +78,7 @@ class MenuUI: RREventListener {
             if (RRGameManager.shared.getGameState() == .PAUSE && allowedToTap) {
                 // Reset the player
                 m_Player.reset();
+                m_Player.animateInFromLeft();
                 
                 // Reset the score
                 RRGameManager.shared.getScoreManager().resetScore();

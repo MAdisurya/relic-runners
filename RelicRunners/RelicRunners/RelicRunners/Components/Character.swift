@@ -24,7 +24,7 @@ class Character: SKSpriteNode, RREventListener {
     internal var defaultSpeed: Double!;
     
     init(type characterType: CharacterTypes) {
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 128, height: 128));
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
         
         self.m_CharacterType = characterType;
         self.m_MoveAmount = self.size.width * 0.8;
@@ -43,13 +43,14 @@ class Character: SKSpriteNode, RREventListener {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
         self.texture?.filteringMode = .nearest;
-        self.size = CGSize(width: 160, height: 160);
+        self.size = CGSize(width: 176, height: 176);
         self.position = CGPoint(x: 0, y: 0);
         self.zPosition = 2.5;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;
+        self.m_MoveAmount = self.size.width * 0.7;
         
         if (m_CharacterType == CharacterTypes.player) {
             self.physicsBody?.categoryBitMask = CategoryBitMask.player;
@@ -62,11 +63,26 @@ class Character: SKSpriteNode, RREventListener {
     
     func shootProjectile() {
         let projectile = Weapon(imageName: "arrow");
+        let arrowAtlas = SKTextureAtlas(named: "arrows");
+        var textures: [SKTexture] = [];
         projectile.generate(character: self);
         self.addChild(projectile);
         
-        let action = SKAction.move(by: CGVector(dx: projectile.getDistance(), dy: 0), duration: projectile.getSpeed());
-        projectile.run(action) {
+        // Loop through each texture in atlas and append to SKTexture array
+        for textureName in arrowAtlas.textureNames {
+            // Set each texture in atlas filtering mode to nearest
+            arrowAtlas.textureNamed(textureName).filteringMode = .nearest;
+            // Append the texture from atlas into texture array
+            textures.append(arrowAtlas.textureNamed(textureName));
+        }
+        
+        let move = SKAction.move(by: CGVector(dx: projectile.getDistance(), dy: 0), duration: projectile.getSpeed());
+        let projectileAnimation = SKAction.animate(with: textures, timePerFrame: 0.1);
+        let repeatAnim = SKAction.repeatForever(projectileAnimation);
+        
+        projectile.run(repeatAnim);
+        
+        projectile.run(move) {
             projectile.destroy();
         }
     }
@@ -132,22 +148,22 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     func animateInFromLeft() {
-        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width / 3, y: 0), duration: 0.5);
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width / 3, y: self.position.y), duration: 0.5);
         self.run(move);
     }
     
     func animateInFromRight() {
-        let move = SKAction.move(to: CGPoint(x: gameScene.size.width / 3, y: 0), duration: 0.5);
+        let move = SKAction.move(to: CGPoint(x: gameScene.size.width / 3, y: self.position.y), duration: 0.5);
         self.run(move);
     }
     
     func animateOutLeft() {
-        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: 0), duration: 0.5);
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: self.position.y), duration: 0.5);
         self.run(move);
     }
     
     func animateOutLeft(completion: @escaping () -> Void) {
-        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: 0), duration: 0.5);
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width, y: self.position.y), duration: 0.5);
         self.run(move) {
             completion();
         };

@@ -42,12 +42,14 @@ class Weapon: SKSpriteNode, RREventListener {
     
     func generate(character: Character) {
         self.texture = SKTexture(imageNamed: m_ImageName);
-        self.size = CGSize(width: character.size.width / 4, height: character.size.height / 4);
+        self.size = CGSize(width: character.size.width / 2, height: character.size.height / 2);
         self.zPosition = 2.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.weapon;
         self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.boss;
+        
+        self.texture?.filteringMode = .nearest;
     }
     
     func destroy() {

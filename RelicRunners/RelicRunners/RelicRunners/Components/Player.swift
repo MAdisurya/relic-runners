@@ -11,11 +11,6 @@ import SpriteKit
 class Player: Character {
     
     // Power ups
-    private lazy var m_MultiStrike = MultiStrike(character: self);
-    
-    // Weapons
-//    private let arrow = Projectile();
-    
     private var m_PowerUpType: PowerUpTypes = .none;
     
     // Getters
@@ -26,6 +21,16 @@ class Player: Character {
     // Setters
     func setPowerUpType(powerUpType type: PowerUpTypes) {
         m_PowerUpType = type;
+    }
+    
+    override init(type characterType: CharacterTypes) {
+        super.init(type: characterType);
+        
+        m_Health = 3;
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
@@ -90,7 +95,8 @@ class Player: Character {
                     // Attack based on power up type
                     switch (m_PowerUpType) {
                         case .multiStrike:
-                            m_MultiStrike.execute(spreadAmount: 192);
+                            let multiStrike = MultiStrike(character: self);
+                            multiStrike.execute(spreadAmount: 192);
                             break;
                         default:
                             shootProjectile();
@@ -98,8 +104,22 @@ class Player: Character {
                     }
                 }
             } else if (event == "playerHit") {
-                if (m_PowerUpType != .invinciblility) {
-                    die();
+                if (m_PowerUpType != .invinciblility && !m_Invinsible) {
+                    // Shake Camera and Player
+                    gameScene.shake(forDuration: 0.5);
+                    
+                    if (m_Health > 1) {
+                        m_Health -= 1;
+                        
+                        // Iframe
+                        m_Invinsible = true;
+                        let duration = SKAction.wait(forDuration: 1);
+                        self.run(duration) {
+                            self.m_Invinsible = false;
+                        }
+                    } else {
+                        die();
+                    }
                 }
             }
         }
@@ -111,6 +131,20 @@ class Player: Character {
         // Listen to Power up broadcasts
         if let powerUp = event as? PowerUpDrop {
             m_PowerUpType = powerUp.getPowerUpType();
+        }
+        
+        // Listen to Game State broadcasts
+        if let gameState = event as? GameState {
+            if (gameState == .LEVEL_COMPLETE) {
+                // Actions
+                let wait = SKAction.wait(forDuration: 1);
+                let runOff = SKAction.move(by: CGVector(dx: gameScene.size.width, dy: 0), duration: 3);
+                let sequence = SKAction.sequence([wait, runOff]);
+                
+                self.run(sequence) {
+                    self.destroy();
+                };
+            }
         }
     }
 }

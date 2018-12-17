@@ -46,6 +46,7 @@
 		F4DE7DB821A971FC00F0761B /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB321A96F8800F0761B /* slkscr.ttf */; };
 		F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB421A96F8800F0761B /* slkscrb.ttf */; };
 		F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */; };
+		F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F04CD221C7A89800A8B1E0 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		F4DE7DB321A96F8800F0761B /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
 		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
 		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
+		F4F04CD221C7A89800A8B1E0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				F4339AB7218D14D00016970A /* RREvent.swift */,
 				F4339AB9218D15E00016970A /* RREventListener.swift */,
+				F4F04CD221C7A89800A8B1E0 /* Extensions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				F47191A021B1E59B00B09143 /* PowerUpTypes.swift in Sources */,
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
+				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
 				F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
 				F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */,

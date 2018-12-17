@@ -11,6 +11,7 @@ import Foundation
 public enum GameState {
     case PLAY
     case PAUSE
+    case LEVEL_COMPLETE
 }
 
 class RRGameManager {

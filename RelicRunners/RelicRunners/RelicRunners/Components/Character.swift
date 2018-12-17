@@ -17,7 +17,10 @@ class Character: SKSpriteNode, RREventListener {
     var m_Dead = false;
     var m_MoveAmount: CGFloat!;
     
+    internal var m_Health = 0;
+    internal var m_MaxHealth = 0;
     internal var m_Speed: Double = 0.5;
+    internal var m_Invinsible = false;
     internal let m_GoldAmount: Int = Int.random(in: 1...5);
     
     // Default values
@@ -51,6 +54,8 @@ class Character: SKSpriteNode, RREventListener {
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;
         self.m_MoveAmount = self.size.width * 0.7;
+        
+        m_MaxHealth = m_Health;
         
         if (m_CharacterType == CharacterTypes.player) {
             self.physicsBody?.categoryBitMask = CategoryBitMask.player;

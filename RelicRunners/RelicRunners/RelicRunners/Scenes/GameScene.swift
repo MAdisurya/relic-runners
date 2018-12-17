@@ -173,6 +173,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_GoldLabel.text = gold;
     }
     
+    func shake(forDuration duration: CGFloat) {
+        let shake = SKAction.shake(duration: duration, ampX: 50, ampY: 50);
+        gameCamera.run(shake);
+        m_Player.run(shake);
+    }
+    
     func listen(event: String) {
         if (event == "gameOver") {
             // Set game state to pause

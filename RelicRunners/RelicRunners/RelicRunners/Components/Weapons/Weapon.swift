@@ -43,6 +43,7 @@ class Weapon: SKSpriteNode, RREventListener {
     func generate(character: Character) {
         self.texture = SKTexture(imageNamed: m_ImageName);
         self.size = CGSize(width: character.size.width / 2, height: character.size.height / 2);
+        self.position = CGPoint(x: character.size.width / 4, y: 0);
         self.zPosition = 2.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = false;

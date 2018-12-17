@@ -31,7 +31,8 @@ class Player: Character {
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
         
-        self.size = CGSize(width: 256, height: 256);
+        self.size = CGSize(width: 320, height: 320);
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.3);
         
         self.xScale = 0.85;
         self.yScale = 0.85;
@@ -53,7 +54,7 @@ class Player: Character {
     
     func reset() {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-        self.position = CGPoint(x: -gameScene.size.width, y: 32);
+        self.position = CGPoint(x: -gameScene.size.width, y: 0);
         self.zPosition = 2.5;
         self.m_CurrentLane = 0;
         self.m_PowerUpType = .none;
@@ -89,7 +90,7 @@ class Player: Character {
                     // Attack based on power up type
                     switch (m_PowerUpType) {
                         case .multiStrike:
-                            m_MultiStrike.execute(spreadAmount: self.size.width);
+                            m_MultiStrike.execute(spreadAmount: 192);
                             break;
                         default:
                             shootProjectile();

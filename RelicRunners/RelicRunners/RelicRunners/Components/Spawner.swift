@@ -99,17 +99,17 @@ class Spawner: SKNode {
             let sequence = SKAction.sequence([fadeIn, fadeOut]);
             let blink = SKAction.repeat(sequence, count: 3);
             let wait = SKAction.wait(forDuration: 3);
-            let BlinkThenWait = SKAction.sequence([blink, wait]);
+            let blinkThenWait = SKAction.sequence([blink, wait]);
             
             // Initialize boss alert UI
             let bossAlert = SKSpriteNode(imageNamed: "relicrunners-bossalert");
             bossAlert.size = CGSize(width: gameScene.size.width, height: gameScene.size.width / 2);
             bossAlert.alpha = 0;
-            bossAlert.zPosition = 8;
+            bossAlert.zPosition = 12;
             gameScene.camera?.addChild(bossAlert);
             
             // Boss spawns in after blink animation completed
-            bossAlert.run(BlinkThenWait) {
+            bossAlert.run(blinkThenWait) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
                 self.gameScene.camera?.addChild(boss);
                 self.gameScene.getCamera().stopCamera();

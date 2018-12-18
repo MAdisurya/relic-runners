@@ -61,6 +61,7 @@ class Player: Character {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
         self.position = CGPoint(x: -gameScene.size.width, y: 0);
         self.zPosition = 2.5;
+        self.m_Health = m_MaxHealth;
         self.m_CurrentLane = 0;
         self.m_PowerUpType = .none;
         self.gameScene.camera?.addChild(self);
@@ -105,8 +106,10 @@ class Player: Character {
                 }
             } else if (event == "playerHit") {
                 if (m_PowerUpType != .invinciblility && !m_Invinsible) {
-                    // Shake Camera and Player
-                    gameScene.shake(forDuration: 0.5);
+                    // Shake Camera
+                    gameScene.getCamera().shake(forDuration: 0.5);
+                    // Subtract from healthbar
+                    gameScene.getHealthBar().subtractHealth(amount: 1);
                     
                     if (m_Health > 1) {
                         m_Health -= 1;

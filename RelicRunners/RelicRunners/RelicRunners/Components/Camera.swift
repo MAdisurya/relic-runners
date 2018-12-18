@@ -52,4 +52,13 @@ class Camera: SKCameraNode {
     func stopCamera() -> Void {
         moveSpeed = 0;
     }
+    
+    func shake(forDuration duration: CGFloat) {
+        let shake = SKAction.shake(duration: duration, ampX: 50, ampY: 50);
+        self.run(shake);
+        
+        for child in self.children {
+            child.run(shake);
+        }
+    }
 }

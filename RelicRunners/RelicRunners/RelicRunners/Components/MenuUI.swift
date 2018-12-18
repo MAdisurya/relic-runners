@@ -10,15 +10,15 @@ import SpriteKit
 
 class MenuUI: RREventListener {
     
-    let m_Player: Player!;
+    let gameScene: GameScene!;
     
     let m_Title = SKSpriteNode();
     let m_TapLabel = SKLabelNode();
     
     private var allowedToTap = true;
     
-    init(player: Player) {
-        self.m_Player = player;
+    init(gameScene: GameScene) {
+        self.gameScene = gameScene;
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
     
@@ -76,13 +76,16 @@ class MenuUI: RREventListener {
     func listen(event: String) {
         if (event == "tap") {
             if (RRGameManager.shared.getGameState() == .PAUSE && allowedToTap) {
-                // Reset the player
-                m_Player.reset();
-                m_Player.animateInFromLeft();
+                // Reset Player and animate in
+                gameScene.getPlayer().reset();
+                gameScene.getPlayer().animateInFromLeft();
+                
+                // Reset Health Bar
+                gameScene.getHealthBar().reset();
                 
                 // Reset the score
                 RRGameManager.shared.getScoreManager().resetScore();
-                self.m_Player.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
+                self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
                 
                 // Disable taps
                 allowedToTap = false;

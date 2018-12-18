@@ -12,13 +12,14 @@ import GameplayKit
 class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private lazy var infiniteScroller = InfiniteScroller(scene: self);
-    private lazy var m_MenuUI = MenuUI(player: m_Player);
+    private lazy var m_MenuUI = MenuUI(gameScene: self);
     
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
     private let m_Player = Player(type: .player);
     private let m_Boss = Boss(type: .enemy);
     
+    private let m_HealthBar = HealthBar();
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
     
@@ -27,8 +28,16 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         return m_Spawner;
     }
     
+    func getPlayer() -> Player {
+        return m_Player;
+    }
+    
     func getCamera() -> Camera {
         return gameCamera;
+    }
+    
+    func getHealthBar() -> HealthBar {
+        return m_HealthBar;
     }
     
     override func sceneDidLoad() {
@@ -59,6 +68,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         gameCamera.addChild(m_MenuUI.m_Title);
         gameCamera.addChild(m_MenuUI.m_TapLabel);
         
+        // Generate the HealthBar
+        m_HealthBar.generate(position: CGPoint(x: -432, y: 224), health: m_Player.m_Health);
+        gameCamera.addChild(m_HealthBar);
+        
         // Generate the enemy and obstacle spawner
         m_Spawner.generateSpawner(scene: self);
         // Add Spawner to the scene
@@ -67,8 +80,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         // Generate the player character
         m_Player.generateCharacter(scene: self, imageNamed: "archer");
         m_Player.position.x = -self.size.width;
-        // Add the player character to the scene
-//        gameCamera.addChild(m_Player);
         
         // Generate the boss
         m_Boss.generateCharacter(scene: self, imageNamed: "skeleton");
@@ -171,12 +182,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     func updateGoldLabel(gold: String) {
         // Set gold label to gold
         m_GoldLabel.text = gold;
-    }
-    
-    func shake(forDuration duration: CGFloat) {
-        let shake = SKAction.shake(duration: duration, ampX: 50, ampY: 50);
-        gameCamera.run(shake);
-        m_Player.run(shake);
     }
     
     func listen(event: String) {

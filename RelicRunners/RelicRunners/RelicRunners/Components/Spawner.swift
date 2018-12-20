@@ -46,7 +46,7 @@ class Spawner: SKNode {
             
             newEnemy.generateCharacter(scene: gameScene, imageNamed: "skeleton");
             newEnemy.position.x = self.position.x;
-            newEnemy.position.y = (newEnemy.m_MoveAmount) * CGFloat(placeToSpawn+1);
+            newEnemy.position.y = (gameScene.getMoveAmount()) * CGFloat(placeToSpawn+1);
             newEnemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
             gameScene.addChild(newEnemy);
             
@@ -55,7 +55,7 @@ class Spawner: SKNode {
                     let newObstacle = Obstacle();
                     newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
                     newObstacle.position.x = self.position.x;
-                    newObstacle.position.y = newEnemy.m_MoveAmount * CGFloat(i+1);
+                    newObstacle.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
                     newObstacle.zPosition = -CGFloat(i) + 1;
                     
                     RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: newObstacle);
@@ -75,10 +75,11 @@ class Spawner: SKNode {
         // Handle spawning of power ups
         if (self.position.x >= lastPowerUpSpawnPos + distanceTillNextPowerUp) {
             let random = UInt32.random(in: 0..<PowerUpTypes.none.rawValue);
+            let randomPos = Int.random(in: -1...1);
             if let powerUp = PowerUpTypes(rawValue: random) {
                 let newPowerUp = PowerUpDrop(powerUpType: powerUp);
                 
-                newPowerUp.position = CGPoint(x: self.position.x, y: -newPowerUp.size.height / 2);
+                newPowerUp.position = CGPoint(x: self.position.x, y: gameScene.getMoveAmount() * CGFloat(randomPos));
                 gameScene.addChild(newPowerUp);
                 lastPowerUpSpawnPos = self.position.x;
                 
@@ -111,10 +112,14 @@ class Spawner: SKNode {
             // Boss spawns in after blink animation completed
             bossAlert.run(blinkThenWait) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
+                boss.updateHeldWeapon();
                 self.gameScene.camera?.addChild(boss);
                 self.gameScene.getCamera().stopCamera();
                 
-                boss.animateInFromRight();
+                boss.animateInFromRight() {
+                    boss.m_State = .ATTACKING;
+                    boss.resetAttackInterval();
+                };
             }
             
             // Set boss spawned to true

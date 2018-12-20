@@ -54,7 +54,7 @@ class Camera: SKCameraNode {
     }
     
     func shake(forDuration duration: CGFloat) {
-        let shake = SKAction.shake(duration: duration, ampX: 50, ampY: 50);
+        let shake = SKAction.shake(duration: duration, ampX: 70, ampY: 70);
         self.run(shake);
         
         for child in self.children {

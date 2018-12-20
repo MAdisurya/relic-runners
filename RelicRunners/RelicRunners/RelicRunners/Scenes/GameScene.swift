@@ -17,11 +17,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let gameCamera = Camera();
     private let m_Spawner = Spawner();
     private let m_Player = Player(type: .player);
-    private let m_Boss = Boss(type: .enemy);
+    private let m_Boss = Mechazoid(type: .enemy);
     
     private let m_HealthBar = HealthBar();
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
+    
+    private var m_MoveAmount: CGFloat = 123.2;
     
     // Getters
     func getSpawner() -> Spawner {
@@ -38,6 +40,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     func getHealthBar() -> HealthBar {
         return m_HealthBar;
+    }
+    
+    func getMoveAmount() -> CGFloat {
+        return m_MoveAmount;
     }
     
     override func sceneDidLoad() {
@@ -142,6 +148,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (RRGameManager.shared.getGameState() == .PLAY) {
             m_Spawner.spawn();
             m_Spawner.spawnBoss(boss: m_Boss);
+            m_Boss.attack();
         }
         
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);

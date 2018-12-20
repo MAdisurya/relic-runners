@@ -30,12 +30,16 @@
 		F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4531B3A21AB941B0003FFBF /* Boss.swift */; };
 		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46109C021A253A0004CFB18 /* RRScoreManager.swift */; };
+		F46B75B721C8DEB700355BC2 /* Mechazoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B75B621C8DEB700355BC2 /* Mechazoid.swift */; };
 		F471919921B1E05F00B09143 /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919821B1E05F00B09143 /* PowerUp.swift */; };
 		F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919A21B1E0C500B09143 /* MultiStrike.swift */; };
 		F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919D21B1E1DC00B09143 /* Weapon.swift */; };
 		F47191A021B1E59B00B09143 /* PowerUpTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919F21B1E59B00B09143 /* PowerUpTypes.swift */; };
 		F47191A221B1EA6F00B09143 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47191A121B1EA6F00B09143 /* Player.swift */; };
 		F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */; };
+		F48E8B2121CA3535001A5FA1 /* BossLaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E8B2021CA3535001A5FA1 /* BossLaser.swift */; };
+		F48E8B2521CA4200001A5FA1 /* BossMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E8B2421CA4200001A5FA1 /* BossMine.swift */; };
+		F48E8B2921CB0D6B001A5FA1 /* BossWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E8B2821CB0D6B001A5FA1 /* BossWeapon.swift */; };
 		F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28B218F7A550085E43C /* BaseScene.swift */; };
 		F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ABA28D218F8EC80085E43C /* LoseScene.swift */; };
 		F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4ABA28F218F8EE30085E43C /* LoseScene.sks */; };
@@ -76,12 +80,16 @@
 		F4531B3A21AB941B0003FFBF /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F46109C021A253A0004CFB18 /* RRScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRScoreManager.swift; sourceTree = "<group>"; };
+		F46B75B621C8DEB700355BC2 /* Mechazoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mechazoid.swift; sourceTree = "<group>"; };
 		F471919821B1E05F00B09143 /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		F471919A21B1E0C500B09143 /* MultiStrike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStrike.swift; sourceTree = "<group>"; };
 		F471919D21B1E1DC00B09143 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		F471919F21B1E59B00B09143 /* PowerUpTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpTypes.swift; sourceTree = "<group>"; };
 		F47191A121B1EA6F00B09143 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDrop.swift; sourceTree = "<group>"; };
+		F48E8B2021CA3535001A5FA1 /* BossLaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossLaser.swift; sourceTree = "<group>"; };
+		F48E8B2421CA4200001A5FA1 /* BossMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMine.swift; sourceTree = "<group>"; };
+		F48E8B2821CB0D6B001A5FA1 /* BossWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossWeapon.swift; sourceTree = "<group>"; };
 		F4ABA28B218F7A550085E43C /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		F4ABA28D218F8EC80085E43C /* LoseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseScene.swift; sourceTree = "<group>"; };
 		F4ABA28F218F8EE30085E43C /* LoseScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoseScene.sks; sourceTree = "<group>"; };
@@ -214,7 +222,9 @@
 		F4531B3921AB94070003FFBF /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
+				F48E8B1F21CA34CF001A5FA1 /* BossWeapons */,
 				F4531B3A21AB941B0003FFBF /* Boss.swift */,
+				F46B75B621C8DEB700355BC2 /* Mechazoid.swift */,
 			);
 			path = Bosses;
 			sourceTree = "<group>";
@@ -242,6 +252,16 @@
 				F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */,
 			);
 			path = "Power Up Drops";
+			sourceTree = "<group>";
+		};
+		F48E8B1F21CA34CF001A5FA1 /* BossWeapons */ = {
+			isa = PBXGroup;
+			children = (
+				F48E8B2021CA3535001A5FA1 /* BossLaser.swift */,
+				F48E8B2421CA4200001A5FA1 /* BossMine.swift */,
+				F48E8B2821CB0D6B001A5FA1 /* BossWeapon.swift */,
+			);
+			path = BossWeapons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,13 +341,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48E8B2921CB0D6B001A5FA1 /* BossWeapon.swift in Sources */,
 				F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */,
+				F46B75B721C8DEB700355BC2 /* Mechazoid.swift in Sources */,
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
 				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
+				F48E8B2521CA4200001A5FA1 /* BossMine.swift in Sources */,
 				F4339ABA218D15E00016970A /* RREventListener.swift in Sources */,
 				F4339AB8218D14D00016970A /* RREvent.swift in Sources */,
 				F4339AB5218D14200016970A /* RREventManager.swift in Sources */,
 				F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */,
+				F48E8B2121CA3535001A5FA1 /* BossLaser.swift in Sources */,
 				F471919921B1E05F00B09143 /* PowerUp.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,

@@ -12,14 +12,16 @@ class Weapon: SKSpriteNode, RREventListener {
     
     internal var m_Speed: Double!;
     internal var m_Distance: CGFloat!;
-    internal var m_ImageName: String!;
+    
+    
     
     init(imageName image: String, speed: Double = 0.5, distance: CGFloat = 1180) {
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 64, height: 64));
+        super.init(texture: SKTexture(imageNamed: image), color: UIColor(), size: CGSize(width: 64, height: 64));
         
-        self.m_ImageName = image;
         self.m_Speed = speed;
         self.m_Distance = distance;
+        
+        self.zPosition = 3.0;
         
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -36,15 +38,9 @@ class Weapon: SKSpriteNode, RREventListener {
         return m_Distance;
     }
     
-    func getImageName() -> String {
-        return m_ImageName;
-    }
-    
     func generate(character: Character) {
-        self.texture = SKTexture(imageNamed: m_ImageName);
         self.size = CGSize(width: character.size.width / 2, height: character.size.height / 2);
         self.position = CGPoint(x: character.size.width / 4, y: 0);
-        self.zPosition = 2.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.weapon;

@@ -8,12 +8,20 @@
 
 import SpriteKit
 
+public enum BossStates {
+    case HIDING
+    case ATTACKING
+}
+
 class Boss: Character {
     
-    internal var m_SpawnScoreRequirement = 10;
+    internal var m_SpawnScoreRequirement = 1;
     internal var m_DefaultScoreRequirement = 10;
     internal var m_CurrentPhase = 1;
+    internal var m_AttackInterval: Double = 1;
+    internal var m_State: BossStates = .HIDING;
     internal let m_ScoreAmount = 1;
+    internal let m_WeaponsHolder = SKNode();
     
     override init(type characterType: CharacterTypes) {
         super.init(type: characterType);
@@ -32,10 +40,66 @@ class Boss: Character {
         self.xScale = 0.85;
         self.yScale = 0.85;
         
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
+        self.physicsBody?.isDynamic = true;
+        self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.categoryBitMask = CategoryBitMask.boss;
         self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
+        self.physicsBody?.collisionBitMask = 0;
+        
+        m_WeaponsHolder.position = CGPoint(x: -self.size.width / 2, y: 0);
+        self.addChild(m_WeaponsHolder);
         
         m_DefaultScoreRequirement = m_SpawnScoreRequirement;
+    }
+    
+    func resetAttackInterval() {
+        let attackInterval = m_AttackInterval;
+        m_AttackInterval = 0;
+        
+        let wait = SKAction.wait(forDuration: attackInterval);
+        
+        self.run(wait) {
+            self.m_AttackInterval = attackInterval;
+        }
+    }
+    
+    func attack() {
+        if (m_State != .ATTACKING || m_AttackInterval <= 0) {
+            return;
+        }
+        
+        switch (m_CurrentPhase) {
+        case 1:
+            attackPhaseOne();
+            break;
+        case 2:
+            attackPhaseTwo();
+            break;
+        case 3:
+            attackPhaseThree();
+            break;
+        default:
+            break;
+        }
+        
+        resetAttackInterval();
+    }
+    
+    func attackPhaseOne() {
+        
+    }
+    
+    func attackPhaseTwo() {
+        
+    }
+    
+    func attackPhaseThree() {
+        
+    }
+    
+    func updateHeldWeapon() {
+        m_WeaponsHolder.removeAllChildren();
     }
     
     override func die(completion: @escaping () -> Void) {
@@ -88,7 +152,7 @@ class Boss: Character {
                 m_Health -= 1;
             } else {
                 if (m_CurrentPhase < 3) {
-                    // Boss will run away
+                    // Boss will hide
                     // Reset Health, increase score requirement, increase phase
                     m_Health = m_MaxHealth;
                     m_CurrentPhase += 1;
@@ -97,6 +161,7 @@ class Boss: Character {
                     // Animate boss away and remove from scene
                     animateOutRight() {
                         self.destroy();
+                        self.m_State = .HIDING;
                         self.gameScene.getSpawner().setBossSpawned(spawned: false);
                         // Move camera
                         self.gameScene.getCamera().setCameraSpeed(speed: self.gameScene.getCamera().getHeldMoveSpeed());

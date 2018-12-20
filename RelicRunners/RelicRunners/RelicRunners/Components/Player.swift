@@ -38,6 +38,12 @@ class Player: Character {
         
         self.size = CGSize(width: 320, height: 320);
         self.anchorPoint = CGPoint(x: 0.5, y: 0.3);
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64), center: CGPoint(x: 0, y: -64));
+        self.physicsBody?.isDynamic = true;
+        self.physicsBody?.affectedByGravity = false;
+        self.physicsBody?.collisionBitMask = 0;
+        self.physicsBody?.categoryBitMask = CategoryBitMask.player
+        self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.obstacle | CategoryBitMask.boss;
         
         self.xScale = 0.85;
         self.yScale = 0.85;
@@ -59,7 +65,7 @@ class Player: Character {
     
     func reset() {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-        self.position = CGPoint(x: -gameScene.size.width, y: 0);
+        self.position = CGPoint(x: -gameScene.size.width, y: self.position.y);
         self.zPosition = 2.5;
         self.m_Health = m_MaxHealth;
         self.m_CurrentLane = 0;
@@ -80,14 +86,14 @@ class Player: Character {
                 // Handle swipe up event
                 if (m_CurrentLane < 1) {
                     m_CurrentLane += 1;
-                    let action = SKAction.move(by: CGVector(dx: 0, dy: m_MoveAmount * self.xScale), duration: m_Speed);
+                    let action = SKAction.move(by: CGVector(dx: 0, dy: gameScene.getMoveAmount() * self.xScale), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "swipeDown") {
                 // Handle swipe down event
                 if (m_CurrentLane > -1) {
                     m_CurrentLane -= 1;
-                    let action = SKAction.move(by: CGVector(dx: -0, dy: -m_MoveAmount * self.xScale), duration: m_Speed);
+                    let action = SKAction.move(by: CGVector(dx: -0, dy: -gameScene.getMoveAmount() * self.xScale), duration: m_Speed);
                     self.run(action);
                 }
             } else if (event == "tap") {
@@ -107,7 +113,7 @@ class Player: Character {
             } else if (event == "playerHit") {
                 if (m_PowerUpType != .invinciblility && !m_Invinsible) {
                     // Shake Camera
-                    gameScene.getCamera().shake(forDuration: 0.5);
+                    gameScene.getCamera().shake(forDuration: 0.25);
                     // Subtract from healthbar
                     gameScene.getHealthBar().subtractHealth(amount: 1);
                     

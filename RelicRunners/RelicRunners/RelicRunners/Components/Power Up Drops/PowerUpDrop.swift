@@ -16,6 +16,9 @@ class PowerUpDrop: SKSpriteNode {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 72, height: 72));
         
         self.zPosition = 0.8;
+        // Set anchor point to top of power up drop
+        self.anchorPoint = CGPoint(x: 0.5, y: 1);
+        
         // Set up physics body for triggers
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
         self.physicsBody?.isDynamic = true;

@@ -15,7 +15,6 @@ class Character: SKSpriteNode, RREventListener {
     
     var m_CurrentLane = 0;
     var m_Dead = false;
-    var m_MoveAmount: CGFloat!;
     
     internal var m_Health = 0;
     internal var m_MaxHealth = 0;
@@ -30,7 +29,6 @@ class Character: SKSpriteNode, RREventListener {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
         
         self.m_CharacterType = characterType;
-        self.m_MoveAmount = self.size.width * 0.8;
         
         // Assign default values
         self.defaultSpeed = m_Speed;
@@ -49,21 +47,14 @@ class Character: SKSpriteNode, RREventListener {
         self.size = CGSize(width: 176, height: 176);
         self.position = CGPoint(x: 0, y: 0);
         self.zPosition = 2.5;
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;
-        self.m_MoveAmount = self.size.width * 0.7;
+        self.physicsBody?.categoryBitMask = CategoryBitMask.enemy;
+        self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
         
         m_MaxHealth = m_Health;
-        
-        if (m_CharacterType == CharacterTypes.player) {
-            self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-            self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.obstacle;
-        } else {
-            self.physicsBody?.categoryBitMask = CategoryBitMask.enemy;
-            self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
-        }
     }
     
     func shootProjectile() {
@@ -160,6 +151,20 @@ class Character: SKSpriteNode, RREventListener {
     func animateInFromRight() {
         let move = SKAction.move(to: CGPoint(x: gameScene.size.width / 3, y: self.position.y), duration: 0.5);
         self.run(move);
+    }
+    
+    func animateInFromLeft(completion: @escaping () -> Void) {
+        let move = SKAction.move(to: CGPoint(x: -gameScene.size.width / 3, y: self.position.y), duration: 0.5);
+        self.run(move) {
+            completion();
+        };
+    }
+    
+    func animateInFromRight(completion: @escaping () -> Void) {
+        let move = SKAction.move(to: CGPoint(x: gameScene.size.width / 3, y: self.position.y), duration: 0.5);
+        self.run(move) {
+            completion();
+        };
     }
     
     func animateOutLeft() {

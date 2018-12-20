@@ -28,8 +28,8 @@ class Mechazoid: Boss {
         
         // Add weapons to weapons array
         for i in -1..<2 {
-            let laser = BossLaser(imageName: "laser", speed: 0.5, distance: 1180);
-            let mine = BossMine(imageName: "mine", speed: 0.5, distance: 1180);
+            let laser = BossLaser(imageName: "angry-face", speed: 0.5, distance: 1180);
+            let mine = BossMine(imageName: "angry-face", speed: 0.5, distance: 1180);
             
             laser.position = CGPoint(x: 0, y: (gameScene.getMoveAmount() * CGFloat(i)) - laser.size.height);
             mine.position = CGPoint(x: 0, y: (gameScene.getMoveAmount() * CGFloat(i)) - mine.size.height);
@@ -37,40 +37,33 @@ class Mechazoid: Boss {
             // Populate the weapons array
             m_Lasers.append(laser);
             m_Mines.append(mine);
+            
+            // Add weapons to the weapon holders
+            m_WeaponHolders[0].addChild(laser);
+            m_WeaponHolders[1].addChild(mine);
         }
     }
     
     override func attackPhaseOne() {
         // Laser Barrage
         let randomNum = Int.random(in: 0..<m_Lasers.count);
-        
+
         m_Lasers[randomNum].fire();
     }
     
     override func attackPhaseTwo() {
         // Minefield
+        attackPhaseOne(); // To be removed
     }
     
     override func attackPhaseThree() {
         // Laser Minefield Barrage
+        attackPhaseOne(); // To be removed
     }
     
     override func updateHeldWeapon() {
-        super.updateHeldWeapon();
-        
-        switch (m_CurrentPhase) {
-        case 1:
-            for laser in m_Lasers {
-                m_WeaponsHolder.addChild(laser);
-            }
-            break;
-        case 2:
-            for mine in m_Mines {
-                m_WeaponsHolder.addChild(mine);
-            }
-            break;
-        default:
-            break;
-        }
+//        super.updateHeldWeapon();
+        self.removeAllChildren();
+        self.addChild(m_WeaponHolders[0]);
     }
 }

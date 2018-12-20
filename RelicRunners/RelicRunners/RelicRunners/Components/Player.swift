@@ -36,12 +36,8 @@ class Player: Character {
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
         
-        self.size = CGSize(width: 320, height: 320);
+        self.size = CGSize(width: 400, height: 400);
         self.anchorPoint = CGPoint(x: 0.5, y: 0.3);
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64), center: CGPoint(x: 0, y: -64));
-        self.physicsBody?.isDynamic = true;
-        self.physicsBody?.affectedByGravity = false;
-        self.physicsBody?.collisionBitMask = 0;
         self.physicsBody?.categoryBitMask = CategoryBitMask.player
         self.physicsBody?.contactTestBitMask = CategoryBitMask.enemy | CategoryBitMask.obstacle | CategoryBitMask.boss;
         
@@ -65,7 +61,7 @@ class Player: Character {
     
     func reset() {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
-        self.position = CGPoint(x: -gameScene.size.width, y: self.position.y);
+        self.position = CGPoint(x: -gameScene.size.width, y: 0);
         self.zPosition = 2.5;
         self.m_Health = m_MaxHealth;
         self.m_CurrentLane = 0;
@@ -140,6 +136,14 @@ class Player: Character {
         // Listen to Power up broadcasts
         if let powerUp = event as? PowerUpDrop {
             m_PowerUpType = powerUp.getPowerUpType();
+            
+            // Handle Invincibility power-up
+            if (m_PowerUpType == .invinciblility) {
+                let wait = SKAction.wait(forDuration: 10);
+                self.run(wait) {
+                    self.m_PowerUpType = .none;
+                }
+            }
         }
         
         // Listen to Game State broadcasts

@@ -44,10 +44,10 @@ class Character: SKSpriteNode, RREventListener {
         self.gameScene = scene;
         self.texture = SKTexture(imageNamed: image);
         self.texture?.filteringMode = .nearest;
-        self.size = CGSize(width: 176, height: 176);
+        self.size = CGSize(width: 256, height: 256);
         self.position = CGPoint(x: 0, y: 0);
         self.zPosition = 2.5;
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64));
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64), center: CGPoint(x: 0, y: -32));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;

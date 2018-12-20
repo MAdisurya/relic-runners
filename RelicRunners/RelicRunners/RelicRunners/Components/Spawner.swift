@@ -109,10 +109,11 @@ class Spawner: SKNode {
             bossAlert.zPosition = 12;
             gameScene.camera?.addChild(bossAlert);
             
+            boss.updateHeldWeapon();
+            
             // Boss spawns in after blink animation completed
             bossAlert.run(blinkThenWait) {
                 boss.position = CGPoint(x: self.gameScene.size.width, y: 0);
-                boss.updateHeldWeapon();
                 self.gameScene.camera?.addChild(boss);
                 self.gameScene.getCamera().stopCamera();
                 

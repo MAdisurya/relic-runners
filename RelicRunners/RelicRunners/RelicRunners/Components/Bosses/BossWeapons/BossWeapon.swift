@@ -38,6 +38,8 @@ class BossWeapon: Weapon {
     }
     
     override func listen(event: String) {
-        
+        if (event == "resetBossWeapons") {
+            self.removeAllChildren();
+        }
     }
 }

@@ -23,7 +23,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
     
-    private var m_MoveAmount: CGFloat = 123.2;
+    private var m_MoveAmount: CGFloat = 160;
     
     // Getters
     func getSpawner() -> Spawner {
@@ -46,7 +46,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         return m_MoveAmount;
     }
     
-    override func sceneDidLoad() {
+    func loadScene() {
         // Generate the camera and add to scene
         gameCamera.generateCamera(scene: self);
         self.addChild(gameCamera);
@@ -96,20 +96,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     }
     
     override func didMove(to view: SKView) {
+        loadScene();
         // Setup Gesture Recognizers
         if let view = self.view {
             RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
             RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
             RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
         }
-        
-        // Setup the score label
-//        m_ScoreLabel.zPosition = 10.0;
-//        m_ScoreLabel.text = String(RRGameManager.shared.getScoreManager().retrieveScore());
-//        m_ScoreLabel.fontName = "Silkscreen Bold";
-//        m_ScoreLabel.fontSize = 96;
-//        m_ScoreLabel.position = CGPoint(x: 0, y: -m_ScoreLabel.fontSize / 4);
-//        gameCamera.addChild(m_ScoreLabel);
         
         // Setup the gold label
         RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
@@ -206,8 +199,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             
             // Despawn boss if boss is spawned and not dead
             if (!m_Boss.m_Dead && m_Spawner.isBossSpawned()) {
+                // Reset all boss weapons
+                RRGameManager.shared.getEventManager().broadcastEvent(event: "resetBossWeapons");
                 m_Boss.animateOutRight() {
                     // Remove boss from game scene
+                    self.m_Boss.m_State = .HIDING;
+                    self.m_Boss.resetPhase();
                     self.m_Boss.destroy();
                     self.m_Spawner.setBossSpawned(spawned: false);
                 };

@@ -15,13 +15,14 @@ public enum BossStates {
 
 class Boss: Character {
     
-    internal var m_SpawnScoreRequirement = 1;
+    internal var m_SpawnScoreRequirement = 10;
     internal var m_DefaultScoreRequirement = 10;
     internal var m_CurrentPhase = 1;
     internal var m_AttackInterval: Double = 1;
     internal var m_State: BossStates = .HIDING;
+    internal var m_WeaponHolders: [BossWeaponHolder] = [];
     internal let m_ScoreAmount = 1;
-    internal let m_WeaponsHolder = SKNode();
+    internal let m_WeaponsAmount = 3;
     
     override init(type characterType: CharacterTypes) {
         super.init(type: characterType);
@@ -47,8 +48,11 @@ class Boss: Character {
         self.physicsBody?.contactTestBitMask = CategoryBitMask.weapon | CategoryBitMask.player;
         self.physicsBody?.collisionBitMask = 0;
         
-        m_WeaponsHolder.position = CGPoint(x: -self.size.width / 2, y: 0);
-        self.addChild(m_WeaponsHolder);
+        // Populate the weapon holders array
+        for _ in 0..<m_WeaponsAmount {
+            let weaponHolder = BossWeaponHolder(position: CGPoint(x: -self.size.width / 2, y: 0));
+            m_WeaponHolders.append(weaponHolder);
+        }
         
         m_DefaultScoreRequirement = m_SpawnScoreRequirement;
     }
@@ -99,7 +103,15 @@ class Boss: Character {
     }
     
     func updateHeldWeapon() {
-        m_WeaponsHolder.removeAllChildren();
+        self.removeAllChildren();
+        
+        if (m_CurrentPhase > 0 && m_WeaponHolders.count > 0) {
+            self.addChild(m_WeaponHolders[m_CurrentPhase - 1]);
+        }
+    }
+    
+    func resetPhase() {
+        m_CurrentPhase = 1;
     }
     
     override func die(completion: @escaping () -> Void) {
@@ -160,8 +172,8 @@ class Boss: Character {
                     
                     // Animate boss away and remove from scene
                     animateOutRight() {
-                        self.destroy();
                         self.m_State = .HIDING;
+                        self.destroy();
                         self.gameScene.getSpawner().setBossSpawned(spawned: false);
                         // Move camera
                         self.gameScene.getCamera().setCameraSpeed(speed: self.gameScene.getCamera().getHeldMoveSpeed());

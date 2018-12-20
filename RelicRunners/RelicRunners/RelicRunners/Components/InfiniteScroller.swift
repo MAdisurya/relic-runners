@@ -42,13 +42,14 @@ class InfiniteScroller {
             let bgWall = BGSprite();
             let fgWall = BGSprite();
             
-            bgFloor.generateBackground(scene: gameScene, imageNamed: "relicrunners-floor3", name: "bgfloor"+String(i));
+            bgFloor.generateBackground(scene: gameScene, imageNamed: "relicrunners-floor", name: "bgfloor"+String(i));
             bgWall.generateBackground(scene: gameScene, imageNamed: "relicrunners-bgwall3", name: "bgwall"+String(i));
             fgWall.generateBackground(scene: gameScene, imageNamed: "relicrunners-front0", name: "fgwall"+String(i));
             
             // Set individual bg sizes
             bgFloor.size = CGSize(width: 1024, height: 576);
-            bgWall.size = CGSize(width: 1024, height: 384);
+//            bgWall.size = CGSize(width: 1024, height: 384);
+            bgWall.size = CGSize(width: 768, height: 320);
             fgWall.size = CGSize(width: 1024, height: 320);
             
             // Set individual bg positions

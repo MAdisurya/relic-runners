@@ -13,8 +13,6 @@ class Weapon: SKSpriteNode, RREventListener {
     internal var m_Speed: Double!;
     internal var m_Distance: CGFloat!;
     
-    
-    
     init(imageName image: String, speed: Double = 0.5, distance: CGFloat = 1180) {
         super.init(texture: SKTexture(imageNamed: image), color: UIColor(), size: CGSize(width: 64, height: 64));
         

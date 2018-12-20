@@ -20,7 +20,7 @@ class PowerUpDrop: SKSpriteNode {
         self.anchorPoint = CGPoint(x: 0.5, y: 1);
         
         // Set up physics body for triggers
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size);
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size, center: CGPoint(x: 0, y: -32));
         self.physicsBody?.isDynamic = true;
         self.physicsBody?.affectedByGravity = false;
         self.physicsBody?.collisionBitMask = 0;

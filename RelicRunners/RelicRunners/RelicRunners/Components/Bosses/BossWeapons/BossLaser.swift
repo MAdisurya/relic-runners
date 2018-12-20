@@ -19,7 +19,7 @@ class BossLaser: BossWeapon {
         m_Laser.color = UIColor.red;
         m_Laser.size = CGSize(width: self.m_Distance, height: 64);
         m_Laser.anchorPoint = CGPoint(x: 1, y: 0.5);
-        m_Laser.physicsBody = SKPhysicsBody(rectangleOf: m_Laser.size, center: CGPoint(x: m_Laser.size.width / 2, y: 0));
+        m_Laser.physicsBody = SKPhysicsBody(rectangleOf: m_Laser.size, center: CGPoint(x: -distance / 2, y: 0));
         m_Laser.physicsBody?.isDynamic = false;
         m_Laser.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
         m_Laser.physicsBody?.contactTestBitMask = CategoryBitMask.player;
@@ -33,17 +33,23 @@ class BossLaser: BossWeapon {
         if (m_WeaponCooldown > 0) {
             super.fire();
             
-            self.addChild(m_Laser);
+            let prefire = SKAction.wait(forDuration: 1);
+            let fireDuration = SKAction.wait(forDuration: 1);
             
-            let wait = SKAction.wait(forDuration: 1);
+            self.texture = SKTexture();
             
-            self.run(wait) {
-                self.m_Laser.removeFromParent();
+            self.run(prefire) {
+                self.addChild(self.m_Laser);
+                self.texture = SKTexture(imageNamed: "angry-face");
+                
+                self.run(fireDuration) {
+                    self.m_Laser.removeFromParent();
+                }
             }
         }
     }
     
     override func listen(event: String) {
-        
+        super.listen(event: event);
     }
 }

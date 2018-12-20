@@ -40,7 +40,8 @@ class Mechazoid: Boss {
             
             // Add weapons to the weapon holders
             m_WeaponHolders[0].addChild(laser);
-            m_WeaponHolders[1].addChild(mine);
+//            m_WeaponHolders[1].addChild(laser);
+//            m_WeaponHolders[2].addChild(laser);
         }
     }
     

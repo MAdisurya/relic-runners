@@ -15,6 +15,8 @@ class BossLaser: BossWeapon {
     override init(imageName image: String, speed: Double, distance: CGFloat) {
         super.init(imageName: image, speed: speed, distance: distance);
         
+        m_DefaultTexture = SKTexture(imageNamed: image);
+        
         // Laser
         m_Laser.color = UIColor.red;
         m_Laser.size = CGSize(width: self.m_Distance, height: 64);
@@ -33,14 +35,14 @@ class BossLaser: BossWeapon {
         if (m_WeaponCooldown > 0) {
             super.fire();
             
-            let prefire = SKAction.wait(forDuration: 1);
-            let fireDuration = SKAction.wait(forDuration: 1);
+            let prefire = SKAction.wait(forDuration: 1.25);
+            let fireDuration = SKAction.wait(forDuration: 0.75);
             
             self.texture = SKTexture();
             
             self.run(prefire) {
                 self.addChild(self.m_Laser);
-                self.texture = SKTexture(imageNamed: "angry-face");
+                self.texture = self.m_DefaultTexture;
                 
                 self.run(fireDuration) {
                     self.m_Laser.removeFromParent();

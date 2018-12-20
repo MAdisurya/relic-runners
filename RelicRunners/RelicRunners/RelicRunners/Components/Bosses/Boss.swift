@@ -15,7 +15,7 @@ public enum BossStates {
 
 class Boss: Character {
     
-    internal var m_SpawnScoreRequirement = 10;
+    internal var m_SpawnScoreRequirement = 1;
     internal var m_DefaultScoreRequirement = 10;
     internal var m_CurrentPhase = 1;
     internal var m_AttackInterval: Double = 1;
@@ -172,9 +172,9 @@ class Boss: Character {
                     
                     // Animate boss away and remove from scene
                     animateOutRight() {
-                        self.m_State = .HIDING;
                         self.destroy();
                         self.gameScene.getSpawner().setBossSpawned(spawned: false);
+                        self.m_State = .HIDING;
                         // Move camera
                         self.gameScene.getCamera().setCameraSpeed(speed: self.gameScene.getCamera().getHeldMoveSpeed());
                     }

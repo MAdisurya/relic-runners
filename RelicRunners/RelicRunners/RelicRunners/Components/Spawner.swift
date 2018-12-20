@@ -110,6 +110,7 @@ class Spawner: SKNode {
             gameScene.camera?.addChild(bossAlert);
             
             boss.updateHeldWeapon();
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "resetBossWeapons");
             
             // Boss spawns in after blink animation completed
             bossAlert.run(blinkThenWait) {
@@ -118,8 +119,8 @@ class Spawner: SKNode {
                 self.gameScene.getCamera().stopCamera();
                 
                 boss.animateInFromRight() {
-                    boss.m_State = .ATTACKING;
                     boss.resetAttackInterval();
+                    boss.m_State = .ATTACKING;
                 };
             }
             

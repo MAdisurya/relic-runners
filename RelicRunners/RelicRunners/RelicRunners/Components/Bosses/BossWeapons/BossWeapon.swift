@@ -11,6 +11,7 @@ import SpriteKit
 class BossWeapon: Weapon {
     
     internal var m_WeaponCooldown: Double = 1;
+    internal var m_DefaultTexture = SKTexture();
     
     override init(imageName image: String, speed: Double, distance: CGFloat) {
         super.init(imageName: image, speed: speed, distance: distance);
@@ -39,7 +40,10 @@ class BossWeapon: Weapon {
     
     override func listen(event: String) {
         if (event == "resetBossWeapons") {
+            self.removeAllActions();
             self.removeAllChildren();
+            self.texture = m_DefaultTexture;
+            m_WeaponCooldown = 1;
         }
     }
 }

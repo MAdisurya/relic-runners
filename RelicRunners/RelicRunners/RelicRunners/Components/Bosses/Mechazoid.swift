@@ -28,7 +28,7 @@ class Mechazoid: Boss {
         
         // Add weapons to weapons array
         for i in -1..<2 {
-            let laser = BossLaser(imageName: "angry-face", speed: 0.5, distance: 1180);
+            let laser = BossLaser(imageName: "ak47-pixel", speed: 0.5, distance: 1180);
             let mine = BossMine(imageName: "angry-face", speed: 0.5, distance: 1180);
             
             laser.position = CGPoint(x: 0, y: (gameScene.getMoveAmount() * CGFloat(i)) - laser.size.height);

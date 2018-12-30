@@ -16,7 +16,8 @@ class BossWeapon: Weapon {
     override init(imageName image: String, speed: Double, distance: CGFloat) {
         super.init(imageName: image, speed: speed, distance: distance);
         
-        self.size = CGSize(width: 64, height: 64);
+        self.size = CGSize(width: 128, height: 64);
+        self.texture?.filteringMode = .nearest;
     }
     
     required init?(coder aDecoder: NSCoder) {

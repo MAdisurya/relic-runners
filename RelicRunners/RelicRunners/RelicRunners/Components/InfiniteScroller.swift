@@ -48,8 +48,8 @@ class InfiniteScroller {
             
             // Set individual bg sizes
             bgFloor.size = CGSize(width: 1024, height: 576);
-//            bgWall.size = CGSize(width: 1024, height: 384);
-            bgWall.size = CGSize(width: 768, height: 320);
+            bgWall.size = CGSize(width: 1024, height: 384);
+//            bgWall.size = CGSize(width: 768, height: 320);
             fgWall.size = CGSize(width: 1024, height: 320);
             
             // Set individual bg positions

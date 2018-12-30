@@ -15,7 +15,7 @@ public enum BossStates {
 
 class Boss: Character {
     
-    internal var m_SpawnScoreRequirement = 1;
+    internal var m_SpawnScoreRequirement = 10;
     internal var m_DefaultScoreRequirement = 10;
     internal var m_CurrentPhase = 1;
     internal var m_AttackInterval: Double = 1;

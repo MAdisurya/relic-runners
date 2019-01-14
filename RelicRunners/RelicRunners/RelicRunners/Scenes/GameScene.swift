@@ -71,8 +71,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_MenuUI.generateTitle(sceneSize: self.size);
         m_MenuUI.generateTapLabel(sceneSize: self.size);
         // Add MenuUI elements to the camera
-        gameCamera.addChild(m_MenuUI.m_Title);
-        gameCamera.addChild(m_MenuUI.m_TapLabel);
+        gameCamera.addChild(m_MenuUI);
         
         // Generate the HealthBar
         m_HealthBar.generate(position: CGPoint(x: -432, y: 224), health: m_Player.m_Health);
@@ -99,7 +98,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         loadScene();
         // Setup Gesture Recognizers
         if let view = self.view {
-            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
+//            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
             RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
             RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
         }
@@ -182,6 +181,20 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     func updateGoldLabel(gold: String) {
         // Set gold label to gold
         m_GoldLabel.text = gold;
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!;
+        let location = touch.location(in: self);
+        let touchedNode = self.atPoint(location);
+        
+        if let button = touchedNode as? MenuButton {
+            // If menu button is tapped, open respective window
+            button.openWindow();
+            return;
+        }
+        
+        RRGameManager.shared.getEventManager().broadcastEvent(event: "tap");
     }
     
     func listen(event: String) {

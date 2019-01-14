@@ -8,18 +8,38 @@
 
 import SpriteKit
 
-class MenuUI: RREventListener {
+class MenuUI: SKNode, RREventListener {
     
-    let gameScene: GameScene!;
+    private var gameScene: GameScene!;
     
     let m_Title = SKSpriteNode();
     let m_TapLabel = SKLabelNode();
     
+    var m_SettingsButton: MenuButton!;
+    
     private var allowedToTap = true;
     
     init(gameScene: GameScene) {
+        super.init();
+        
+        self.position = CGPoint(x: 0, y: 0);
+        
         self.gameScene = gameScene;
+        // Initialize menu buttons
+        self.m_SettingsButton = MenuButton(image: "coin-tails", windowSize: gameScene.size, name: "settings-button");
+        // Set menu buttons positions
+        self.m_SettingsButton.position = CGPoint(x: -gameScene.size.width * 0.4, y: gameScene.size.width / 4);
+        
+        // Add components to Menu UI
+        self.addChild(m_Title);
+        self.addChild(m_TapLabel);
+        self.addChild(m_SettingsButton);
+        
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented");
     }
     
     func generateTitle(sceneSize: CGSize) {
@@ -30,11 +50,11 @@ class MenuUI: RREventListener {
     }
     
     func generateTapLabel(sceneSize: CGSize) {
-        m_TapLabel.position = CGPoint(x: 0, y: -sceneSize.width / 4);
         m_TapLabel.zPosition = 10.0;
         m_TapLabel.text = "Tap to Start";
         m_TapLabel.fontName = "Silkscreen";
         m_TapLabel.fontSize = 36;
+        m_TapLabel.position = CGPoint(x: 0, y: -m_TapLabel.fontSize / 2);
         
         blink(node: m_TapLabel);
     }
@@ -63,12 +83,14 @@ class MenuUI: RREventListener {
     
     func animateOut(completion: @escaping () -> Void) {
         let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
-        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+//        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+        let fadeOut = SKAction.fadeOut(withDuration: 0.01);
         
         m_Title.removeAllActions();
         m_TapLabel.removeAllActions();
-        m_Title.run(upAnim);
-        m_TapLabel.run(downAnim) {
+        m_TapLabel.run(fadeOut);
+        m_SettingsButton.run(upAnim);
+        m_Title.run(upAnim) {
             completion();
         };
     }

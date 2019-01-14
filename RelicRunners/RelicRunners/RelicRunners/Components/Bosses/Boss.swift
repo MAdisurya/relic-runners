@@ -131,11 +131,10 @@ class Boss: Character {
         gameScene.camera?.addChild(whiteFlash);
         
         // Treasure box placeholder (remove later)
-        let treasureBox = SKSpriteNode();
+        let treasureBox = SKSpriteNode(imageNamed: "chest-pixel");
         treasureBox.size = CGSize(width: 128, height: 128);
         treasureBox.position = CGPoint(x: gameScene.size.width / 4, y: 0);
         treasureBox.zPosition = 1;
-        treasureBox.color = UIColor.blue;
         
         // Actions
         let fadeIn = SKAction.fadeIn(withDuration: 0.2);

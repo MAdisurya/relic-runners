@@ -10,7 +10,7 @@ import SpriteKit
 
 class MenuButton: SKSpriteNode {
     
-    let m_Window = SKSpriteNode();
+    private var m_Window: MenuWindow!;
     
     init(image imageNamed: String, windowSize: CGSize, name: String) {
         super.init(texture: SKTexture(imageNamed: imageNamed), color: UIColor.clear, size: CGSize(width: 64, height: 64));
@@ -19,10 +19,9 @@ class MenuButton: SKSpriteNode {
         self.texture?.filteringMode = .nearest;
         self.name = name;
         
-        m_Window.size = windowSize;
-        m_Window.position = CGPoint(x: 0, y: -windowSize.height / 2);
-        m_Window.color = UIColor.green;
-        m_Window.zPosition = 12;
+        // Initialize menu window
+        m_Window = MenuWindow(windowSize: windowSize);
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,8 +33,7 @@ class MenuButton: SKSpriteNode {
         self.parent?.addChild(m_Window);
     }
     
-    func closeWindow() {
-        // Remove window from MenuUI
-        m_Window.removeFromParent();
+    func setBackground(color: UIColor) {
+        m_Window.getBackground().color = color;
     }
 }

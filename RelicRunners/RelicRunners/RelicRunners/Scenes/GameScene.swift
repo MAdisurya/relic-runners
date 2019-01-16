@@ -189,12 +189,27 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         let touchedNode = self.atPoint(location);
         
         if let button = touchedNode as? MenuButton {
-            // If menu button is tapped, open respective window
-            button.openWindow();
+            // If menu button is tapped, and window is closed, open respective window
+            if (!m_MenuUI.isWindowOpen()) {
+                button.openWindow();
+                m_MenuUI.setWindowOpen(true);
+            }
             return;
         }
         
-        RRGameManager.shared.getEventManager().broadcastEvent(event: "tap");
+        if let button = touchedNode as? CloseButton {
+            // If the close button is tapped, and window is open, close the window
+            if (m_MenuUI.isWindowOpen()) {
+                button.closeWindow();
+                m_MenuUI.setWindowOpen(false);
+            }
+            return;
+        }
+        
+        if (!m_MenuUI.isWindowOpen()) {
+            // Only broadcast tap event if menu window is closed
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "tap");
+        }
     }
     
     func listen(event: String) {

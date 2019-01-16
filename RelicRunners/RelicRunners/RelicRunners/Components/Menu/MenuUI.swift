@@ -16,8 +16,21 @@ class MenuUI: SKNode, RREventListener {
     let m_TapLabel = SKLabelNode();
     
     var m_SettingsButton: MenuButton!;
+    var m_InventoryButton: MenuButton!;
+    var m_ShopButton: MenuButton!;
     
     private var allowedToTap = true;
+    private var windowOpen = false;
+    
+    // Getters
+    func isWindowOpen() -> Bool {
+        return windowOpen;
+    }
+    
+    // Setters
+    func setWindowOpen(_ open: Bool) {
+        windowOpen = open;
+    }
     
     init(gameScene: GameScene) {
         super.init();
@@ -25,15 +38,28 @@ class MenuUI: SKNode, RREventListener {
         self.position = CGPoint(x: 0, y: 0);
         
         self.gameScene = gameScene;
+        
         // Initialize menu buttons
         self.m_SettingsButton = MenuButton(image: "coin-tails", windowSize: gameScene.size, name: "settings-button");
+        self.m_InventoryButton = MenuButton(image: "happy-face", windowSize: gameScene.size, name: "inventory-button");
+        self.m_ShopButton = MenuButton(image: "skeleton", windowSize: gameScene.size, name: "shop-button");
+        
         // Set menu buttons positions
         self.m_SettingsButton.position = CGPoint(x: -gameScene.size.width * 0.4, y: gameScene.size.width / 4);
+        self.m_InventoryButton.position = CGPoint(x: -48, y: -gameScene.size.width / 4);
+        self.m_ShopButton.position = CGPoint(x: 48, y: -gameScene.size.width / 4);
+        
+        // Set backgrounds for windows
+        self.m_SettingsButton.setBackground(color: UIColor.green);
+        self.m_InventoryButton.setBackground(color: UIColor.blue);
+        self.m_ShopButton.setBackground(color: UIColor.red);
         
         // Add components to Menu UI
         self.addChild(m_Title);
         self.addChild(m_TapLabel);
         self.addChild(m_SettingsButton);
+        self.addChild(m_InventoryButton);
+        self.addChild(m_ShopButton);
         
         RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
@@ -83,13 +109,15 @@ class MenuUI: SKNode, RREventListener {
     
     func animateOut(completion: @escaping () -> Void) {
         let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
-//        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+        let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
         let fadeOut = SKAction.fadeOut(withDuration: 0.01);
         
         m_Title.removeAllActions();
         m_TapLabel.removeAllActions();
         m_TapLabel.run(fadeOut);
         m_SettingsButton.run(upAnim);
+        m_InventoryButton.run(downAnim);
+        m_ShopButton.run(downAnim);
         m_Title.run(upAnim) {
             completion();
         };

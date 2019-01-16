@@ -9,8 +9,35 @@
 import SpriteKit
 
 class MenuWindow: SKNode {
-    /// Menu window class that holds all menu window components
-    /// Is openened after tapping on a menu button
+
+    private let m_Background = SKSpriteNode();
+    private var m_CloseButton: CloseButton!;
     
-    /// TODO: Add a background, and a back button / close button
+    // Getters
+    func getBackground() -> SKSpriteNode {
+        return m_Background;
+    }
+    
+    init(windowSize: CGSize) {
+        super.init();
+        
+        self.zPosition = 11;
+        
+        // Set up background
+        m_Background.color = UIColor.green;
+        m_Background.size = windowSize;
+        m_Background.position = CGPoint(x: 0, y: 96);
+        
+        // Set up close button
+        m_CloseButton = CloseButton(image: "angry-face", window: self);
+        m_CloseButton.position = CGPoint(x: -windowSize.width * 0.4, y: windowSize.width / 4);
+        
+        // Add components to Menu Window
+        self.addChild(m_Background);
+        self.addChild(m_CloseButton);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

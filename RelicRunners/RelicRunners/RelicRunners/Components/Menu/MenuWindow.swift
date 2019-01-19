@@ -24,9 +24,11 @@ class MenuWindow: SKNode {
         self.zPosition = 11;
         
         // Set up background
+        m_Background.texture = SKTexture(imageNamed: "window-background");
         m_Background.color = UIColor.green;
         m_Background.size = windowSize;
-        m_Background.position = CGPoint(x: 0, y: 96);
+        m_Background.position = CGPoint(x: 0, y: 0);
+        m_Background.texture?.filteringMode = .nearest;
         
         // Set up close button
         m_CloseButton = CloseButton(image: "angry-face", window: self);

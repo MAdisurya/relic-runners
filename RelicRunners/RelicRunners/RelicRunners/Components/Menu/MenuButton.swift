@@ -20,7 +20,7 @@ class MenuButton: SKSpriteNode {
         self.name = name;
         
         // Initialize menu window
-        m_Window = MenuWindow(windowSize: windowSize);
+        m_Window = MenuWindow(windowSize: CGSize(width: 728, height: 740));
         
     }
     

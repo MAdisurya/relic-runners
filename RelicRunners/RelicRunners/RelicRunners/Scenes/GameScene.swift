@@ -22,6 +22,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_HealthBar = HealthBar();
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
+    private let m_PauseButton = SKSpriteNode();
+    private let m_PauseOverlay = SKSpriteNode();
     
     private var m_MoveAmount: CGFloat = 160;
     
@@ -77,6 +79,22 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_HealthBar.generate(position: CGPoint(x: -432, y: 224), health: m_Player.m_Health);
         gameCamera.addChild(m_HealthBar);
         
+        // Generate Pause Button
+        m_PauseButton.position = CGPoint(x: 0, y: 224);
+        m_PauseButton.zPosition = 10;
+        m_PauseButton.size = CGSize(width: 64, height: 64);
+        m_PauseButton.texture = SKTexture(imageNamed: "pause-button");
+        m_PauseButton.name = "pause-button";
+        gameCamera.addChild(m_PauseButton);
+        
+        // Generate Pause overlay
+        m_PauseOverlay.position = CGPoint(x: 0, y: 0);
+        m_PauseOverlay.zPosition = 12;
+        m_PauseOverlay.size = self.size;
+        m_PauseOverlay.color = UIColor.black;
+        m_PauseOverlay.alpha = 0.4;
+        m_PauseOverlay.name = "pause-overlay";
+        
         // Generate the enemy and obstacle spawner
         m_Spawner.generateSpawner(scene: self);
         // Add Spawner to the scene
@@ -98,10 +116,14 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         loadScene();
         // Setup Gesture Recognizers
         if let view = self.view {
-//            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
+            RRGameManager.shared.getInputManager().setupTapGesture(view: view, scene: self, action: #selector(tap));
             RRGameManager.shared.getInputManager().setupSwipeDownGesture(view: view, scene: self, action: #selector(swipeDown));
             RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
         }
+        
+        /// CREATE MUSIC MANAGER?
+        let backgroundMusic = SKAudioNode(fileNamed: "isaac.mp3");
+        self.addChild(backgroundMusic);
         
         // Setup the gold label
         RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
@@ -206,16 +228,25 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             return;
         }
         
+        if (touchedNode.name == "pause-button") {
+            // If pause button is tapped, pause the game
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "pauseGame");
+        }
+        
+        if (touchedNode.name == "pause-overlay") {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playGame");
+        }
+        
         if (!m_MenuUI.isWindowOpen()) {
             // Only broadcast tap event if menu window is closed
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "tap");
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "menuTap");
         }
     }
     
     func listen(event: String) {
         if (event == "gameOver") {
             // Set game state to pause
-            RRGameManager.shared.setGameState(state: .PAUSE);
+            RRGameManager.shared.setGameState(state: .END);
             // Store persistant values
             RRGameManager.shared.getScoreManager().storeScore();
             RRGameManager.shared.getScoreManager().storeGold();
@@ -242,6 +273,27 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
                 RRGameManager.shared.getGarbageCollector().destroyAll();
                 self.m_MenuUI.blink(node: self.m_MenuUI.m_TapLabel);
             };
+        }
+        
+        if (event == "pauseGame") {
+            let wait = SKAction.wait(forDuration: 0.01);
+            
+            // Set game state to pause
+            RRGameManager.shared.setGameState(state: .PAUSE);
+            gameCamera.addChild(m_PauseOverlay);
+            // Pause the game
+            self.run(wait) {
+                self.view?.isPaused = true;
+            }
+        }
+        
+        if (event == "playGame") {
+            // Set game state to play
+            RRGameManager.shared.setGameState(state: .PLAY);
+            // Unpause the game
+            self.view?.isPaused = false;
+            
+            m_PauseOverlay.removeFromParent();
         }
     }
     

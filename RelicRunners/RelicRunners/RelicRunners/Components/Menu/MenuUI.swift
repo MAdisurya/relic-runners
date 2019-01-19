@@ -10,6 +10,8 @@ import SpriteKit
 
 class MenuUI: SKNode, RREventListener {
     
+    /// REFACTOR to incorporate all UI elements instead of just the menu.
+    
     private var gameScene: GameScene!;
     
     let m_Title = SKSpriteNode();
@@ -98,11 +100,15 @@ class MenuUI: SKNode, RREventListener {
     func animateIn(completion: @escaping () -> Void) {
         let upAnim = SKAction.move(by: CGVector(dx: 0, dy: m_Title.size.width * 2), duration: 1);
         let downAnim = SKAction.move(by: CGVector(dx: 0, dy: -m_Title.size.width * 2), duration: 1);
+        let fadeIn = SKAction.fadeIn(withDuration: 0.01);
         
         m_Title.removeAllActions();
         m_TapLabel.removeAllActions();
-        m_Title.run(downAnim);
-        m_TapLabel.run(upAnim) {
+        m_SettingsButton.run(downAnim);
+        m_ShopButton.run(upAnim);
+        m_InventoryButton.run(upAnim);
+        m_Title.run(downAnim) {
+            self.m_TapLabel.run(fadeIn);
             completion();
         };
     }
@@ -124,8 +130,8 @@ class MenuUI: SKNode, RREventListener {
     }
     
     func listen(event: String) {
-        if (event == "tap") {
-            if (RRGameManager.shared.getGameState() == .PAUSE && allowedToTap) {
+        if (event == "menuTap") {
+            if (RRGameManager.shared.getGameState() == .END && allowedToTap) {
                 // Reset Player and animate in
                 gameScene.getPlayer().reset();
                 gameScene.getPlayer().animateInFromLeft();

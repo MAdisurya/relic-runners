@@ -19,6 +19,7 @@
 		7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A33F68721865D8500CDFA96 /* MainMenuScene.sks */; };
 		7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */; };
 		7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68B21865ED900CDFA96 /* BGSprite.swift */; };
+		F409BDCC21F2A247000098EB /* isaac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F409BDCB21F2A247000098EB /* isaac.mp3 */; };
 		F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412050421B8F86700A81FD1 /* UIIndicator.swift */; };
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
@@ -73,6 +74,7 @@
 		7A33F68721865D8500CDFA96 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
 		7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
 		7A33F68B21865ED900CDFA96 /* BGSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSprite.swift; sourceTree = "<group>"; };
+		F409BDCB21F2A247000098EB /* isaac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = isaac.mp3; path = ../../../../../../Downloads/isaac.mp3; sourceTree = "<group>"; };
 		F412050421B8F86700A81FD1 /* UIIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIndicator.swift; sourceTree = "<group>"; };
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				F4339AB6218D14B90016970A /* Other */,
 				F4544072218FAED2005719E4 /* Assets.xcassets */,
 				7A33F66921864FEF00CDFA96 /* AppDelegate.swift */,
+				F409BDCB21F2A247000098EB /* isaac.mp3 */,
 				7A33F66D21864FEF00CDFA96 /* Actions.sks */,
 				7A33F67121864FEF00CDFA96 /* GameViewController.swift */,
 				7A33F67321864FEF00CDFA96 /* Main.storyboard */,
@@ -350,6 +353,7 @@
 				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
 				F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */,
 				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
+				F409BDCC21F2A247000098EB /* isaac.mp3 in Resources */,
 				7A33F66E21864FEF00CDFA96 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

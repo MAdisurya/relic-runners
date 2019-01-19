@@ -11,6 +11,7 @@ import Foundation
 public enum GameState {
     case PLAY
     case PAUSE
+    case END
     case LEVEL_COMPLETE
 }
 
@@ -21,7 +22,7 @@ class RRGameManager {
     private init() {}
     
     // Initialize instance of GameState
-    private var gameState: GameState = .PAUSE;
+    private var gameState: GameState = .END;
     
     // Initialize instances of all managers
     private let m_EventManager = RREventManager();

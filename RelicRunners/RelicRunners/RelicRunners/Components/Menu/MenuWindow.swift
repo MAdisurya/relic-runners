@@ -31,7 +31,7 @@ class MenuWindow: SKNode {
         m_Background.texture?.filteringMode = .nearest;
         
         // Set up close button
-        m_CloseButton = CloseButton(image: "angry-face", window: self);
+        m_CloseButton = CloseButton(image: "close-button", window: self);
         m_CloseButton.position = CGPoint(x: -windowSize.width * 0.4, y: windowSize.width / 4);
         
         // Add components to Menu Window

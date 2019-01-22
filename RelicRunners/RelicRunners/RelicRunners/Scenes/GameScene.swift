@@ -85,7 +85,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_PauseButton.size = CGSize(width: 64, height: 64);
         m_PauseButton.texture = SKTexture(imageNamed: "pause-button");
         m_PauseButton.name = "pause-button";
-        gameCamera.addChild(m_PauseButton);
         
         // Generate Pause overlay
         m_PauseOverlay.position = CGPoint(x: 0, y: 0);
@@ -121,9 +120,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             RRGameManager.shared.getInputManager().setupSwipeUpGesture(view: view, scene: self, action: #selector(swipeUp))
         }
         
-        /// CREATE MUSIC MANAGER?
-        let backgroundMusic = SKAudioNode(fileNamed: "isaac.mp3");
-        self.addChild(backgroundMusic);
+        // Setup Music
+        RRGameManager.shared.getSoundManager().playBackgroundMusic(name: "isaac.mp3");
+        self.addChild(RRGameManager.shared.getSoundManager().getAudioNode());
         
         // Setup the gold label
         RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
@@ -240,6 +239,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (!m_MenuUI.isWindowOpen()) {
             // Only broadcast tap event if menu window is closed
             RRGameManager.shared.getEventManager().broadcastEvent(event: "menuTap");
+            
+            if (RRGameManager.shared.getGameState() == .END) {
+                gameCamera.addChild(m_PauseButton);
+            }
         }
     }
     
@@ -255,6 +258,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             // Add UI back to the game camera
             gameCamera.addChild(m_MenuUI.m_Title);
             gameCamera.addChild(m_MenuUI.m_TapLabel);
+            // Remove Pause button from UI
+            m_PauseButton.removeFromParent();
             
             // Despawn boss if boss is spawned and not dead
             if (!m_Boss.m_Dead && m_Spawner.isBossSpawned()) {
@@ -280,6 +285,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             
             // Set game state to pause
             RRGameManager.shared.setGameState(state: .PAUSE);
+            RRGameManager.shared.getSoundManager().pause();
             gameCamera.addChild(m_PauseOverlay);
             // Pause the game
             self.run(wait) {
@@ -290,6 +296,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (event == "playGame") {
             // Set game state to play
             RRGameManager.shared.setGameState(state: .PLAY);
+            RRGameManager.shared.getSoundManager().play();
             // Unpause the game
             self.view?.isPaused = false;
             

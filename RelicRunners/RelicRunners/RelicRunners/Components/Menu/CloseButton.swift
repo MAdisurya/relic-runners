@@ -17,6 +17,7 @@ class CloseButton: SKSpriteNode {
         
         self.m_Window = window;
         self.zPosition = 12;
+        self.texture?.filteringMode = .nearest;
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -28,6 +28,7 @@ class RRGameManager {
     private let m_EventManager = RREventManager();
     private let m_InputManager = RRInputManager();
     private let m_ScoreManager = RRScoreManager();
+    private let m_SoundManager = RRSoundManager();
     private let m_GarbageCollector = RRGarbageCollector();
     
     func getGameState() -> GameState {
@@ -49,6 +50,10 @@ class RRGameManager {
     
     func getScoreManager() -> RRScoreManager {
         return m_ScoreManager;
+    }
+    
+    func getSoundManager() -> RRSoundManager {
+        return m_SoundManager;
     }
     
     func getGarbageCollector() -> RRGarbageCollector {

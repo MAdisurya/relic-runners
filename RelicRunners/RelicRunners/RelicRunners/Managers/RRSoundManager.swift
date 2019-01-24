@@ -7,9 +7,9 @@
 //
 
 import SpriteKit
+import AVKit
 
 class RRSoundManager {
-    
     private var m_AudioNode = SKAudioNode();
     
     // Getters
@@ -24,15 +24,13 @@ class RRSoundManager {
     }
     
     func playBackgroundMusic(name musicName: String) {
-        m_AudioNode = SKAudioNode(fileNamed: musicName);
+        m_AudioNode = SKAudioNode(fileNamed: "isaac.mp3");
         play();
     }
     
     func play() {
         let playAction = SKAction.play();
         m_AudioNode.run(playAction);
-        
-        print("playing music");
     }
     
     func stop() {
@@ -43,8 +41,6 @@ class RRSoundManager {
     func pause() {
         let pauseAction = SKAction.pause();
         m_AudioNode.run(pauseAction);
-        
-        print("pausing music");
     }
     
     func mute() {

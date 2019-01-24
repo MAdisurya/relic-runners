@@ -24,6 +24,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_GoldLabel = SKLabelNode();
     private let m_PauseButton = SKSpriteNode();
     private let m_PauseOverlay = SKSpriteNode();
+    private let m_PlayOverlay = SKSpriteNode();
     
     private var m_MoveAmount: CGFloat = 160;
     
@@ -86,6 +87,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_PauseButton.texture = SKTexture(imageNamed: "pause-button");
         m_PauseButton.name = "pause-button";
         
+        #warning ("Potentially refactor Pause Overlay and Play Overlay")
         // Generate Pause overlay
         m_PauseOverlay.position = CGPoint(x: 0, y: 0);
         m_PauseOverlay.zPosition = 12;
@@ -93,6 +95,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_PauseOverlay.color = UIColor.black;
         m_PauseOverlay.alpha = 0.4;
         m_PauseOverlay.name = "pause-overlay";
+        
+        // Generate Play overlay
+        m_PlayOverlay.position = CGPoint(x: 0, y: 0);
+        m_PlayOverlay.zPosition = 9;
+        m_PlayOverlay.size = self.size;
+        m_PlayOverlay.name = "play-overlay";
+        gameCamera.addChild(m_PlayOverlay);
         
         // Generate the enemy and obstacle spawner
         m_Spawner.generateSpawner(scene: self);
@@ -211,19 +220,21 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         if let button = touchedNode as? MenuButton {
             // If menu button is tapped, and window is closed, open respective window
-            if (!m_MenuUI.isWindowOpen()) {
-                button.openWindow();
-                m_MenuUI.setWindowOpen(true);
-            }
+//            if (!m_MenuUI.isWindowOpen()) {
+//                button.openWindow();
+//                m_MenuUI.setWindowOpen(true);
+//            }
+            button.openWindow();
             return;
         }
         
         if let button = touchedNode as? CloseButton {
             // If the close button is tapped, and window is open, close the window
-            if (m_MenuUI.isWindowOpen()) {
-                button.closeWindow();
-                m_MenuUI.setWindowOpen(false);
-            }
+//            if (m_MenuUI.isWindowOpen()) {
+//                button.closeWindow();
+//                m_MenuUI.setWindowOpen(false);
+//            }
+            button.closeWindow();
             return;
         }
         
@@ -236,9 +247,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playGame");
         }
         
-        if (!m_MenuUI.isWindowOpen()) {
+        if (touchedNode.name == "play-overlay") {
             // Only broadcast tap event if menu window is closed
             RRGameManager.shared.getEventManager().broadcastEvent(event: "menuTap");
+            m_PlayOverlay.removeFromParent();
             
             if (RRGameManager.shared.getGameState() == .END) {
                 gameCamera.addChild(m_PauseButton);
@@ -258,6 +270,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             // Add UI back to the game camera
             gameCamera.addChild(m_MenuUI.m_Title);
             gameCamera.addChild(m_MenuUI.m_TapLabel);
+            gameCamera.addChild(m_PlayOverlay);
             // Remove Pause button from UI
             m_PauseButton.removeFromParent();
             

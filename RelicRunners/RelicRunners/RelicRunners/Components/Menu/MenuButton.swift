@@ -12,6 +12,16 @@ class MenuButton: SKSpriteNode {
     
     private var m_Window: MenuWindow!;
     
+    // Getters
+    func getWindow() -> MenuWindow {
+        return m_Window;
+    }
+    
+    // Setters
+    func setWindow(window: MenuWindow) {
+        m_Window = window;
+    }
+    
     init(image imageNamed: String, windowSize: CGSize, name: String) {
         super.init(texture: SKTexture(imageNamed: imageNamed), color: UIColor.clear, size: CGSize(width: 64, height: 64));
         
@@ -20,8 +30,7 @@ class MenuButton: SKSpriteNode {
         self.name = name;
         
         // Initialize menu window
-        m_Window = MenuWindow(windowSize: CGSize(width: 728, height: 740));
-        
+        m_Window = MenuWindow(windowSize: windowSize);
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,9 +40,5 @@ class MenuButton: SKSpriteNode {
     func openWindow() {
         // Add window to MenuUI
         self.parent?.addChild(m_Window);
-    }
-    
-    func setBackground(color: UIColor) {
-        m_Window.getBackground().color = color;
     }
 }

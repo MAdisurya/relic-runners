@@ -10,8 +10,8 @@ import SpriteKit
 
 class MenuWindow: SKNode {
 
-    private let m_Background = SKSpriteNode();
-    private var m_CloseButton: CloseButton!;
+    internal let m_Background = SKSpriteNode();
+    internal var m_CloseButton: CloseButton!;
     
     // Getters
     func getBackground() -> SKSpriteNode {
@@ -24,7 +24,7 @@ class MenuWindow: SKNode {
         self.zPosition = 11;
         
         // Set up background
-        m_Background.texture = SKTexture(imageNamed: "window-background");
+        m_Background.texture = SKTexture(imageNamed: "menu-window");
         m_Background.color = UIColor.green;
         m_Background.size = windowSize;
         m_Background.position = CGPoint(x: 0, y: 0);
@@ -37,6 +37,11 @@ class MenuWindow: SKNode {
         // Add components to Menu Window
         self.addChild(m_Background);
         self.addChild(m_CloseButton);
+    }
+    
+    func setBackground(name backgroundName: String) {
+        m_Background.texture = SKTexture(imageNamed: backgroundName);
+        m_Background.texture?.filteringMode = .nearest;
     }
     
     required init?(coder aDecoder: NSCoder) {

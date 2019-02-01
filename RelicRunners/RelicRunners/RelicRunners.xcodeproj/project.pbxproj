@@ -30,6 +30,7 @@
 		F4339ABC218D16090016970A /* RRGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABB218D16090016970A /* RRGameManager.swift */; };
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
+		F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D41BB2204E81500EEF363 /* PauseOverlay.swift */; };
 		F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4531B3A21AB941B0003FFBF /* Boss.swift */; };
 		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46109C021A253A0004CFB18 /* RRScoreManager.swift */; };
@@ -88,6 +89,7 @@
 		F4339ABB218D16090016970A /* RRGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGameManager.swift; sourceTree = "<group>"; };
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
+		F44D41BB2204E81500EEF363 /* PauseOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseOverlay.swift; sourceTree = "<group>"; };
 		F4531B3A21AB941B0003FFBF /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F46109C021A253A0004CFB18 /* RRScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRScoreManager.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				F41784E921EC5A7600B0D21C /* MenuWindow.swift */,
 				F46F1ECB21EDA89400BE1F64 /* CloseButton.swift */,
 				F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */,
+				F44D41BB2204E81500EEF363 /* PauseOverlay.swift */,
 				F4F6C5142202BD200019AA15 /* RROverlay.swift */,
 			);
 			path = Menu;
@@ -423,6 +426,7 @@
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
 				F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */,
 				F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */,
+				F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */,
 				F4D0245D21F6E14B00F5B095 /* RRSoundManager.swift in Sources */,
 				F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */,
 			);

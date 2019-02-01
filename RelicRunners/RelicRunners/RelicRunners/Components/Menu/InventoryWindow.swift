@@ -15,6 +15,8 @@ class InventoryWindow: MenuWindow {
     private var m_MagicSlot: MenuButton!;
     private var m_ArmourSlot: MenuButton!;
     
+    private var m_Doll = SKSpriteNode(imageNamed: "doll");
+    
     private let m_SlotSize = CGSize(width: 128, height: 128);
     
     override init(windowSize: CGSize) {
@@ -39,17 +41,23 @@ class InventoryWindow: MenuWindow {
         self.m_RangedSlot.size = m_SlotSize;
         self.m_MagicSlot.size = m_SlotSize;
         self.m_ArmourSlot.size = m_SlotSize;
+        self.m_Doll.size = CGSize(width: 576, height: 520);
         
         self.m_SwordSlot.position = CGPoint(x: -192, y: -176);
         self.m_RangedSlot.position = CGPoint(x: 192, y: -176);
         self.m_MagicSlot.position = CGPoint(x: -192, y: 176);
-        self.m_ArmourSlot.position = CGPoint(x: 192, y: 176ß);
+        self.m_ArmourSlot.position = CGPoint(x: 192, y: 176);
+        self.m_Doll.position = CGPoint(x: 0, y: 0);
+        
+        self.m_Doll.zPosition = 10;
+        self.m_Doll.texture?.filteringMode = .nearest;
         
         // Add slots to window
         self.addChild(m_SwordSlot);
         self.addChild(m_RangedSlot);
         self.addChild(m_MagicSlot);
         self.addChild(m_ArmourSlot);
+        self.addChild(m_Doll);
     }
     
     required init?(coder aDecoder: NSCoder) {

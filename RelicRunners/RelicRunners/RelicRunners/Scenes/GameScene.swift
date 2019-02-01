@@ -24,7 +24,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_GoldLabel = SKLabelNode();
     private let m_PauseButton = SKSpriteNode();
     
-    private let m_PauseOverlay = RROverlay();
+    private let m_PauseOverlay = PauseOverlay();
     private let m_PlayOverlay = RROverlay();
     
     private var m_MoveAmount: CGFloat = 160;
@@ -79,7 +79,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         // Generate the HealthBar
         m_HealthBar.generate(position: CGPoint(x: -432, y: 224), health: m_Player.m_Health);
-        gameCamera.addChild(m_HealthBar);
         
         // Generate Pause Button
         m_PauseButton.position = CGPoint(x: 0, y: 224);
@@ -212,21 +211,11 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         let touchedNode = self.atPoint(location);
         
         if let button = touchedNode as? MenuButton {
-            // If menu button is tapped, and window is closed, open respective window
-//            if (!m_MenuUI.isWindowOpen()) {
-//                button.openWindow();
-//                m_MenuUI.setWindowOpen(true);
-//            }
             button.openWindow();
             return;
         }
         
         if let button = touchedNode as? CloseButton {
-            // If the close button is tapped, and window is open, close the window
-//            if (m_MenuUI.isWindowOpen()) {
-//                button.closeWindow();
-//                m_MenuUI.setWindowOpen(false);
-//            }
             button.closeWindow();
             return;
         }
@@ -234,6 +223,14 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         if (touchedNode.name == "pause-button") {
             // If pause button is tapped, pause the game
             RRGameManager.shared.getEventManager().broadcastEvent(event: "pauseGame");
+        }
+        
+        if (touchedNode.name == "back-to-menu") {
+            // If back to menu button is tapped, then end game and go back to menu
+            // Unpause game
+            RRGameManager.shared.getEventManager().broadcastEvent(event: "playGame");
+            // Kill player to reset game
+            m_Player.die();
         }
         
         if (touchedNode.name == "pause-overlay") {
@@ -247,6 +244,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             
             if (RRGameManager.shared.getGameState() == .END) {
                 gameCamera.addChild(m_PauseButton);
+                gameCamera.addChild(m_HealthBar);
             }
         }
     }
@@ -266,6 +264,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             gameCamera.addChild(m_PlayOverlay);
             // Remove Pause button from UI
             m_PauseButton.removeFromParent();
+            // Remove health bar from UI
+            m_HealthBar.removeFromParent();
             
             // Despawn boss if boss is spawned and not dead
             if (!m_Boss.m_Dead && m_Spawner.isBossSpawned()) {

@@ -44,19 +44,19 @@ class RRGarbageCollector {
     
     func garbageCollection(scene: SKScene, camera: Camera) {
         for enemy in enemyRegister {
-            if (camera.position.x > enemy.position.x + scene.size.height) {
+            if (camera.position.x > enemy.position.x + scene.size.width) {
                 enemy.destroy();
             }
         }
         
         for obstacle in obstacleRegister {
-            if (camera.position.x > obstacle.position.x + scene.size.height) {
+            if (camera.position.x > obstacle.position.x + scene.size.width) {
                 obstacle.destroy();
             }
         }
         
         for powerUp in powerUpRegister {
-            if (camera.position.x > powerUp.position.x + scene.size.height) {
+            if (camera.position.x > powerUp.position.x + scene.size.width) {
                 powerUp.destroy();
             }
         }

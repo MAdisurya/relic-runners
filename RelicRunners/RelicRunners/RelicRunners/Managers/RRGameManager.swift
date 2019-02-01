@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mario Adisurya. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 public enum GameState {
     case PLAY
@@ -24,6 +24,8 @@ class RRGameManager {
     // Initialize instance of GameState
     private var gameState: GameState = .END;
     
+    private var m_GlobalSceneSize = CGSize(width: 1280, height: 720);
+    
     // Initialize instances of all managers
     private let m_EventManager = RREventManager();
     private let m_InputManager = RRInputManager();
@@ -35,8 +37,16 @@ class RRGameManager {
         return gameState;
     }
     
+    func getGlobalSceneSize() -> CGSize {
+        return m_GlobalSceneSize;
+    }
+    
     func setGameState(state: GameState) {
         gameState = state;
+    }
+    
+    func setGlobalSceneSize(size: CGSize) {
+        m_GlobalSceneSize = size;
     }
     
     // Getter functions for Managers

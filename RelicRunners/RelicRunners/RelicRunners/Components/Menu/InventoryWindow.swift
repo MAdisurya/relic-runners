@@ -40,10 +40,10 @@ class InventoryWindow: MenuWindow {
         self.m_MagicSlot.size = m_SlotSize;
         self.m_ArmourSlot.size = m_SlotSize;
         
-        self.m_SwordSlot.position = CGPoint(x: -256, y: -256);
-        self.m_RangedSlot.position = CGPoint(x: 256, y: -256);
-        self.m_MagicSlot.position = CGPoint(x: -256, y: 256);
-        self.m_ArmourSlot.position = CGPoint(x: 256, y: 256);
+        self.m_SwordSlot.position = CGPoint(x: -192, y: -176);
+        self.m_RangedSlot.position = CGPoint(x: 192, y: -176);
+        self.m_MagicSlot.position = CGPoint(x: -192, y: 176);
+        self.m_ArmourSlot.position = CGPoint(x: 192, y: 176ß);
         
         // Add slots to window
         self.addChild(m_SwordSlot);

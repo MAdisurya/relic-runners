@@ -22,6 +22,8 @@ class GameViewController: UIViewController {
                 scene.size = CGSize(width: 1024, height: 768);
                 scene.scaleMode = .aspectFill;
                 
+                RRGameManager.shared.setGlobalSceneSize(size: scene.size);
+                
                 // Present the scene
                 view.presentScene(scene)
             }

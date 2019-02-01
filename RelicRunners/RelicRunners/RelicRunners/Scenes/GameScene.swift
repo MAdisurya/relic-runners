@@ -23,8 +23,9 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     private let m_ScoreLabel = SKLabelNode();
     private let m_GoldLabel = SKLabelNode();
     private let m_PauseButton = SKSpriteNode();
-    private let m_PauseOverlay = SKSpriteNode();
-    private let m_PlayOverlay = SKSpriteNode();
+    
+    private let m_PauseOverlay = RROverlay();
+    private let m_PlayOverlay = RROverlay();
     
     private var m_MoveAmount: CGFloat = 160;
     
@@ -87,20 +88,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         m_PauseButton.texture = SKTexture(imageNamed: "pause-button");
         m_PauseButton.name = "pause-button";
         
-        #warning ("Potentially refactor Pause Overlay and Play Overlay")
-        // Generate Pause overlay
-        m_PauseOverlay.position = CGPoint(x: 0, y: 0);
-        m_PauseOverlay.zPosition = 12;
-        m_PauseOverlay.size = self.size;
-        m_PauseOverlay.color = UIColor.black;
-        m_PauseOverlay.alpha = 0.4;
-        m_PauseOverlay.name = "pause-overlay";
+        // Overlays
+        m_PauseOverlay.generate(name: "pause-overlay", zPos: 12, color: UIColor.black);
+        m_PlayOverlay.generate(name: "play-overlay", zPos: 9);
         
-        // Generate Play overlay
-        m_PlayOverlay.position = CGPoint(x: 0, y: 0);
-        m_PlayOverlay.zPosition = 9;
-        m_PlayOverlay.size = self.size;
-        m_PlayOverlay.name = "play-overlay";
+        m_PauseOverlay.alpha = 0.4;
+        
         gameCamera.addChild(m_PlayOverlay);
         
         // Generate the enemy and obstacle spawner

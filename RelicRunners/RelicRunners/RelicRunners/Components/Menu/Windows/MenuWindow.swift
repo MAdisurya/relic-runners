@@ -18,8 +18,10 @@ class MenuWindow: SKNode {
         return m_Background;
     }
     
-    init(windowSize: CGSize) {
+    override init() {
         super.init();
+        
+        let windowSize: CGSize = RRGameManager.shared.getGlobalSceneSize();
         
         self.zPosition = 11;
         
@@ -42,6 +44,10 @@ class MenuWindow: SKNode {
     func setBackground(name backgroundName: String) {
         m_Background.texture = SKTexture(imageNamed: backgroundName);
         m_Background.texture?.filteringMode = .nearest;
+    }
+    
+    func setWindowSize(size: CGSize) {
+        m_Background.size = size;
     }
     
     required init?(coder aDecoder: NSCoder) {

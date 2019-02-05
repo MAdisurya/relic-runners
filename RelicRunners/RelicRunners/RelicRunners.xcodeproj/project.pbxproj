@@ -20,6 +20,10 @@
 		7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */; };
 		7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68B21865ED900CDFA96 /* BGSprite.swift */; };
 		F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */; };
+		F40F2B2322096E80001D86C4 /* WeaponSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2222096E80001D86C4 /* WeaponSlot.swift */; };
+		F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B262209741A001D86C4 /* ItemWindow.swift */; };
+		F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B28220975CC001D86C4 /* SwordWindow.swift */; };
+		F40F2B2C220976C4001D86C4 /* RRSwords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2B220976C4001D86C4 /* RRSwords.swift */; };
 		F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412050421B8F86700A81FD1 /* UIIndicator.swift */; };
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
@@ -79,6 +83,10 @@
 		7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
 		7A33F68B21865ED900CDFA96 /* BGSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSprite.swift; sourceTree = "<group>"; };
 		F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryWindow.swift; sourceTree = "<group>"; };
+		F40F2B2222096E80001D86C4 /* WeaponSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSlot.swift; sourceTree = "<group>"; };
+		F40F2B262209741A001D86C4 /* ItemWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemWindow.swift; sourceTree = "<group>"; };
+		F40F2B28220975CC001D86C4 /* SwordWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordWindow.swift; sourceTree = "<group>"; };
+		F40F2B2B220976C4001D86C4 /* RRSwords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRSwords.swift; sourceTree = "<group>"; };
 		F412050421B8F86700A81FD1 /* UIIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIndicator.swift; sourceTree = "<group>"; };
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
@@ -157,6 +165,7 @@
 				F4339AB1218D13740016970A /* Managers */,
 				7A33F68421865CF700CDFA96 /* Scenes */,
 				7A33F683218650A000CDFA96 /* Components */,
+				F40F2B2A220976A6001D86C4 /* Models */,
 				F4339ABF218DA2BD0016970A /* Enums */,
 				F4339AB6218D14B90016970A /* Other */,
 				F4F6C5162202C28F0019AA15 /* Music */,
@@ -206,14 +215,41 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		F40F2B2422096F42001D86C4 /* Slots */ = {
+			isa = PBXGroup;
+			children = (
+				F40F2B2222096E80001D86C4 /* WeaponSlot.swift */,
+			);
+			path = Slots;
+			sourceTree = "<group>";
+		};
+		F40F2B25220973F5001D86C4 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				F41784E921EC5A7600B0D21C /* MenuWindow.swift */,
+				F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */,
+				F40F2B262209741A001D86C4 /* ItemWindow.swift */,
+				F40F2B28220975CC001D86C4 /* SwordWindow.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		F40F2B2A220976A6001D86C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F40F2B2B220976C4001D86C4 /* RRSwords.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F41784E621EC47D700B0D21C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				F40F2B25220973F5001D86C4 /* Windows */,
+				F40F2B2422096F42001D86C4 /* Slots */,
 				F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */,
 				F41784E721EC47EE00B0D21C /* MenuButton.swift */,
-				F41784E921EC5A7600B0D21C /* MenuWindow.swift */,
 				F46F1ECB21EDA89400BE1F64 /* CloseButton.swift */,
-				F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */,
 				F44D41BB2204E81500EEF363 /* PauseOverlay.swift */,
 				F4F6C5142202BD200019AA15 /* RROverlay.swift */,
 			);
@@ -400,6 +436,7 @@
 				F48E8B2B21CB32D6001A5FA1 /* BossWeaponHolder.swift in Sources */,
 				F48E8B2121CA3535001A5FA1 /* BossLaser.swift in Sources */,
 				F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */,
+				F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */,
 				F471919921B1E05F00B09143 /* PowerUp.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,
@@ -415,12 +452,14 @@
 				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
 				F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */,
 				F4BD18F821C86749003ED96C /* HealthBar.swift in Sources */,
+				F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
 				F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */,
 				F46F1ECC21EDA89400BE1F64 /* CloseButton.swift in Sources */,
 				F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */,
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
+				F40F2B2322096E80001D86C4 /* WeaponSlot.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,
 				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
@@ -429,6 +468,7 @@
 				F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */,
 				F4D0245D21F6E14B00F5B095 /* RRSoundManager.swift in Sources */,
 				F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */,
+				F40F2B2C220976C4001D86C4 /* RRSwords.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

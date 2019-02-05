@@ -15,24 +15,26 @@ class InventoryWindow: MenuWindow {
     private var m_MagicSlot: MenuButton!;
     private var m_ArmourSlot: MenuButton!;
     
+    private let m_SwordWindow = SwordWindow();
+    
     private var m_Doll = SKSpriteNode(imageNamed: "doll");
     
     private let m_SlotSize = CGSize(width: 128, height: 128);
     
-    override init(windowSize: CGSize) {
-        super.init(windowSize: windowSize);
+    override init() {
+        super.init();
         
         setBackground(name: "menu-window");
         
         #warning ("Need to refactor, create class for slots")
         
         // Initialize slot buttons
-        self.m_SwordSlot = MenuButton(image: "sword-slot", windowSize: windowSize, name: "sword-slot");
-        self.m_RangedSlot = MenuButton(image: "ranged-slot", windowSize: windowSize, name: "ranged-slot");
-        self.m_MagicSlot = MenuButton(image: "magic-slot", windowSize: windowSize, name: "magic-slot");
-        self.m_ArmourSlot = MenuButton(image: "armour-slot", windowSize: windowSize, name: "armour-slot");
+        self.m_SwordSlot = MenuButton(image: "sword-slot", name: "sword-slot");
+        self.m_RangedSlot = MenuButton(image: "ranged-slot", name: "ranged-slot");
+        self.m_MagicSlot = MenuButton(image: "magic-slot", name: "magic-slot");
+        self.m_ArmourSlot = MenuButton(image: "armour-slot", name: "armour-slot");
         
-        self.m_SwordSlot.getWindow().setBackground(name: "items-window");
+        self.m_SwordSlot.setWindow(window: m_SwordWindow);
         self.m_RangedSlot.getWindow().setBackground(name: "items-window");
         self.m_MagicSlot.getWindow().setBackground(name: "items-window");
         self.m_ArmourSlot.getWindow().setBackground(name: "items-window");
@@ -41,13 +43,14 @@ class InventoryWindow: MenuWindow {
         self.m_RangedSlot.size = m_SlotSize;
         self.m_MagicSlot.size = m_SlotSize;
         self.m_ArmourSlot.size = m_SlotSize;
-        self.m_Doll.size = CGSize(width: 576, height: 520);
+//        self.m_Doll.size = CGSize(width: 576, height: 520);
+        self.m_Doll.size = CGSize(width: 288, height: 260);
         
         self.m_SwordSlot.position = CGPoint(x: -192, y: -176);
         self.m_RangedSlot.position = CGPoint(x: 192, y: -176);
         self.m_MagicSlot.position = CGPoint(x: -192, y: 176);
         self.m_ArmourSlot.position = CGPoint(x: 192, y: 176);
-        self.m_Doll.position = CGPoint(x: 0, y: 0);
+        self.m_Doll.position = CGPoint(x: 0, y: 0 );
         
         self.m_Doll.zPosition = 10;
         self.m_Doll.texture?.filteringMode = .nearest;

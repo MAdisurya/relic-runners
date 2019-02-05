@@ -220,9 +220,15 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             return;
         }
         
+        if let weaponSlot = touchedNode as? WeaponSlot {
+            print(weaponSlot.getWeaponName());
+            return;
+        }
+        
         if (touchedNode.name == "pause-button") {
             // If pause button is tapped, pause the game
             RRGameManager.shared.getEventManager().broadcastEvent(event: "pauseGame");
+            return;
         }
         
         if (touchedNode.name == "back-to-menu") {
@@ -231,10 +237,13 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playGame");
             // Kill player to reset game
             m_Player.die();
+            
+            return;
         }
         
         if (touchedNode.name == "pause-overlay") {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playGame");
+            return;
         }
         
         if (touchedNode.name == "play-overlay") {
@@ -246,6 +255,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
                 gameCamera.addChild(m_PauseButton);
                 gameCamera.addChild(m_HealthBar);
             }
+            
+            return;
         }
     }
     

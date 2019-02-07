@@ -63,6 +63,8 @@
 		F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB421A96F8800F0761B /* slkscrb.ttf */; };
 		F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */; };
 		F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F04CD221C7A89800A8B1E0 /* Extensions.swift */; };
+		F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C7220C205F00114C12 /* RRRanged.swift */; };
+		F4F0F8CA220C21FF00114C12 /* RRMagic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C9220C21FF00114C12 /* RRMagic.swift */; };
 		F4F6C5152202BD200019AA15 /* RROverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6C5142202BD200019AA15 /* RROverlay.swift */; };
 		F4F6C51A2202C2D80019AA15 /* isaac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4F6C5192202C2D80019AA15 /* isaac.mp3 */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,8 @@
 		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
 		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
 		F4F04CD221C7A89800A8B1E0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F4F0F8C7220C205F00114C12 /* RRRanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRRanged.swift; sourceTree = "<group>"; };
+		F4F0F8C9220C21FF00114C12 /* RRMagic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRMagic.swift; sourceTree = "<group>"; };
 		F4F6C5142202BD200019AA15 /* RROverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RROverlay.swift; sourceTree = "<group>"; };
 		F4F6C5192202C2D80019AA15 /* isaac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = isaac.mp3; path = ../../../../../music/isaac.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				F40F2B2B220976C4001D86C4 /* RRSwords.swift */,
+				F4F0F8C7220C205F00114C12 /* RRRanged.swift */,
+				F4F0F8C9220C21FF00114C12 /* RRMagic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,9 +444,11 @@
 				F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */,
 				F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */,
 				F471919921B1E05F00B09143 /* PowerUp.swift in Sources */,
+				F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,
 				F47191A221B1EA6F00B09143 /* Player.swift in Sources */,
+				F4F0F8CA220C21FF00114C12 /* RRMagic.swift in Sources */,
 				F4339AB3218D13880016970A /* RRInputManager.swift in Sources */,
 				7A33F68621865D5700CDFA96 /* MainMenuScene.swift in Sources */,
 				7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */,

@@ -22,10 +22,12 @@ class SwordWindow: ItemWindow {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func generateWeaponSlots() {
+    override func generateWeaponSlots() {
+        super.generateWeaponSlots();
+        
         // Add the swords into the items array
-        for i in 0..<m_SwordsModel.m_SwordsArray.count {
-            let swordSlot = WeaponSlot(name: m_SwordsModel.m_SwordsArray[i], pos: CGPoint(x: 0, y: (128 + 16) * -i));
+        for i in 0..<m_SwordsModel.swordsArray.count {
+            let swordSlot = WeaponSlot(name: m_SwordsModel.swordsArray[i], pos: CGPoint(x: 0, y: (128 + 16) * -i));
             m_ItemArray.append(swordSlot);
             
             // Add the sword slot into the window

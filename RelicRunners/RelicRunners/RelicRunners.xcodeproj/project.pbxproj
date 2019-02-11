@@ -20,7 +20,7 @@
 		7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */; };
 		7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68B21865ED900CDFA96 /* BGSprite.swift */; };
 		F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */; };
-		F40F2B2322096E80001D86C4 /* WeaponSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2222096E80001D86C4 /* WeaponSlot.swift */; };
+		F40F2B2322096E80001D86C4 /* ItemSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2222096E80001D86C4 /* ItemSlot.swift */; };
 		F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B262209741A001D86C4 /* ItemWindow.swift */; };
 		F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B28220975CC001D86C4 /* SwordWindow.swift */; };
 		F40F2B2C220976C4001D86C4 /* RRSwords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2B220976C4001D86C4 /* RRSwords.swift */; };
@@ -38,6 +38,8 @@
 		F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4531B3A21AB941B0003FFBF /* Boss.swift */; };
 		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46109C021A253A0004CFB18 /* RRScoreManager.swift */; };
+		F46229BB221157D000283349 /* RRInventoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46229BA221157D000283349 /* RRInventoryManager.swift */; };
+		F46229BD2211592A00283349 /* ItemTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46229BC2211592A00283349 /* ItemTypes.swift */; };
 		F46B75B721C8DEB700355BC2 /* Mechazoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B75B621C8DEB700355BC2 /* Mechazoid.swift */; };
 		F46F1ECC21EDA89400BE1F64 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1ECB21EDA89400BE1F64 /* CloseButton.swift */; };
 		F471919921B1E05F00B09143 /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919821B1E05F00B09143 /* PowerUp.swift */; };
@@ -62,6 +64,7 @@
 		F4DE7DB821A971FC00F0761B /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB321A96F8800F0761B /* slkscr.ttf */; };
 		F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB421A96F8800F0761B /* slkscrb.ttf */; };
 		F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */; };
+		F4E6BEAE220E2901006E7DC3 /* robot.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4E6BEAD220E2901006E7DC3 /* robot.wav */; };
 		F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F04CD221C7A89800A8B1E0 /* Extensions.swift */; };
 		F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C7220C205F00114C12 /* RRRanged.swift */; };
 		F4F0F8CA220C21FF00114C12 /* RRMagic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C9220C21FF00114C12 /* RRMagic.swift */; };
@@ -85,7 +88,7 @@
 		7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
 		7A33F68B21865ED900CDFA96 /* BGSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSprite.swift; sourceTree = "<group>"; };
 		F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryWindow.swift; sourceTree = "<group>"; };
-		F40F2B2222096E80001D86C4 /* WeaponSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSlot.swift; sourceTree = "<group>"; };
+		F40F2B2222096E80001D86C4 /* ItemSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSlot.swift; sourceTree = "<group>"; };
 		F40F2B262209741A001D86C4 /* ItemWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemWindow.swift; sourceTree = "<group>"; };
 		F40F2B28220975CC001D86C4 /* SwordWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordWindow.swift; sourceTree = "<group>"; };
 		F40F2B2B220976C4001D86C4 /* RRSwords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRSwords.swift; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 		F4531B3A21AB941B0003FFBF /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F46109C021A253A0004CFB18 /* RRScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRScoreManager.swift; sourceTree = "<group>"; };
+		F46229BA221157D000283349 /* RRInventoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRInventoryManager.swift; sourceTree = "<group>"; };
+		F46229BC2211592A00283349 /* ItemTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypes.swift; sourceTree = "<group>"; };
 		F46B75B621C8DEB700355BC2 /* Mechazoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mechazoid.swift; sourceTree = "<group>"; };
 		F46F1ECB21EDA89400BE1F64 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		F471919821B1E05F00B09143 /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		F4DE7DB321A96F8800F0761B /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
 		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
 		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
+		F4E6BEAD220E2901006E7DC3 /* robot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = robot.wav; path = ../../../../../music/robot.wav; sourceTree = "<group>"; };
 		F4F04CD221C7A89800A8B1E0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F4F0F8C7220C205F00114C12 /* RRRanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRRanged.swift; sourceTree = "<group>"; };
 		F4F0F8C9220C21FF00114C12 /* RRMagic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRMagic.swift; sourceTree = "<group>"; };
@@ -222,7 +228,7 @@
 		F40F2B2422096F42001D86C4 /* Slots */ = {
 			isa = PBXGroup;
 			children = (
-				F40F2B2222096E80001D86C4 /* WeaponSlot.swift */,
+				F40F2B2222096E80001D86C4 /* ItemSlot.swift */,
 			);
 			path = Slots;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 				F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */,
 				F46109C021A253A0004CFB18 /* RRScoreManager.swift */,
 				F4D0245C21F6E14B00F5B095 /* RRSoundManager.swift */,
+				F46229BA221157D000283349 /* RRInventoryManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -291,6 +298,7 @@
 				F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */,
 				F4339AC0218DA2DF0016970A /* CharacterTypes.swift */,
 				F471919F21B1E59B00B09143 /* PowerUpTypes.swift */,
+				F46229BC2211592A00283349 /* ItemTypes.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -344,6 +352,7 @@
 		F4F6C5162202C28F0019AA15 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				F4E6BEAD220E2901006E7DC3 /* robot.wav */,
 				F4F6C5192202C2D80019AA15 /* isaac.mp3 */,
 			);
 			path = Music;
@@ -414,6 +423,7 @@
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
 				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
 				F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */,
+				F4E6BEAE220E2901006E7DC3 /* robot.wav in Resources */,
 				F4F6C51A2202C2D80019AA15 /* isaac.mp3 in Resources */,
 				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
 				7A33F66E21864FEF00CDFA96 /* Actions.sks in Resources */,
@@ -429,6 +439,7 @@
 			files = (
 				F48E8B2921CB0D6B001A5FA1 /* BossWeapon.swift in Sources */,
 				F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */,
+				F46229BD2211592A00283349 /* ItemTypes.swift in Sources */,
 				F46B75B721C8DEB700355BC2 /* Mechazoid.swift in Sources */,
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
 				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
@@ -445,6 +456,7 @@
 				F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */,
 				F471919921B1E05F00B09143 /* PowerUp.swift in Sources */,
 				F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */,
+				F46229BB221157D000283349 /* RRInventoryManager.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,
 				F47191A221B1EA6F00B09143 /* Player.swift in Sources */,
@@ -467,7 +479,7 @@
 				F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */,
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
-				F40F2B2322096E80001D86C4 /* WeaponSlot.swift in Sources */,
+				F40F2B2322096E80001D86C4 /* ItemSlot.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,
 				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,

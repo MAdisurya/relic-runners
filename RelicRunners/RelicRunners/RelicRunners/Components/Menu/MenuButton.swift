@@ -40,5 +40,7 @@ class MenuButton: SKSpriteNode {
     func openWindow() {
         // Add window to MenuUI
         self.parent?.addChild(m_Window);
+        
+        m_Window.openWindowHandler();
     }
 }

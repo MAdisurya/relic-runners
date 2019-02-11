@@ -24,7 +24,7 @@ class RRSoundManager {
     }
     
     func playBackgroundMusic(name musicName: String) {
-        m_AudioNode = SKAudioNode(fileNamed: "isaac.mp3");
+        m_AudioNode = SKAudioNode(fileNamed: musicName);
         play();
     }
     

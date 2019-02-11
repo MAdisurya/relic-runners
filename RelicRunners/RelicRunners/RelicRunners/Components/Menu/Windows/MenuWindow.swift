@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MenuWindow: SKNode {
+class MenuWindow: SKNode, RREventListener {
 
     internal let m_Background = SKSpriteNode();
     internal var m_CloseButton: CloseButton!;
@@ -39,6 +39,8 @@ class MenuWindow: SKNode {
         // Add components to Menu Window
         self.addChild(m_Background);
         self.addChild(m_CloseButton);
+        
+        RRGameManager.shared.getEventManager().registerEventListener(listener: self);
     }
     
     func setBackground(name backgroundName: String) {
@@ -52,5 +54,19 @@ class MenuWindow: SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func openWindowHandler() {
+        
+    }
+    
+    func listen(event: String) {
+        
+    }
+    
+    func listen<T>(event: inout T) {
+        if let closeButton = event as? CloseButton {
+            closeButton.closeWindow();
+        }
     }
 }

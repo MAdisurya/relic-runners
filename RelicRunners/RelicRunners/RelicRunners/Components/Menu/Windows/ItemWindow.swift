@@ -10,13 +10,15 @@ import SpriteKit
 
 class ItemWindow: MenuWindow {
     
-    internal var m_ItemArray: [WeaponSlot] = [];
+    internal var m_ItemArray: [ItemSlot] = [];
     
     override init() {
         super.init();
         
         self.m_Background.texture = SKTexture(imageNamed: "items-window");
         self.m_Background.texture?.filteringMode = .nearest;
+        
+        self.generateWeaponSlots();
     }
     
     required init?(coder aDecoder: NSCoder) {

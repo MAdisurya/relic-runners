@@ -122,7 +122,7 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         }
         
         // Setup Music
-        RRGameManager.shared.getSoundManager().playBackgroundMusic(name: "isaac.mp3");
+        RRGameManager.shared.getSoundManager().playBackgroundMusic(name: "robot.wav");
         self.addChild(RRGameManager.shared.getSoundManager().getAudioNode());
         
         // Setup the gold label
@@ -212,16 +212,19 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         if let button = touchedNode as? MenuButton {
             button.openWindow();
+            
             return;
         }
         
-        if let button = touchedNode as? CloseButton {
-            button.closeWindow();
+        if var button = touchedNode as? CloseButton {
+            RRGameManager.shared.getEventManager().broadcastEvent(event: &button);
+            
             return;
         }
         
-        if let weaponSlot = touchedNode as? WeaponSlot {
-            print(weaponSlot.getWeaponName());
+        if let itemSlot = touchedNode as? ItemSlot {
+            itemSlot.equip();
+            
             return;
         }
         

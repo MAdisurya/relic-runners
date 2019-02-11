@@ -28,4 +28,11 @@ class CloseButton: SKSpriteNode {
         // Remove the window from the UI
         m_Window?.removeFromParent();
     }
+    
+    func closeWindow(completion: @escaping () -> Void) {
+        completion();
+        
+        // Remove the window from the UI
+        m_Window?.removeFromParent();
+    }
 }

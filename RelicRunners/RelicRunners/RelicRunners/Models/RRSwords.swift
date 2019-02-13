@@ -7,5 +7,5 @@
 //
 
 struct RRSwords {
-    let swordsArray: [String] = ["sword1", "sword2", "sword3"];
+    let swordsArray: [String] = ["sword1", "sword2", "sword3", "sword4", "sword5"];
 }

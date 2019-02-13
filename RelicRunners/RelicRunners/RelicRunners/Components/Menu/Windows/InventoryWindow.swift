@@ -15,7 +15,7 @@ class InventoryWindow: MenuWindow {
     private var m_MagicSlot: MenuButton!;
     private var m_ArmourSlot: MenuButton!;
     
-    private let m_SwordWindow = SwordWindow();
+    private var m_SwordWindow: SwordWindow!;
     
     private var m_Doll = SKSpriteNode(imageNamed: "doll");
     
@@ -24,7 +24,9 @@ class InventoryWindow: MenuWindow {
     override init() {
         super.init();
         
-        setBackground(name: "menu-window");
+        self.setBackground(name: "menu-window");
+        
+        self.m_SwordWindow = SwordWindow(inventoryWindow: self);
         
         #warning ("Need to refactor, create class for slots")
         
@@ -61,9 +63,16 @@ class InventoryWindow: MenuWindow {
         self.addChild(m_MagicSlot);
         self.addChild(m_ArmourSlot);
         self.addChild(m_Doll);
+        
+        self.update();
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update() {
+        // Update the item slots
+        self.m_SwordSlot.texture = SKTexture(imageNamed: RRGameManager.shared.getInventoryManager().retrieveSword());
     }
 }

@@ -51,7 +51,5 @@ class ItemSlot: SKSpriteNode {
     
     func equip() {
         RRGameManager.shared.getInventoryManager().equipItem(itemType: m_ItemType, itemName: m_ItemName);
-        
-        print("Equipped: " + m_ItemName);
     }
 }

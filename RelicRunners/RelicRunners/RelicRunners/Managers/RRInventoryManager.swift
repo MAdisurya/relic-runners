@@ -17,6 +17,13 @@ class RRInventoryManager {
     
     private let m_UserDefaults = UserDefaults.standard;
     
+    init() {
+        self.m_EquippedSword = retrieveSword();
+        self.m_EquippedRanged = retrieveRanged();
+        self.m_EquippedMagic = retrieveMagic();
+        self.m_EquippedArmour = retrieveArmour();
+    }
+    
     func equipItem(itemType type: ItemTypes, itemName name: String) {
         // Assign item names based on item type
         

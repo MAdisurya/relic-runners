@@ -26,7 +26,9 @@ class Player: Character {
     override init(type characterType: CharacterTypes) {
         super.init(type: characterType);
         
-        m_Health = 3;
+        self.m_Animation = PlayerAnimation();
+        
+        self.m_Health = 3;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,19 +46,8 @@ class Player: Character {
         self.xScale = 0.85;
         self.yScale = 0.85;
         
-        // Sprite animations
-        let atlas = SKTextureAtlas(named: "archer-run");
-        var textures: [SKTexture] = [];
-        
-        for textureName in atlas.textureNames {
-            atlas.textureNamed(textureName).filteringMode = .nearest;
-            textures.append(atlas.textureNamed(textureName));
-        }
-        
-        let run = SKAction.animate(with: textures, timePerFrame: 0.1);
-        let runForever = SKAction.repeatForever(run);
-        
-        self.run(runForever);
+        // Default animation
+        self.run(m_Animation.run(speed: 0.1));
     }
     
     func reset() {

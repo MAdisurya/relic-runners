@@ -22,6 +22,8 @@ class Character: SKSpriteNode, RREventListener {
     internal var m_Invinsible = false;
     internal let m_GoldAmount: Int = Int.random(in: 1...5);
     
+    internal var m_Animation: Animation = Animation();
+    
     // Default values
     internal var defaultSpeed: Double!;
     

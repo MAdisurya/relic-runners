@@ -28,6 +28,8 @@
 		F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412050421B8F86700A81FD1 /* UIIndicator.swift */; };
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
+		F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB2221769BB003C4980 /* PlayerAnimation.swift */; };
+		F4302EB522176B4D003C4980 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB422176B4D003C4980 /* Animation.swift */; };
 		F4339AB3218D13880016970A /* RRInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB2218D13880016970A /* RRInputManager.swift */; };
 		F4339AB5218D14200016970A /* RREventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB4218D14200016970A /* RREventManager.swift */; };
 		F4339AB8218D14D00016970A /* RREvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB7218D14D00016970A /* RREvent.swift */; };
@@ -97,6 +99,8 @@
 		F412050421B8F86700A81FD1 /* UIIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIndicator.swift; sourceTree = "<group>"; };
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
+		F4302EB2221769BB003C4980 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
+		F4302EB422176B4D003C4980 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F4339AB2218D13880016970A /* RRInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRInputManager.swift; sourceTree = "<group>"; };
 		F4339AB4218D14200016970A /* RREventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREventManager.swift; sourceTree = "<group>"; };
 		F4339AB7218D14D00016970A /* RREvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREvent.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		7A33F683218650A000CDFA96 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F4302EB122176970003C4980 /* Animations */,
 				F41784E621EC47D700B0D21C /* Menu */,
 				F471919C21B1E1CC00B09143 /* Weapons */,
 				F4886C2D21B64ED6000E0DA2 /* Power Up Drops */,
@@ -269,6 +274,15 @@
 				F4F6C5142202BD200019AA15 /* RROverlay.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		F4302EB122176970003C4980 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				F4302EB422176B4D003C4980 /* Animation.swift */,
+				F4302EB2221769BB003C4980 /* PlayerAnimation.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		F4339AB1218D13740016970A /* Managers */ = {
@@ -463,6 +477,7 @@
 				F46229BB221157D000283349 /* RRInventoryManager.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,
+				F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */,
 				F47191A221B1EA6F00B09143 /* Player.swift in Sources */,
 				F4F0F8CA220C21FF00114C12 /* RRMagic.swift in Sources */,
 				F4339AB3218D13880016970A /* RRInputManager.swift in Sources */,
@@ -472,6 +487,7 @@
 				F4C12FA6218F0A430024BC7D /* Spawner.swift in Sources */,
 				F47191A021B1E59B00B09143 /* PowerUpTypes.swift in Sources */,
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
+				F4302EB522176B4D003C4980 /* Animation.swift in Sources */,
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
 				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
 				F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */,

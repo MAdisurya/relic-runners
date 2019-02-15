@@ -16,6 +16,7 @@ class InventoryWindow: MenuWindow {
     private var m_ArmourSlot: MenuButton!;
     
     private var m_SwordWindow: SwordWindow!;
+    private var m_RangedWindow: RangedWindow!;
     
     private var m_Doll = SKSpriteNode(imageNamed: "doll");
     
@@ -27,6 +28,7 @@ class InventoryWindow: MenuWindow {
         self.setBackground(name: "menu-window");
         
         self.m_SwordWindow = SwordWindow(inventoryWindow: self);
+        self.m_RangedWindow = RangedWindow(inventoryWindow: self);
         
         #warning ("Need to refactor, create class for slots")
         
@@ -37,7 +39,7 @@ class InventoryWindow: MenuWindow {
         self.m_ArmourSlot = MenuButton(image: "armour-slot", name: "armour-slot");
         
         self.m_SwordSlot.setWindow(window: m_SwordWindow);
-        self.m_RangedSlot.getWindow().setBackground(name: "items-window");
+        self.m_RangedSlot.setWindow(window: m_RangedWindow);
         self.m_MagicSlot.getWindow().setBackground(name: "items-window");
         self.m_ArmourSlot.getWindow().setBackground(name: "items-window");
         
@@ -74,5 +76,6 @@ class InventoryWindow: MenuWindow {
     func update() {
         // Update the item slots
         self.m_SwordSlot.texture = SKTexture(imageNamed: RRGameManager.shared.getInventoryManager().retrieveSword());
+        self.m_RangedSlot.texture = SKTexture(imageNamed: RRGameManager.shared.getInventoryManager().retrieveRanged());
     }
 }

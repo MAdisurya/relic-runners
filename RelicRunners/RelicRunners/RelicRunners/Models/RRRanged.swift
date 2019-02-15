@@ -7,5 +7,5 @@
 //
 
 struct RRRanged {
-    let rangedArray: [String] = ["ranged1", "ranged2", "ranged3"];
+    let rangedArray: [String] = ["normal-bow", "fire-bow", "demon-bow", "gold-bow", "shadow-bow"];
 }

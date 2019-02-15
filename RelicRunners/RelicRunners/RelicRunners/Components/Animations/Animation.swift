@@ -9,11 +9,11 @@
 import SpriteKit
 
 class Animation {
+    
     internal var m_Textures: [SKTexture] = [];
     
-    // Functions / Animations
+    // Functions declaration / Animations
     func run(speed: Double) -> SKAction { return SKAction(); }
     func attack(speed: Double) -> SKAction { return SKAction(); }
     func die(speed: Double) -> SKAction { return SKAction(); }
-    
 }

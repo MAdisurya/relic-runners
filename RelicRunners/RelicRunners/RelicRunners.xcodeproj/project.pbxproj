@@ -30,6 +30,7 @@
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
 		F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB2221769BB003C4980 /* PlayerAnimation.swift */; };
 		F4302EB522176B4D003C4980 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB422176B4D003C4980 /* Animation.swift */; };
+		F4302EB722177318003C4980 /* RangedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB622177318003C4980 /* RangedWindow.swift */; };
 		F4339AB3218D13880016970A /* RRInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB2218D13880016970A /* RRInputManager.swift */; };
 		F4339AB5218D14200016970A /* RREventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB4218D14200016970A /* RREventManager.swift */; };
 		F4339AB8218D14D00016970A /* RREvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AB7218D14D00016970A /* RREvent.swift */; };
@@ -101,6 +102,7 @@
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
 		F4302EB2221769BB003C4980 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
 		F4302EB422176B4D003C4980 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F4302EB622177318003C4980 /* RangedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedWindow.swift; sourceTree = "<group>"; };
 		F4339AB2218D13880016970A /* RRInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRInputManager.swift; sourceTree = "<group>"; };
 		F4339AB4218D14200016970A /* RREventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREventManager.swift; sourceTree = "<group>"; };
 		F4339AB7218D14D00016970A /* RREvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RREvent.swift; sourceTree = "<group>"; };
@@ -245,9 +247,10 @@
 			children = (
 				F41784E921EC5A7600B0D21C /* MenuWindow.swift */,
 				F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */,
+				F4079AA12217543F005DB987 /* ShopWindow.swift */,
 				F40F2B262209741A001D86C4 /* ItemWindow.swift */,
 				F40F2B28220975CC001D86C4 /* SwordWindow.swift */,
-				F4079AA12217543F005DB987 /* ShopWindow.swift */,
+				F4302EB622177318003C4980 /* RangedWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				7A33F6822186509B00CDFA96 /* Camera.swift in Sources */,
 				7A33F66A21864FEF00CDFA96 /* AppDelegate.swift in Sources */,
 				F40F2B2322096E80001D86C4 /* ItemSlot.swift in Sources */,
+				F4302EB722177318003C4980 /* RangedWindow.swift in Sources */,
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,
 				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,

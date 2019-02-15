@@ -47,6 +47,7 @@ class MenuUI: SKNode, RREventListener {
         self.m_ShopButton = MenuButton(image: "shop-button", name: "shop-button");
         
         self.m_InventoryButton.setWindow(window: InventoryWindow());
+        self.m_ShopButton.setWindow(window: ShopWindow());
         
         // Set menu buttons positions
         self.m_SettingsButton.position = CGPoint(x: -gameScene.size.width * 0.4, y: gameScene.size.width / 4);

@@ -10,6 +10,7 @@ import SpriteKit
 
 class HealthBar: SKNode {
     var m_Health: Int!;
+    var m_MaxHealth: Int!;
     var m_HeartsArray: [SKSpriteNode] = [];
     
     override init() {
@@ -23,9 +24,21 @@ class HealthBar: SKNode {
     func generate(position pos: CGPoint, health: Int) {
         self.position = pos;
         self.m_Health = health;
+        self.m_MaxHealth = health;
     }
     
     func reset() {
+        m_Health = m_MaxHealth;
+        
+        // Remove any remaining hearts in the UI and hearts array
+        if (m_HeartsArray.count > 0) {
+            for i in 0..<m_HeartsArray.count {
+                m_HeartsArray[i].removeFromParent();
+            }
+            
+            m_HeartsArray.removeAll();
+        }
+        
         // Generate hearts and put in hearts array
         for i in 0..<m_Health {
             let heart = SKSpriteNode(imageNamed: "heart");

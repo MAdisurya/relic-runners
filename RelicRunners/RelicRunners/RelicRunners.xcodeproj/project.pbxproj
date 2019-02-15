@@ -20,6 +20,7 @@
 		7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */; };
 		7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68B21865ED900CDFA96 /* BGSprite.swift */; };
 		F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */; };
+		F4079AA22217543F005DB987 /* ShopWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4079AA12217543F005DB987 /* ShopWindow.swift */; };
 		F40F2B2322096E80001D86C4 /* ItemSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2222096E80001D86C4 /* ItemSlot.swift */; };
 		F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B262209741A001D86C4 /* ItemWindow.swift */; };
 		F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B28220975CC001D86C4 /* SwordWindow.swift */; };
@@ -88,6 +89,7 @@
 		7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
 		7A33F68B21865ED900CDFA96 /* BGSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSprite.swift; sourceTree = "<group>"; };
 		F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryWindow.swift; sourceTree = "<group>"; };
+		F4079AA12217543F005DB987 /* ShopWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopWindow.swift; sourceTree = "<group>"; };
 		F40F2B2222096E80001D86C4 /* ItemSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSlot.swift; sourceTree = "<group>"; };
 		F40F2B262209741A001D86C4 /* ItemWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemWindow.swift; sourceTree = "<group>"; };
 		F40F2B28220975CC001D86C4 /* SwordWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordWindow.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */,
 				F40F2B262209741A001D86C4 /* ItemWindow.swift */,
 				F40F2B28220975CC001D86C4 /* SwordWindow.swift */,
+				F4079AA12217543F005DB987 /* ShopWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
 				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
 				F48E8B2521CA4200001A5FA1 /* BossMine.swift in Sources */,
+				F4079AA22217543F005DB987 /* ShopWindow.swift in Sources */,
 				F4339ABA218D15E00016970A /* RREventListener.swift in Sources */,
 				F4339AB8218D14D00016970A /* RREvent.swift in Sources */,
 				F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */,

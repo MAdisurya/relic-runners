@@ -28,6 +28,7 @@
 		F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412050421B8F86700A81FD1 /* UIIndicator.swift */; };
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
+		F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F7221BF78D00B59CBC /* MagicWindow.swift */; };
 		F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB2221769BB003C4980 /* PlayerAnimation.swift */; };
 		F4302EB522176B4D003C4980 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB422176B4D003C4980 /* Animation.swift */; };
 		F4302EB722177318003C4980 /* RangedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB622177318003C4980 /* RangedWindow.swift */; };
@@ -100,6 +101,7 @@
 		F412050421B8F86700A81FD1 /* UIIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIndicator.swift; sourceTree = "<group>"; };
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
+		F43002F7221BF78D00B59CBC /* MagicWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWindow.swift; sourceTree = "<group>"; };
 		F4302EB2221769BB003C4980 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
 		F4302EB422176B4D003C4980 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F4302EB622177318003C4980 /* RangedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedWindow.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				F40F2B262209741A001D86C4 /* ItemWindow.swift */,
 				F40F2B28220975CC001D86C4 /* SwordWindow.swift */,
 				F4302EB622177318003C4980 /* RangedWindow.swift */,
+				F43002F7221BF78D00B59CBC /* MagicWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
 				F4302EB522176B4D003C4980 /* Animation.swift in Sources */,
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
+				F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */,
 				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
 				F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */,
 				F4BD18F821C86749003ED96C /* HealthBar.swift in Sources */,

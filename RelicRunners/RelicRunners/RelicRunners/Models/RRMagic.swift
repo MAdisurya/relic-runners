@@ -7,5 +7,5 @@
 //
 
 struct RRMagic {
-    let magicArray: [String] = ["magic1", "magic2", "magic3"];
+    let magicArray: [String] = ["normal-staff", "fire-staff", "demon-staff", "gold-staff", "shadow-staff"];
 }

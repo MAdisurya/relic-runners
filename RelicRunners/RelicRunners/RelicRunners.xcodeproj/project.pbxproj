@@ -29,6 +29,8 @@
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
 		F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F7221BF78D00B59CBC /* MagicWindow.swift */; };
+		F43002FA221BFB5800B59CBC /* ArmourWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F9221BFB5700B59CBC /* ArmourWindow.swift */; };
+		F43002FC221BFB8000B59CBC /* RRArmour.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002FB221BFB8000B59CBC /* RRArmour.swift */; };
 		F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB2221769BB003C4980 /* PlayerAnimation.swift */; };
 		F4302EB522176B4D003C4980 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB422176B4D003C4980 /* Animation.swift */; };
 		F4302EB722177318003C4980 /* RangedWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4302EB622177318003C4980 /* RangedWindow.swift */; };
@@ -102,6 +104,8 @@
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
 		F43002F7221BF78D00B59CBC /* MagicWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWindow.swift; sourceTree = "<group>"; };
+		F43002F9221BFB5700B59CBC /* ArmourWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmourWindow.swift; sourceTree = "<group>"; };
+		F43002FB221BFB8000B59CBC /* RRArmour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRArmour.swift; sourceTree = "<group>"; };
 		F4302EB2221769BB003C4980 /* PlayerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAnimation.swift; sourceTree = "<group>"; };
 		F4302EB422176B4D003C4980 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		F4302EB622177318003C4980 /* RangedWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedWindow.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				F40F2B28220975CC001D86C4 /* SwordWindow.swift */,
 				F4302EB622177318003C4980 /* RangedWindow.swift */,
 				F43002F7221BF78D00B59CBC /* MagicWindow.swift */,
+				F43002F9221BFB5700B59CBC /* ArmourWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				F40F2B2B220976C4001D86C4 /* RRSwords.swift */,
 				F4F0F8C7220C205F00114C12 /* RRRanged.swift */,
 				F4F0F8C9220C21FF00114C12 /* RRMagic.swift */,
+				F43002FB221BFB8000B59CBC /* RRArmour.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				F48E8B2921CB0D6B001A5FA1 /* BossWeapon.swift in Sources */,
 				F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */,
 				F46229BD2211592A00283349 /* ItemTypes.swift in Sources */,
+				F43002FA221BFB5800B59CBC /* ArmourWindow.swift in Sources */,
 				F46B75B721C8DEB700355BC2 /* Mechazoid.swift in Sources */,
 				F4339ABE218D21830016970A /* Character.swift in Sources */,
 				F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */,
@@ -482,6 +489,7 @@
 				F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */,
 				F46229BB221157D000283349 /* RRInventoryManager.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,
+				F43002FC221BFB8000B59CBC /* RRArmour.swift in Sources */,
 				F4339ABC218D16090016970A /* RRGameManager.swift in Sources */,
 				F4302EB3221769BB003C4980 /* PlayerAnimation.swift in Sources */,
 				F47191A221B1EA6F00B09143 /* Player.swift in Sources */,

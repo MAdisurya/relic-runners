@@ -16,6 +16,15 @@ class RangedWindow: ItemWindow {
         super.init(inventoryWindow: inventoryWindow);
         
         self.m_ItemType = .ranged;
+        
+        // Get current equipped sword slot
+        // Must be called after generateWeaponSlots()
+        for i in 0..<m_ItemArray.count {
+            if (m_ItemArray[i].getItemName() == RRGameManager.shared.getInventoryManager().retrieveRanged()) {
+                m_EquippedItemSlot = m_ItemArray[i];
+                m_ItemArray[i].enableBorder();
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +36,7 @@ class RangedWindow: ItemWindow {
         
         // Add ranged into ranged array
         for i in 0..<m_RangedModel.rangedArray.count {
-            let rangedSlot = ItemSlot(name: m_RangedModel.rangedArray[i], itemType: .ranged);
+            let rangedSlot = ItemSlot(name: m_RangedModel.rangedArray[i], itemType: .ranged, itemWindow: self);
             rangedSlot.texture = SKTexture(imageNamed: m_RangedModel.rangedArray[i]);
             rangedSlot.texture?.filteringMode = .nearest;
             m_ItemArray.append(rangedSlot);

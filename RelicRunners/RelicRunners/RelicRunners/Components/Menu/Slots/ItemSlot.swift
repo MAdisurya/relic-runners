@@ -12,6 +12,7 @@ class ItemSlot: SKSpriteNode {
     
     internal var m_ItemName: String!;
     internal var m_ItemType: ItemTypes = .none;
+    internal var m_ItemWindow: ItemWindow!;
     
     private let m_Border: SKSpriteNode = SKSpriteNode(imageNamed: "item-border");
     
@@ -33,11 +34,12 @@ class ItemSlot: SKSpriteNode {
         m_ItemType = type;
     }
     
-    init(name: String, itemType type: ItemTypes, pos position: CGPoint = CGPoint(x: 0, y: 0)) {
+    init(name: String, itemType type: ItemTypes, itemWindow: ItemWindow, pos position: CGPoint = CGPoint(x: 0, y: 0)) {
         super.init(texture: SKTexture(), color: UIColor.clear, size: CGSize());
         
         self.m_ItemName = name;
         self.m_ItemType = type;
+        self.m_ItemWindow = itemWindow;
         
         self.size = CGSize(width: 128, height: 128);
         self.position = position;
@@ -67,5 +69,7 @@ class ItemSlot: SKSpriteNode {
     
     func equip() {
         RRGameManager.shared.getInventoryManager().equipItem(itemType: m_ItemType, itemName: m_ItemName);
+        
+        m_ItemWindow.changeEquippedItemSlot(itemSlot: self);
     }
 }

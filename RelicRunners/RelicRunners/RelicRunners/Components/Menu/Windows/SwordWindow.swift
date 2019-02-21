@@ -36,7 +36,7 @@ class SwordWindow: ItemWindow {
         
         // Add the swords into the items array
         for i in 0..<m_SwordsModel.swordsArray.count {
-            let swordSlot = ItemSlot(name: m_SwordsModel.swordsArray[i], itemType: .sword);
+            let swordSlot = ItemSlot(name: m_SwordsModel.swordsArray[i], itemType: .sword, itemWindow: self);
             swordSlot.texture = SKTexture(imageNamed: m_SwordsModel.swordsArray[i]);
             swordSlot.texture?.filteringMode = .nearest;
             m_ItemArray.append(swordSlot);

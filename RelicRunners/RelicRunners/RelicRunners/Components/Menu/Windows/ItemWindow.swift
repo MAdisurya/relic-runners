@@ -52,6 +52,13 @@ class ItemWindow: MenuWindow {
         }
     }
     
+    func changeEquippedItemSlot(itemSlot: ItemSlot) {
+        itemSlot.enableBorder();
+        
+        m_EquippedItemSlot.disableBorder();
+        m_EquippedItemSlot = itemSlot;
+    }
+    
     override func listen<T>(event: inout T) {
         if let closeButton = event as? CloseButton {
             // Compare memory address of close buttons to make sure it is correct windows close button

@@ -16,6 +16,15 @@ class ArmourWindow: ItemWindow {
         super.init(inventoryWindow: inventoryWindow);
         
         self.m_ItemType = .armour;
+        
+        // Get current equipped sword slot
+        // Must be called after generateWeaponSlots()
+        for i in 0..<m_ItemArray.count {
+            if (m_ItemArray[i].getItemName() == RRGameManager.shared.getInventoryManager().retrieveArmour()) {
+                m_EquippedItemSlot = m_ItemArray[i];
+                m_ItemArray[i].enableBorder();
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +36,7 @@ class ArmourWindow: ItemWindow {
         
         // Add armour to armour array
         for i in 0..<m_ArmourModel.armourArray.count {
-            let armourSlot = ItemSlot(name: m_ArmourModel.armourArray[i], itemType: .armour);
+            let armourSlot = ItemSlot(name: m_ArmourModel.armourArray[i], itemType: .armour, itemWindow: self);
             armourSlot.texture = SKTexture(imageNamed: m_ArmourModel.armourArray[i]);
             armourSlot.texture?.filteringMode = .nearest;
             

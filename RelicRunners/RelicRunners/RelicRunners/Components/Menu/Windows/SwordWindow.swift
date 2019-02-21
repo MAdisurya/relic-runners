@@ -16,6 +16,15 @@ class SwordWindow: ItemWindow {
         super.init(inventoryWindow: inventoryWindow);
         
         self.m_ItemType = .sword;
+        
+        // Get current equipped sword slot
+        // Must be called after generateWeaponSlots()
+        for i in 0..<m_ItemArray.count {
+            if (m_ItemArray[i].getItemName() == RRGameManager.shared.getInventoryManager().retrieveSword()) {
+                m_EquippedItemSlot = m_ItemArray[i];
+                m_ItemArray[i].enableBorder();
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

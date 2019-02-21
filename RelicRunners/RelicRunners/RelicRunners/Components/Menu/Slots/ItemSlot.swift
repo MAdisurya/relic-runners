@@ -13,6 +13,8 @@ class ItemSlot: SKSpriteNode {
     internal var m_ItemName: String!;
     internal var m_ItemType: ItemTypes = .none;
     
+    private let m_Border: SKSpriteNode = SKSpriteNode(imageNamed: "item-border");
+    
     // Getters
     func getItemName() -> String {
         return m_ItemName;
@@ -43,10 +45,24 @@ class ItemSlot: SKSpriteNode {
         
         self.texture?.filteringMode = .nearest;
         self.zPosition = 10;
+        
+        // Setup item slot border
+        self.m_Border.size = CGSize(width: 160, height: 160);
+        self.m_Border.position = CGPoint(x: 8, y: 0);
+        self.m_Border.zPosition = -1;
+        self.m_Border.texture?.filteringMode = .nearest;
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func enableBorder() {
+        self.addChild(m_Border);
+    }
+    
+    func disableBorder() {
+        m_Border.removeFromParent();
     }
     
     func equip() {

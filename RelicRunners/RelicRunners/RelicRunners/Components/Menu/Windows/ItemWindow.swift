@@ -15,6 +15,8 @@ class ItemWindow: MenuWindow {
     
     internal var m_InventoryWindow: InventoryWindow!;
     
+    internal var m_EquippedItemSlot: ItemSlot!;
+    
     init(inventoryWindow: InventoryWindow) {
         super.init();
         

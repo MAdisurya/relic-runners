@@ -29,6 +29,7 @@
 		F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E721EC47EE00B0D21C /* MenuButton.swift */; };
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
 		F42A19022220AB2300FD3F48 /* GhoulAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */; };
+		F42A19042220B49300FD3F48 /* GolemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A19032220B49300FD3F48 /* GolemAnimation.swift */; };
 		F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F7221BF78D00B59CBC /* MagicWindow.swift */; };
 		F43002FA221BFB5800B59CBC /* ArmourWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F9221BFB5700B59CBC /* ArmourWindow.swift */; };
 		F43002FC221BFB8000B59CBC /* RRArmour.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002FB221BFB8000B59CBC /* RRArmour.swift */; };
@@ -105,6 +106,7 @@
 		F41784E721EC47EE00B0D21C /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
 		F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhoulAnimation.swift; sourceTree = "<group>"; };
+		F42A19032220B49300FD3F48 /* GolemAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolemAnimation.swift; sourceTree = "<group>"; };
 		F43002F7221BF78D00B59CBC /* MagicWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWindow.swift; sourceTree = "<group>"; };
 		F43002F9221BFB5700B59CBC /* ArmourWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmourWindow.swift; sourceTree = "<group>"; };
 		F43002FB221BFB8000B59CBC /* RRArmour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRArmour.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				F4302EB422176B4D003C4980 /* Animation.swift */,
 				F4302EB2221769BB003C4980 /* PlayerAnimation.swift */,
 				F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */,
+				F42A19032220B49300FD3F48 /* GolemAnimation.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				F4BD18F821C86749003ED96C /* HealthBar.swift in Sources */,
 				F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */,
 				F42A19022220AB2300FD3F48 /* GhoulAnimation.swift in Sources */,
+				F42A19042220B49300FD3F48 /* GolemAnimation.swift in Sources */,
 				7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */,
 				F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */,
 				F46F1ECC21EDA89400BE1F64 /* CloseButton.swift in Sources */,

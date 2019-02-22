@@ -18,7 +18,11 @@ class Spawner: SKNode {
     private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
+    // Enemy Animations
     private let m_GhoulAnim: Animation = GhoulAnimation();
+    
+    // Boss Animations
+    private let m_GolemAnim: Animation = GolemAnimation();
     
     // Getters
     func isBossSpawned() -> Bool {
@@ -113,6 +117,7 @@ class Spawner: SKNode {
             bossAlert.zPosition = 12;
             gameScene.camera?.addChild(bossAlert);
             
+            boss.run(m_GolemAnim.idle(speed: 0.2));
             boss.updateHeldWeapon();
             RRGameManager.shared.getEventManager().broadcastEvent(event: "resetBossWeapons");
             

@@ -46,7 +46,6 @@ class Player: Character {
         self.xScale = 0.85;
         self.yScale = 0.85;
         
-        // Default animation
         self.run(m_Animation.run(speed: 0.1));
     }
     

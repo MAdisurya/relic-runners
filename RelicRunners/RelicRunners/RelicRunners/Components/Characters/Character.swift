@@ -27,6 +27,16 @@ class Character: SKSpriteNode, RREventListener {
     // Default values
     internal var defaultSpeed: Double!;
     
+    // Getters
+    func getAnimation() -> Animation {
+        return m_Animation;
+    }
+    
+    // Setters
+    func setAnimation(anim: Animation) {
+        m_Animation = anim;
+    }
+    
     init(type characterType: CharacterTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
         

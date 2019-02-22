@@ -18,6 +18,8 @@ class Spawner: SKNode {
     private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
+    private let m_GhoulAnim: Animation = GhoulAnimation();
+    
     // Getters
     func isBossSpawned() -> Bool {
         return bossSpawned;
@@ -40,15 +42,17 @@ class Spawner: SKNode {
         
         // Handle spawning of enemy and obstacles
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
-            let newEnemy = Character(type: .enemy);
+            let ghoulEnemy = Character(type: .enemy);
             let point = SKNode();
             let placeToSpawn = Int.random(in: -2...0);
             
-            newEnemy.generateCharacter(scene: gameScene, imageNamed: "skeleton");
-            newEnemy.position.x = self.position.x;
-            newEnemy.position.y = (gameScene.getMoveAmount()) * CGFloat(placeToSpawn+1);
-            newEnemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
-            gameScene.addChild(newEnemy);
+            ghoulEnemy.generateCharacter(scene: gameScene, imageNamed: "ghoul-idle-1");
+            ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
+            ghoulEnemy.size = CGSize(width: 201, height: 80);
+            ghoulEnemy.position.x = self.position.x;
+            ghoulEnemy.position.y = (gameScene.getMoveAmount()) * CGFloat(placeToSpawn+1);
+            ghoulEnemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
+            gameScene.addChild(ghoulEnemy);
             
             for i in -2...0 {
                 if (i != placeToSpawn) {
@@ -67,7 +71,7 @@ class Spawner: SKNode {
             point.name = "point";
             gameScene.addChild(point);
             
-            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: newEnemy);
+            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
             
             lastSpawnPos = self.position.x;
         }

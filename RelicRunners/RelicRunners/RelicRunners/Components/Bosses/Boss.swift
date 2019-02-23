@@ -15,7 +15,7 @@ public enum BossStates {
 
 class Boss: Character {
     
-    internal var m_SpawnScoreRequirement = 10;
+    internal var m_SpawnScoreRequirement = 1;
     internal var m_DefaultScoreRequirement = 10;
     internal var m_CurrentPhase = 1;
     internal var m_AttackInterval: Double = 1;
@@ -23,6 +23,8 @@ class Boss: Character {
     internal var m_WeaponHolders: [BossWeaponHolder] = [];
     internal let m_ScoreAmount = 1;
     internal let m_WeaponsAmount = 3;
+    
+    internal let m_DeathExplosionAnim = BigExplosionAnimation();
     
     override init(type characterType: CharacterTypes) {
         super.init(type: characterType);
@@ -69,7 +71,7 @@ class Boss: Character {
     }
     
     func attack() {
-        if (m_State != .ATTACKING || m_AttackInterval <= 0) {
+        if (m_State != .ATTACKING || m_AttackInterval <= 0 || m_Dead) {
             return;
         }
         
@@ -122,6 +124,12 @@ class Boss: Character {
         m_Dead = true;
         self.physicsBody?.categoryBitMask = 0;
         
+        // Explosion
+        let explosion = SKSpriteNode(imageNamed: "explosionV006effect001");
+        explosion.size = self.size;
+        explosion.zPosition = 12;
+        self.addChild(explosion);
+        
         // White flash screen
         let whiteFlash = SKSpriteNode();
         whiteFlash.size = gameScene.size;
@@ -139,13 +147,16 @@ class Boss: Character {
         // Actions
         let fadeIn = SKAction.fadeIn(withDuration: 0.2);
         let fadeOut = SKAction.fadeOut(withDuration: 2);
+        let wait = SKAction.wait(forDuration: 3);
         
-        whiteFlash.run(fadeIn) {
+        explosion.run(m_DeathExplosionAnim.explode(speed: 0.2));
+        
+        whiteFlash.run(SKAction.sequence([wait, fadeIn])) {
             self.destroy();
             self.gameScene.camera?.addChild(treasureBox);
             // Set game state to level complete
             RRGameManager.shared.setGameState(state: .LEVEL_COMPLETE);
-
+            
             whiteFlash.run(fadeOut) {
                 whiteFlash.removeFromParent();
                 completion();

@@ -30,6 +30,8 @@
 		F41784EA21EC5A7600B0D21C /* MenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41784E921EC5A7600B0D21C /* MenuWindow.swift */; };
 		F42A19022220AB2300FD3F48 /* GhoulAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */; };
 		F42A19042220B49300FD3F48 /* GolemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A19032220B49300FD3F48 /* GolemAnimation.swift */; };
+		F42A19062220C09600FD3F48 /* BigExplosionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A19052220C09600FD3F48 /* BigExplosionAnimation.swift */; };
+		F42A19092220C7BE00FD3F48 /* laser-boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = F42A19082220C7BE00FD3F48 /* laser-boom.wav */; };
 		F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F7221BF78D00B59CBC /* MagicWindow.swift */; };
 		F43002FA221BFB5800B59CBC /* ArmourWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002F9221BFB5700B59CBC /* ArmourWindow.swift */; };
 		F43002FC221BFB8000B59CBC /* RRArmour.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43002FB221BFB8000B59CBC /* RRArmour.swift */; };
@@ -107,6 +109,8 @@
 		F41784E921EC5A7600B0D21C /* MenuWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWindow.swift; sourceTree = "<group>"; };
 		F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhoulAnimation.swift; sourceTree = "<group>"; };
 		F42A19032220B49300FD3F48 /* GolemAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolemAnimation.swift; sourceTree = "<group>"; };
+		F42A19052220C09600FD3F48 /* BigExplosionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigExplosionAnimation.swift; sourceTree = "<group>"; };
+		F42A19082220C7BE00FD3F48 /* laser-boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "laser-boom.wav"; path = "../../../../../../../Downloads/laser-boom.wav"; sourceTree = "<group>"; };
 		F43002F7221BF78D00B59CBC /* MagicWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWindow.swift; sourceTree = "<group>"; };
 		F43002F9221BFB5700B59CBC /* ArmourWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmourWindow.swift; sourceTree = "<group>"; };
 		F43002FB221BFB8000B59CBC /* RRArmour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRArmour.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				F4339ABF218DA2BD0016970A /* Enums */,
 				F4339AB6218D14B90016970A /* Other */,
 				F4F6C5162202C28F0019AA15 /* Music */,
+				F42A19072220C7A200FD3F48 /* SFX */,
 				F4544072218FAED2005719E4 /* Assets.xcassets */,
 				7A33F66921864FEF00CDFA96 /* AppDelegate.swift */,
 				7A33F66D21864FEF00CDFA96 /* Actions.sks */,
@@ -300,6 +305,14 @@
 			path = Characters;
 			sourceTree = "<group>";
 		};
+		F42A19072220C7A200FD3F48 /* SFX */ = {
+			isa = PBXGroup;
+			children = (
+				F42A19082220C7BE00FD3F48 /* laser-boom.wav */,
+			);
+			path = SFX;
+			sourceTree = "<group>";
+		};
 		F4302EB122176970003C4980 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +320,7 @@
 				F4302EB2221769BB003C4980 /* PlayerAnimation.swift */,
 				F42A19012220AB2300FD3F48 /* GhoulAnimation.swift */,
 				F42A19032220B49300FD3F48 /* GolemAnimation.swift */,
+				F42A19052220C09600FD3F48 /* BigExplosionAnimation.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -466,6 +480,7 @@
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
 				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
 				F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */,
+				F42A19092220C7BE00FD3F48 /* laser-boom.wav in Resources */,
 				F4E6BEAE220E2901006E7DC3 /* robot.wav in Resources */,
 				F4F6C51A2202C2D80019AA15 /* isaac.mp3 in Resources */,
 				F4ABA290218F8EE30085E43C /* LoseScene.sks in Resources */,
@@ -519,6 +534,7 @@
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
 				F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */,
 				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
+				F42A19062220C09600FD3F48 /* BigExplosionAnimation.swift in Sources */,
 				F412050521B8F86700A81FD1 /* UIIndicator.swift in Sources */,
 				F4BD18F821C86749003ED96C /* HealthBar.swift in Sources */,
 				F40F2B29220975CC001D86C4 /* SwordWindow.swift in Sources */,

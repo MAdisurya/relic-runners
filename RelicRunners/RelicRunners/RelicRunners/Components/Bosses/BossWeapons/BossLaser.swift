@@ -41,6 +41,7 @@ class BossLaser: BossWeapon {
             self.texture = SKTexture();
             
             self.run(prefire) {
+                RRGameManager.shared.getSoundManager().playSound(name: "laser-boom");
                 self.addChild(self.m_Laser);
                 self.texture = self.m_DefaultTexture;
                 

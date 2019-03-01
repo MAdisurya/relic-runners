@@ -24,6 +24,9 @@ class Spawner: SKNode {
     // Boss Animations
     private let m_GolemAnim: Animation = GolemAnimation();
     
+    // Obstacle Animations
+    private let m_SpikeAnim: SpikeAnimation = SpikeAnimation();
+    
     // Getters
     func isBossSpawned() -> Bool {
         return bossSpawned;
@@ -60,14 +63,28 @@ class Spawner: SKNode {
             
             for i in -2...0 {
                 if (i != placeToSpawn) {
-                    let newObstacle = Obstacle();
-                    newObstacle.generateObstacle(scene: gameScene, imageNamed: "spike");
-                    newObstacle.position.x = self.position.x;
-                    newObstacle.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
-                    newObstacle.zPosition = -CGFloat(i) + 1;
+                    let spike = Obstacle();
+                    let waitTime = Double.random(in: 1.5...2.0);
                     
-                    RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: newObstacle);
-                    gameScene.addChild(newObstacle);
+                    spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
+                    spike.physicsBody?.categoryBitMask = 0;
+                    
+                    // Open
+                    spike.run(self.m_SpikeAnim.open(speed: 0.8))
+                    spike.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
+                    
+                    // Close
+                    spike.run(SKAction.wait(forDuration: waitTime)) {
+                        spike.run(self.m_SpikeAnim.close(speed: 0.8));
+                        spike.physicsBody?.categoryBitMask = 0;
+                    }
+                    
+                    spike.position.x = self.position.x;
+                    spike.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
+                    spike.zPosition = -CGFloat(i) + 1;
+                    
+                    RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
+                    gameScene.addChild(spike);
                 }
             }
             

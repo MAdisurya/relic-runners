@@ -12,7 +12,7 @@ class Obstacle: SKSpriteNode {
     
     func generateObstacle(scene: SKScene, imageNamed image: String) {
         self.texture = SKTexture(imageNamed: image);
-        self.size = CGSize(width: 256, height: 256);
+        self.size = CGSize(width: 252, height: 192);
         self.zPosition = 1.0;
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 32));
         self.physicsBody?.isDynamic = false;

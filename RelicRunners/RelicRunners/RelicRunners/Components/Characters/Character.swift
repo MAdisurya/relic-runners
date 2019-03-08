@@ -37,7 +37,7 @@ class Character: SKSpriteNode, RREventListener {
         m_Animation = anim;
     }
     
-    init(type characterType: CharacterTypes = .enemy) {
+    init(type characterType: CharacterTypes) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
         
         self.m_CharacterType = characterType;
@@ -111,6 +111,8 @@ class Character: SKSpriteNode, RREventListener {
         
         let upAction = SKAction.move(by: CGVector(dx: 0, dy: 64), duration: 0.1);
         let fallAction = SKAction.move(by: CGVector(dx: 0, dy: -gameScene.size.width), duration: 0.5);
+        
+        self.removeAllActions();
         
         self.run(upAction) {
             self.run(fallAction) {

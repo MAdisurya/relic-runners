@@ -59,6 +59,7 @@
 		F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919D21B1E1DC00B09143 /* Weapon.swift */; };
 		F47191A021B1E59B00B09143 /* PowerUpTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F471919F21B1E59B00B09143 /* PowerUpTypes.swift */; };
 		F47191A221B1EA6F00B09143 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47191A121B1EA6F00B09143 /* Player.swift */; };
+		F4810C1A2232129700FE45FE /* Wisp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4810C192232129700FE45FE /* Wisp.swift */; };
 		F4886C2F21B64EF2000E0DA2 /* PowerUpDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */; };
 		F48E8B2121CA3535001A5FA1 /* BossLaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E8B2021CA3535001A5FA1 /* BossLaser.swift */; };
 		F48E8B2521CA4200001A5FA1 /* BossMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E8B2421CA4200001A5FA1 /* BossMine.swift */; };
@@ -139,6 +140,7 @@
 		F471919D21B1E1DC00B09143 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		F471919F21B1E59B00B09143 /* PowerUpTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpTypes.swift; sourceTree = "<group>"; };
 		F47191A121B1EA6F00B09143 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F4810C192232129700FE45FE /* Wisp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wisp.swift; sourceTree = "<group>"; };
 		F4886C2E21B64EF2000E0DA2 /* PowerUpDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDrop.swift; sourceTree = "<group>"; };
 		F48E8B2021CA3535001A5FA1 /* BossLaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossLaser.swift; sourceTree = "<group>"; };
 		F48E8B2421CA4200001A5FA1 /* BossMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMine.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				F4339ABD218D21830016970A /* Character.swift */,
 				F47191A121B1EA6F00B09143 /* Player.swift */,
+				F4810C192232129700FE45FE /* Wisp.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				F4079AA22217543F005DB987 /* ShopWindow.swift in Sources */,
 				F4339ABA218D15E00016970A /* RREventListener.swift in Sources */,
 				F4339AB8218D14D00016970A /* RREvent.swift in Sources */,
+				F4810C1A2232129700FE45FE /* Wisp.swift in Sources */,
 				F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */,
 				F4339AB5218D14200016970A /* RREventManager.swift in Sources */,
 				F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */,

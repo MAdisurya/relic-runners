@@ -13,9 +13,9 @@ class SpikeAnimation: Animation {
     let m_SpikeAtlas = SKTextureAtlas(named: "spikes");
     
     func open(speed: Double) -> SKAction {
-        for textureName in m_SpikeAtlas.textureNames {
-            m_SpikeAtlas.textureNamed(textureName).filteringMode = .nearest;
-            m_Textures.append(m_SpikeAtlas.textureNamed(textureName));
+        for i in 0..<m_SpikeAtlas.textureNames.count {
+            m_SpikeAtlas.textureNamed("spike-\(i)").filteringMode = .nearest;
+            m_Textures.append(m_SpikeAtlas.textureNamed("spike-\(i)"));
         }
         
         let run = SKAction.animate(with: m_Textures, timePerFrame: speed);
@@ -24,9 +24,9 @@ class SpikeAnimation: Animation {
     }
     
     func close(speed: Double) -> SKAction {
-        for textureName in m_SpikeAtlas.textureNames {
-            m_SpikeAtlas.textureNamed(textureName).filteringMode = .nearest;
-            m_Textures.append(m_SpikeAtlas.textureNamed(textureName));
+        for i in 0..<m_SpikeAtlas.textureNames.count {
+            m_SpikeAtlas.textureNamed("spike-\(i)").filteringMode = .nearest;
+            m_Textures.append(m_SpikeAtlas.textureNamed("spike-\(i)"));
         }
         
         let run = SKAction.animate(with: m_Textures.reversed(), timePerFrame: speed);

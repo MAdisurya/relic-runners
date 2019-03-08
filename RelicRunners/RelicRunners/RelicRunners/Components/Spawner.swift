@@ -49,35 +49,24 @@ class Spawner: SKNode {
         
         // Handle spawning of enemy and obstacles
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
-            let ghoulEnemy = Character(type: .enemy);
+            var ghoulEnemy = Character(type: .enemy);
+            
             let point = SKNode();
             let placeToSpawn = Int.random(in: -2...0);
             
-            ghoulEnemy.generateCharacter(scene: gameScene, imageNamed: "ghoul-idle-1");
+            ghoulEnemy = spawnEnemy(enemy: ghoulEnemy, image: "ghoul-idle-1", placeToSpawn: placeToSpawn);
             ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
             ghoulEnemy.size = CGSize(width: 201, height: 80);
-            ghoulEnemy.position.x = self.position.x;
-            ghoulEnemy.position.y = (gameScene.getMoveAmount()) * CGFloat(placeToSpawn+1);
-            ghoulEnemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
+
             gameScene.addChild(ghoulEnemy);
             
             for i in -2...0 {
                 if (i != placeToSpawn) {
                     let spike = Obstacle();
-                    let waitTime = Double.random(in: 1.5...2.0);
+//                    let waitTime = Double.random(in: 3.0...4.0);
                     
                     spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
                     spike.physicsBody?.categoryBitMask = 0;
-                    
-                    // Open
-                    spike.run(self.m_SpikeAnim.open(speed: 0.8))
-                    spike.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
-                    
-                    // Close
-                    spike.run(SKAction.wait(forDuration: waitTime)) {
-                        spike.run(self.m_SpikeAnim.close(speed: 0.8));
-                        spike.physicsBody?.categoryBitMask = 0;
-                    }
                     
                     spike.position.x = self.position.x;
                     spike.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
@@ -85,6 +74,16 @@ class Spawner: SKNode {
                     
                     RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
                     gameScene.addChild(spike);
+                    
+//                    // Open
+//                    spike.run(self.m_SpikeAnim.open(speed: 0.1))
+//                    spike.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
+//
+//                    // Close
+//                    spike.run(SKAction.wait(forDuration: waitTime)) {
+//                        spike.run(self.m_SpikeAnim.close(speed: 0.1));
+//                        spike.physicsBody?.categoryBitMask = 0;
+//                    }
                 }
             }
             
@@ -111,6 +110,15 @@ class Spawner: SKNode {
                 RRGameManager.shared.getGarbageCollector().registerPowerUp(powerUp: newPowerUp);
             }
         }
+    }
+    
+    func spawnEnemy(enemy: Character, image: String, placeToSpawn: Int) -> Character {
+        enemy.generateCharacter(scene: gameScene, imageNamed: image);
+        enemy.position.x = self.position.x;
+        enemy.position.y = gameScene.getMoveAmount() * CGFloat(placeToSpawn + 1);
+        enemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
+        
+        return enemy;
     }
     
     func spawnBoss(boss: Boss) {

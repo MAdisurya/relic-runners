@@ -37,7 +37,7 @@ class Character: SKSpriteNode, RREventListener {
         m_Animation = anim;
     }
     
-    init(type characterType: CharacterTypes) {
+    init(type characterType: CharacterTypes = .enemy) {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
         
         self.m_CharacterType = characterType;

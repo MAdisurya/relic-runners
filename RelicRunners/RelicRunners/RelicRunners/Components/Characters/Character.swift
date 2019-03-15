@@ -69,7 +69,8 @@ class Character: SKSpriteNode, RREventListener {
         m_MaxHealth = m_Health;
     }
     
-    func shootProjectile() {
+    // Handles shooting of projectiles - default to arrows
+    func shootProjectil() {
         let projectile = Weapon(imageName: "arrow");
         let arrowAtlas = SKTextureAtlas(named: "arrows");
         var textures: [SKTexture] = [];
@@ -89,6 +90,19 @@ class Character: SKSpriteNode, RREventListener {
         let repeatAnim = SKAction.repeatForever(projectileAnimation);
         
         projectile.run(repeatAnim);
+        
+        projectile.run(move) {
+            projectile.destroy();
+        }
+    }
+    
+    // Overload of shootProjectile function that accepts a parameter of type weapon
+    func shootProjectile(projectile p: Weapon) {
+        let projectile = p;
+        projectile.generate(character: self);
+        self.addChild(projectile);
+        
+        let move = SKAction.move(by: CGVector(dx: projectile.getDistance(), dy: 0), duration: projectile.getSpeed());
         
         projectile.run(move) {
             projectile.destroy();

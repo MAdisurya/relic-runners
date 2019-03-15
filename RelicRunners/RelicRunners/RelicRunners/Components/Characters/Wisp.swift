@@ -13,6 +13,8 @@ class Wisp: Character {
     override init(type characterType: CharacterTypes = .enemy) {
         super.init(type: characterType);
         
+        self.m_Animation = FireWispAnimation();
+        
         self.m_Health = 1;
     }
     
@@ -23,7 +25,6 @@ class Wisp: Character {
     override func generateCharacter(scene: GameScene, imageNamed image: String) {
         super.generateCharacter(scene: scene, imageNamed: image);
         
-        // Uncomment when Wisp animation implemented!
-//        self.run(m_Animation.idle(speed: 0.1));
+        self.run(m_Animation.run(speed: 0.2));
     }
 }

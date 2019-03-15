@@ -92,7 +92,8 @@ class Player: Character {
                             multiStrike.execute(spreadAmount: 192);
                             break;
                         default:
-                            shootProjectile();
+                            let projectile = Weapon(imageName: "arrow");
+                            shootProjectile(projectile: projectile);
                             break;
                     }
                 }

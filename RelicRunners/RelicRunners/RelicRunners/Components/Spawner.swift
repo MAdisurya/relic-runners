@@ -49,17 +49,16 @@ class Spawner: SKNode {
         
         // Handle spawning of enemy and obstacles
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
-            var ghoulEnemy = Character(type: .enemy);
-            var fireWisp = Wisp();
-            
             let point = SKNode();
             let placeToSpawn = Int.random(in: -2...0);
             
-            ghoulEnemy = spawnEnemy(enemy: ghoulEnemy, image: "ghoul-idle-1", placeToSpawn: placeToSpawn);
+            // Enemy definitions
+            let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", placeToSpawn: placeToSpawn);
+            let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", placeToSpawn: placeToSpawn) as! Wisp;
+            
             ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
             ghoulEnemy.size = CGSize(width: 201, height: 80);
             
-            fireWisp = spawnEnemy(enemy: fireWisp, image: "fire-move-0", placeToSpawn: placeToSpawn) as! Wisp;
             fireWisp.run(SKAction.move(by: CGVector(dx: -gameScene.size.width, dy: 0), duration: 5));
             
             gameScene.addChild(ghoulEnemy);

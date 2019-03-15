@@ -20,6 +20,7 @@ class Character: SKSpriteNode, RREventListener {
     internal var m_MaxHealth = 0;
     internal var m_Speed: Double = 0.5;
     internal var m_Invinsible = false;
+    internal var m_CanAttack = true;
     internal let m_GoldAmount: Int = Int.random(in: 1...5);
     
     internal var m_Animation: Animation = Animation();
@@ -70,7 +71,7 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     // Handles shooting of projectiles - default to arrows
-    func shootProjectil() {
+    func shootProjectile() {
         let projectile = Weapon(imageName: "arrow");
         let arrowAtlas = SKTextureAtlas(named: "arrows");
         var textures: [SKTexture] = [];
@@ -106,6 +107,30 @@ class Character: SKSpriteNode, RREventListener {
         
         projectile.run(move) {
             projectile.destroy();
+        }
+    }
+    
+    // Overload of shootProjectile function that handles shooting with coolDown. Mainly for enemies.
+    func shootProjectile(projectile p: Weapon, cooldown: Double) {
+        let cooldown = SKAction.wait(forDuration: cooldown);
+        
+        if (!m_CanAttack && !p.hasActions()) {
+            p.run(cooldown) {
+                self.m_CanAttack = true;
+            }
+        } else {
+            p.generate(character: self);
+            p.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
+            p.physicsBody?.contactTestBitMask = CategoryBitMask.player;
+            self.addChild(p);
+            
+            let move = SKAction.move(by: CGVector(dx: p.getDistance(), dy: 0), duration: p.getSpeed());
+            
+            p.run(move) {
+                p.destroy();
+            }
+            
+            m_CanAttack = false;
         }
     }
     

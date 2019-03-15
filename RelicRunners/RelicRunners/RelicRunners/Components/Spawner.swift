@@ -55,14 +55,18 @@ class Spawner: SKNode {
             // Enemy definitions
             let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", placeToSpawn: placeToSpawn);
             let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", placeToSpawn: placeToSpawn) as! Wisp;
+            let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", placeToSpawn: placeToSpawn) as! Imp;
             
             ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
             ghoulEnemy.size = CGSize(width: 201, height: 80);
             
             fireWisp.run(SKAction.move(by: CGVector(dx: -gameScene.size.width, dy: 0), duration: 5));
             
+            imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
+            
             gameScene.addChild(ghoulEnemy);
             gameScene.addChild(fireWisp);
+            gameScene.addChild(imp);
             
             for i in -2...0 {
                 if (i != placeToSpawn) {

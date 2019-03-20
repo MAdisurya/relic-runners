@@ -23,8 +23,8 @@ class Mechazoid: Boss {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func generateCharacter(scene: GameScene, imageNamed image: String) {
-        super.generateCharacter(scene: scene, imageNamed: image);
+    override func generateCharacter(scene: GameScene, imageNamed image: String, enemyName name: String) {
+        super.generateCharacter(scene: scene, imageNamed: image, enemyName: name);
         
         // Add weapons to weapons array
         for i in -1..<2 {

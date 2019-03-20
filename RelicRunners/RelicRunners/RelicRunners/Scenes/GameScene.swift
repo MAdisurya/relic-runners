@@ -101,11 +101,11 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         self.addChild(m_Spawner);
         
         // Generate the player character
-        m_Player.generateCharacter(scene: self, imageNamed: "archer");
+        m_Player.generateCharacter(scene: self, imageNamed: "archer", enemyName: "player");
         m_Player.position.x = -self.size.width;
         
         // Generate the boss
-        m_Boss.generateCharacter(scene: self, imageNamed: "skeleton");
+        m_Boss.generateCharacter(scene: self, imageNamed: "skeleton", enemyName: "mechazoid");
         
         self.physicsWorld.contactDelegate = self;
         
@@ -185,7 +185,11 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             RRGameManager.shared.getEventManager().broadcastEvent(event: "playerHit");
         }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.enemy) {
-            RRGameManager.shared.getEventManager().broadcastEvent(event: "enemyHit");
+            
+            if var enemy = contact.bodyA.node as? Character {
+                RRGameManager.shared.getEventManager().broadcastEvent(event: &enemy);
+            }
+            
             RRGameManager.shared.getEventManager().broadcastEvent(event: "weaponDestroyed");
         }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.boss) {

@@ -45,11 +45,9 @@ class SpikeObstacle: Obstacle {
             return;
         }
         
-//        self.run(self.m_SpikeAnim.open(speed: 0.1)) {
-//            self.removeAllActions();
-//            self.resetWaitInterval();
-//        };
+//        self.run(self.m_SpikeAnim.open(speed: 0.1));
         
+        self.texture?.filteringMode = .nearest;
         self.texture = SKTexture(imageNamed: "spike-3");
         
         self.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
@@ -64,11 +62,9 @@ class SpikeObstacle: Obstacle {
             return;
         }
         
-//        self.run(self.m_SpikeAnim.close(speed: 0.1)) {
-//            self.removeAllActions();
-//            self.resetWaitInterval();
-//        };
+//        self.run(self.m_SpikeAnim.close(speed: 0.1));
         
+        self.texture?.filteringMode = .nearest;
         self.texture = SKTexture(imageNamed: "spike-0");
         
         self.physicsBody?.categoryBitMask = 0;

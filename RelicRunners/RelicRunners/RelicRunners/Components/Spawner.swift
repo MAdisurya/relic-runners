@@ -56,52 +56,13 @@ class Spawner: SKNode {
         // Handle spawning of enemy and obstacles
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let point = SKNode();
-            let placeToSpawn = Int.random(in: -2...0);
             
-            // Enemy definitions
-            let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", placeToSpawn: placeToSpawn);
-            let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", placeToSpawn: placeToSpawn) as! Wisp;
-            let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", placeToSpawn: placeToSpawn) as! Imp;
-            
-            ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
-            ghoulEnemy.size = CGSize(width: 201, height: 80);
-            
-            fireWisp.run(SKAction.move(by: CGVector(dx: -gameScene.size.width, dy: 0), duration: 5));
-
-            imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
-            
-            gameScene.addChild(ghoulEnemy);
-            gameScene.addChild(fireWisp);
-//            gameScene.addChild(imp);
-            
-            for i in -2...0 {
-                if (i != placeToSpawn) {
-                    let spike = SpikeObstacle();
-                    
-                    spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
-                    spike.physicsBody?.categoryBitMask = 0;
-                    
-                    spike.position.x = self.position.x;
-                    spike.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
-                    spike.zPosition = -CGFloat(i) + 1;
-                    
-                    RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
-                    
-                    // Spike manager is used in update call to
-                    // open and close all spikes in the scene
-                    m_SpikeManager.append(spike);
-                    
-                    gameScene.addChild(spike);
-                }
-            }
+            spawnEnemies();
+            spawnObstacles();
             
             point.position = self.position;
             point.name = "point";
             gameScene.addChild(point);
-            
-            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
-            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: fireWisp);
-            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: imp);
             
             lastSpawnPos = self.position.x;
         }
@@ -122,8 +83,8 @@ class Spawner: SKNode {
         }
     }
     
-    func spawnEnemy(enemy: Character, image: String, placeToSpawn: Int) -> Character {
-        enemy.generateCharacter(scene: gameScene, imageNamed: image);
+    func spawnEnemy(enemy: Character, image: String, name: String, placeToSpawn: Int) -> Character {
+        enemy.generateCharacter(scene: gameScene, imageNamed: image, enemyName: name);
         enemy.position.x = self.position.x;
         enemy.position.y = gameScene.getMoveAmount() * CGFloat(placeToSpawn + 1);
         enemy.zPosition = (placeToSpawn == 0) ? 1.0 : 2.5;
@@ -170,6 +131,60 @@ class Spawner: SKNode {
             
             // Set boss spawned to true
             bossSpawned = true;
+        }
+    }
+    
+    // Helper method for spawning enemies
+    func spawnEnemies() {
+        let placeToSpawn = Int.random(in: -2...0);
+        var nameIndex = 0;
+        
+        // Enemy definitions
+        let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", name: "ghoul\(nameIndex)", placeToSpawn: placeToSpawn);
+        let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", name: "fireWisp\(nameIndex)", placeToSpawn: placeToSpawn) as! Wisp;
+        let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", name: "imp\(nameIndex)", placeToSpawn: placeToSpawn) as! Imp;
+        
+        ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
+        ghoulEnemy.size = CGSize(width: 201, height: 80);
+        
+        fireWisp.run(SKAction.move(by: CGVector(dx: -gameScene.size.width, dy: 0), duration: 5));
+        
+        imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
+        
+        gameScene.addChild(ghoulEnemy);
+        gameScene.addChild(fireWisp);
+//        gameScene.addChild(imp);
+        
+        RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
+        RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: fireWisp);
+        RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: imp);
+        
+        nameIndex += 1;
+    }
+    
+    // Helper method for spawning obstacles
+    func spawnObstacles() {
+        let placeToSpawn = Int.random(in: -2...0);
+        
+        for i in -2...0 {
+            if (i != placeToSpawn) {
+                let spike = SpikeObstacle();
+                
+                spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
+                spike.physicsBody?.categoryBitMask = 0;
+                
+                spike.position.x = self.position.x;
+                spike.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
+                spike.zPosition = -CGFloat(i) + 1;
+                
+                RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
+                
+                // Spike manager is used in update call to
+                // open and close all spikes in the scene
+                m_SpikeManager.append(spike);
+                
+                gameScene.addChild(spike);
+            }
         }
     }
 }

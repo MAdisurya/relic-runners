@@ -36,8 +36,8 @@ class Boss: Character {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func generateCharacter(scene: GameScene, imageNamed image: String) {
-        super.generateCharacter(scene: scene, imageNamed: image);
+    override func generateCharacter(scene: GameScene, imageNamed image: String, enemyName name: String) {
+        super.generateCharacter(scene: scene, imageNamed: image, enemyName: name);
         
         self.size = CGSize(width: 448, height: 448);
         self.xScale = 0.85;

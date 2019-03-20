@@ -53,8 +53,9 @@ class Character: SKSpriteNode, RREventListener {
         fatalError("init(coder:) has not been implemented");
     }
     
-    func generateCharacter(scene: GameScene, imageNamed image: String) -> Void {
+    func generateCharacter(scene: GameScene, imageNamed image: String, enemyName name: String) -> Void {
         self.gameScene = scene;
+        self.name = name;
         self.texture = SKTexture(imageNamed: image);
         self.texture?.filteringMode = .nearest;
         self.size = CGSize(width: 256, height: 256);
@@ -245,24 +246,22 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     func listen(event: String) {
-         if (m_CharacterType == CharacterTypes.enemy) {
-            if (event == "enemyHit") {
-                die() {
-                    // Add to game score
-                    RRGameManager.shared.getScoreManager().addScore(amount: 1);
-                    // Update score label
-//                    self.gameScene.updateScoreLabel(score: String(RRGameManager.shared.getScoreManager().getScore()));
-                    
-                    // Add to gold
-                    RRGameManager.shared.getScoreManager().addGold(amount: self.m_GoldAmount);
-                    // Update gold label
-                    self.gameScene.updateGoldLabel(gold: String(RRGameManager.shared.getScoreManager().getGold()));
-                }
-            }
-        }
+        
     }
     
     func listen<T>(event: inout T) {
-        
+        if (m_CharacterType == .enemy) {
+            if let enemy = event as? Character {
+                if (enemy.name == self.name) {
+                    enemy.die() {
+                        RRGameManager.shared.getScoreManager().addScore(amount: 1);
+                        
+                        RRGameManager.shared.getScoreManager().addGold(amount: self.m_GoldAmount);
+                        
+                        self.gameScene.updateGoldLabel(gold: String(RRGameManager.shared.getScoreManager().getGold()));
+                    }
+                }
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ class Spawner: SKNode {
     private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
+    private var m_SpikeManager: [SpikeObstacle] = [];
+    
     // Enemy Animations
     private let m_GhoulAnim: Animation = GhoulAnimation();
     
@@ -30,6 +32,10 @@ class Spawner: SKNode {
     // Getters
     func isBossSpawned() -> Bool {
         return bossSpawned;
+    }
+    
+    func getSpikeManager() -> [SpikeObstacle] {
+        return m_SpikeManager;
     }
     
     // Setters
@@ -61,17 +67,16 @@ class Spawner: SKNode {
             ghoulEnemy.size = CGSize(width: 201, height: 80);
             
             fireWisp.run(SKAction.move(by: CGVector(dx: -gameScene.size.width, dy: 0), duration: 5));
-            
+
             imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
             
             gameScene.addChild(ghoulEnemy);
             gameScene.addChild(fireWisp);
-            gameScene.addChild(imp);
+//            gameScene.addChild(imp);
             
             for i in -2...0 {
                 if (i != placeToSpawn) {
-                    let spike = Obstacle();
-//                    let waitTime = Double.random(in: 3.0...4.0);
+                    let spike = SpikeObstacle();
                     
                     spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
                     spike.physicsBody?.categoryBitMask = 0;
@@ -81,17 +86,12 @@ class Spawner: SKNode {
                     spike.zPosition = -CGFloat(i) + 1;
                     
                     RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
-                    gameScene.addChild(spike);
                     
-//                    // Open
-//                    spike.run(self.m_SpikeAnim.open(speed: 0.1))
-//                    spike.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
-//
-//                    // Close
-//                    spike.run(SKAction.wait(forDuration: waitTime)) {
-//                        spike.run(self.m_SpikeAnim.close(speed: 0.1));
-//                        spike.physicsBody?.categoryBitMask = 0;
-//                    }
+                    // Spike manager is used in update call to
+                    // open and close all spikes in the scene
+                    m_SpikeManager.append(spike);
+                    
+                    gameScene.addChild(spike);
                 }
             }
             
@@ -100,6 +100,8 @@ class Spawner: SKNode {
             gameScene.addChild(point);
             
             RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
+            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: fireWisp);
+            RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: imp);
             
             lastSpawnPos = self.position.x;
         }

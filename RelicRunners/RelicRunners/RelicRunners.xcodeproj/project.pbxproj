@@ -80,6 +80,8 @@
 		F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB421A96F8800F0761B /* slkscrb.ttf */; };
 		F4E608D921A52F7B00A5E7D5 /* MenuUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */; };
 		F4E6BEAE220E2901006E7DC3 /* robot.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4E6BEAD220E2901006E7DC3 /* robot.wav */; };
+		F4EDB0FB22419887004B11FA /* SpikeStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDB0FA22419887004B11FA /* SpikeStates.swift */; };
+		F4EDB0FE2241994E004B11FA /* SpikeObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EDB0FD2241994E004B11FA /* SpikeObstacle.swift */; };
 		F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F04CD221C7A89800A8B1E0 /* Extensions.swift */; };
 		F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C7220C205F00114C12 /* RRRanged.swift */; };
 		F4F0F8CA220C21FF00114C12 /* RRMagic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0F8C9220C21FF00114C12 /* RRMagic.swift */; };
@@ -163,6 +165,8 @@
 		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
 		F4E608D821A52F7B00A5E7D5 /* MenuUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUI.swift; sourceTree = "<group>"; };
 		F4E6BEAD220E2901006E7DC3 /* robot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = robot.wav; path = ../../../../../music/robot.wav; sourceTree = "<group>"; };
+		F4EDB0FA22419887004B11FA /* SpikeStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeStates.swift; sourceTree = "<group>"; };
+		F4EDB0FD2241994E004B11FA /* SpikeObstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeObstacle.swift; sourceTree = "<group>"; };
 		F4F04CD221C7A89800A8B1E0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F4F0F8C7220C205F00114C12 /* RRRanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRRanged.swift; sourceTree = "<group>"; };
 		F4F0F8C9220C21FF00114C12 /* RRMagic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRMagic.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 		F4339ABF218DA2BD0016970A /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				F4EDB0FC22419929004B11FA /* States */,
 				F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */,
 				F4339AC0218DA2DF0016970A /* CharacterTypes.swift */,
 				F471919F21B1E59B00B09143 /* PowerUpTypes.swift */,
@@ -386,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C12FAB218F38470024BC7D /* Obstacle.swift */,
+				F4EDB0FD2241994E004B11FA /* SpikeObstacle.swift */,
 			);
 			path = Obstacles;
 			sourceTree = "<group>";
@@ -424,6 +430,14 @@
 				F48E8B2A21CB32D6001A5FA1 /* BossWeaponHolder.swift */,
 			);
 			path = BossWeapons;
+			sourceTree = "<group>";
+		};
+		F4EDB0FC22419929004B11FA /* States */ = {
+			isa = PBXGroup;
+			children = (
+				F4EDB0FA22419887004B11FA /* SpikeStates.swift */,
+			);
+			path = States;
 			sourceTree = "<group>";
 		};
 		F4F6C5162202C28F0019AA15 /* Music */ = {
@@ -554,6 +568,7 @@
 				7A33F67221864FEF00CDFA96 /* GameViewController.swift in Sources */,
 				F4302EB522176B4D003C4980 /* Animation.swift in Sources */,
 				F471919E21B1E1DC00B09143 /* Weapon.swift in Sources */,
+				F4EDB0FE2241994E004B11FA /* SpikeObstacle.swift in Sources */,
 				F43002F8221BF78D00B59CBC /* MagicWindow.swift in Sources */,
 				F4F04CD321C7A89800A8B1E0 /* Extensions.swift in Sources */,
 				F415F223223B43FD0087035B /* FireWispAnimation.swift in Sources */,
@@ -575,6 +590,7 @@
 				F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */,
 				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
+				F4EDB0FB22419887004B11FA /* SpikeStates.swift in Sources */,
 				F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */,
 				F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */,
 				F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */,
@@ -726,6 +742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JG5W6749EV;
 				INFOPLIST_FILE = RelicRunners/Info.plist;
@@ -736,6 +753,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MDS.RelicRunners;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -745,6 +763,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JG5W6749EV;
 				INFOPLIST_FILE = RelicRunners/Info.plist;
@@ -755,6 +774,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MDS.RelicRunners;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

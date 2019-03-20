@@ -163,6 +163,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             m_Spawner.spawn();
             m_Spawner.spawnBoss(boss: m_Boss);
             m_Boss.attack();
+            
+            // Spikes
+            for spike in m_Spawner.getSpikeManager() {
+                spike.open();
+                spike.close();
+            }
         }
         
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);

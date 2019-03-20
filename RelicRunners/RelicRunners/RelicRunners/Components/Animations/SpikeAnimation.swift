@@ -33,4 +33,11 @@ class SpikeAnimation: Animation {
         
         return run;
     }
+    
+    func openClose(interval: Double) -> SKAction {
+        let wait = SKAction.wait(forDuration: interval);
+        let sequence = SKAction.sequence([wait, open(speed: 0.1), wait, close(speed: 0.1)]);
+        
+        return SKAction.repeatForever(sequence);
+    }
 }

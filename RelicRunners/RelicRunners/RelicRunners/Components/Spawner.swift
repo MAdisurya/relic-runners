@@ -18,6 +18,8 @@ class Spawner: SKNode {
     private let distanceTillNextPowerUp: CGFloat = 800;
     private var bossSpawned = false;
     
+    private var nameIndex: Int = 0;
+    
     private var m_SpikeManager: [SpikeObstacle] = [];
     
     // Enemy Animations
@@ -136,13 +138,10 @@ class Spawner: SKNode {
     
     // Helper method for spawning enemies
     func spawnEnemies() {
-        let placeToSpawn = Int.random(in: -2...0);
-        var nameIndex = 0;
-        
         // Enemy definitions
-        let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", name: "ghoul\(nameIndex)", placeToSpawn: placeToSpawn);
-        let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", name: "fireWisp\(nameIndex)", placeToSpawn: placeToSpawn) as! Wisp;
-        let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", name: "imp\(nameIndex)", placeToSpawn: placeToSpawn) as! Imp;
+        let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", name: "ghoul\(nameIndex)", placeToSpawn: Int.random(in: -2...0));
+        let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", name: "fireWisp\(nameIndex)", placeToSpawn: Int.random(in: -2...0)) as! Wisp;
+        let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", name: "imp\(nameIndex)", placeToSpawn: Int.random(in: -2...0)) as! Imp;
         
         ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
         ghoulEnemy.size = CGSize(width: 201, height: 80);
@@ -151,9 +150,17 @@ class Spawner: SKNode {
         
         imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
         
-        gameScene.addChild(ghoulEnemy);
-        gameScene.addChild(fireWisp);
-//        gameScene.addChild(imp);
+        if (ghoulEnemy.shouldSpawn(percentage: 80)) {
+            gameScene.addChild(ghoulEnemy);
+        }
+        
+        if (fireWisp.shouldSpawn(percentage: 50)) {
+            gameScene.addChild(fireWisp);
+        }
+        
+        if (imp.shouldSpawn(percentage: 30)) {
+            gameScene.addChild(imp);
+        }
         
         RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
         RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: fireWisp);

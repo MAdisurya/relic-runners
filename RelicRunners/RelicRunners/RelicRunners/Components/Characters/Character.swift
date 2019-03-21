@@ -193,6 +193,14 @@ class Character: SKSpriteNode, RREventListener {
         }
     }
     
+    // Helper method to check whether enemy should spawn
+    func shouldSpawn(percentage: Int) -> Bool {
+        let random = Int.random(in: 1...10);
+        let p: Int = percentage / 10;
+        
+        return (random <= p);
+    }
+    
     func destroy() {
         self.removeFromParent();
     }

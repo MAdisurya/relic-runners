@@ -190,6 +190,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
                 RRGameManager.shared.getEventManager().broadcastEvent(event: &enemy);
             }
             
+            if var enemy = contact.bodyB.node as? Character {
+                RRGameManager.shared.getEventManager().broadcastEvent(event: &enemy);
+            }
+            
             RRGameManager.shared.getEventManager().broadcastEvent(event: "weaponDestroyed");
         }
         if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask == CategoryBitMask.weapon | CategoryBitMask.boss) {

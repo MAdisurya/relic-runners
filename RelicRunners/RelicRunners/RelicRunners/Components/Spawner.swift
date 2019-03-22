@@ -178,7 +178,7 @@ class Spawner: SKNode {
         
         nameIndex += 1;
         
-        let spawnPos: [Int] = [ghoulSpawnPos, impSpawnPos, 0];
+        let spawnPos: [Int] = [ghoulSpawnPos, impSpawnPos, 1];
         
         // Returns enemy spawn positions
         return sortEnemySpawnPositions(posArray: spawnPos, from: -2, to: 0);
@@ -186,8 +186,6 @@ class Spawner: SKNode {
     
     // Helper method for spawning obstacles
     func spawnObstacles(enemySpawnPos: [Int]) {
-        print(enemySpawnPos);
-        
         for i in -2...0 {
             if (i != enemySpawnPos[i + 2]) {
                 let spike = SpikeObstacle();
@@ -215,9 +213,13 @@ class Spawner: SKNode {
         var sorted: [Int] = posArray.sorted();
         var index = 0;
         
+        if (sorted[sorted.count - 2] == to) {
+            sorted[sorted.count - 1] = to;
+        }
+        
         for i in from...to {
             if (i == to) {
-                if (sorted[index] < to) {
+                if (sorted[index] != to) {
                     sorted[index] = to + 1;
                 }
             } else if (sorted[index] != i) {

@@ -59,8 +59,8 @@ class Spawner: SKNode {
         if (self.position.x >= lastSpawnPos + distanceTillNextSpawn) {
             let point = SKNode();
             
-            spawnEnemies();
-            spawnObstacles();
+            let enemySpawnPos = spawnEnemies();
+            spawnObstacles(enemySpawnPos: enemySpawnPos);
             
             point.position = self.position;
             point.name = "point";
@@ -137,11 +137,15 @@ class Spawner: SKNode {
     }
     
     // Helper method for spawning enemies
-    func spawnEnemies() {
+    func spawnEnemies() -> [Int] {
+        var ghoulSpawnPos = Int.random(in: -2...0);
+        var fireWispSpawnPos = Int.random(in: -2...0);
+        var impSpawnPos = Int.random(in: -2...0);
+        
         // Enemy definitions
-        let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", name: "ghoul\(nameIndex)", placeToSpawn: Int.random(in: -2...0));
-        let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", name: "fireWisp\(nameIndex)", placeToSpawn: Int.random(in: -2...0)) as! Wisp;
-        let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", name: "imp\(nameIndex)", placeToSpawn: Int.random(in: -2...0)) as! Imp;
+        let ghoulEnemy = spawnEnemy(enemy: Character(type: .enemy), image: "ghoul-idle-1", name: "ghoul\(nameIndex)", placeToSpawn: ghoulSpawnPos);
+        let fireWisp = spawnEnemy(enemy: Wisp(), image: "fire-move-0", name: "fireWisp\(nameIndex)", placeToSpawn: fireWispSpawnPos) as! Wisp;
+        let imp = spawnEnemy(enemy: Imp(), image: "imp-attack-0", name: "imp\(nameIndex)", placeToSpawn: impSpawnPos) as! Imp;
         
         ghoulEnemy.run(m_GhoulAnim.idle(speed: 0.1));
         ghoulEnemy.size = CGSize(width: 201, height: 80);
@@ -150,16 +154,22 @@ class Spawner: SKNode {
         
         imp.shootProjectile(projectile: imp.m_Projectile, cooldown: imp.m_Cooldown);
         
-        if (ghoulEnemy.shouldSpawn(percentage: 80)) {
+        if (ghoulEnemy.shouldSpawn(percentage: 100)) {
             gameScene.addChild(ghoulEnemy);
+        } else {
+            ghoulSpawnPos = 1;
         }
         
         if (fireWisp.shouldSpawn(percentage: 50)) {
             gameScene.addChild(fireWisp);
+        } else {
+            fireWispSpawnPos = 1;
         }
         
         if (imp.shouldSpawn(percentage: 30)) {
             gameScene.addChild(imp);
+        } else {
+            impSpawnPos = 1;
         }
         
         RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: ghoulEnemy);
@@ -167,21 +177,26 @@ class Spawner: SKNode {
         RRGameManager.shared.getGarbageCollector().registerEnemy(enemy: imp);
         
         nameIndex += 1;
+        
+        let spawnPos: [Int] = [ghoulSpawnPos, impSpawnPos, 0];
+        
+        // Returns enemy spawn positions
+        return sortEnemySpawnPositions(posArray: spawnPos, from: -2, to: 0);
     }
     
     // Helper method for spawning obstacles
-    func spawnObstacles() {
-        let placeToSpawn = Int.random(in: -2...0);
+    func spawnObstacles(enemySpawnPos: [Int]) {
+        print(enemySpawnPos);
         
         for i in -2...0 {
-            if (i != placeToSpawn) {
+            if (i != enemySpawnPos[i + 2]) {
                 let spike = SpikeObstacle();
                 
                 spike.generateObstacle(scene: gameScene, imageNamed: "spike-0");
                 spike.physicsBody?.categoryBitMask = 0;
                 
                 spike.position.x = self.position.x;
-                spike.position.y = gameScene.getMoveAmount() * CGFloat(i+1);
+                spike.position.y = gameScene.getMoveAmount() * CGFloat(i + 1);
                 spike.zPosition = -CGFloat(i) + 1;
                 
                 RRGameManager.shared.getGarbageCollector().registerObstacle(obstacle: spike);
@@ -193,5 +208,26 @@ class Spawner: SKNode {
                 gameScene.addChild(spike);
             }
         }
+    }
+    
+    // Helper method for sorting enemy spawn positions for obstacles
+    func sortEnemySpawnPositions(posArray: [Int], from: Int, to: Int) -> [Int] {
+        var sorted: [Int] = posArray.sorted();
+        var index = 0;
+        
+        for i in from...to {
+            if (i == to) {
+                if (sorted[index] < to) {
+                    sorted[index] = to + 1;
+                }
+            } else if (sorted[index] != i) {
+                sorted[index + 1] = sorted[index];
+                sorted[index] = to + 1;
+            }
+            
+            index += 1;
+        }
+        
+        return sorted;
     }
 }

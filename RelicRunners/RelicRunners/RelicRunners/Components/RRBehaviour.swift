@@ -24,6 +24,17 @@ class RRBehaviour: SKSpriteNode
         _id = id;
     }
     
+    init()
+    {
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize());
+        
+        RRGameManager.shared.addBehaviour(behaviour: self);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // Method that is called in update function of GameScene - called every frame
     func update(_ deltaTime: Double)
     {

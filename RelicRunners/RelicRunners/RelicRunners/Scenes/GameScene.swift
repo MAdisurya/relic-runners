@@ -167,10 +167,10 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             m_Boss.attack();
             
             // Spikes
-            for spike in m_Spawner.getSpikeManager() {
-                spike.open();
-                spike.close();
-            }
+//            for spike in m_Spawner.getSpikeManager() {
+//                spike.open();
+//                spike.close();
+//            }
         }
         
         for b in RRGameManager.shared.getBehaviours()

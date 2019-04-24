@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Obstacle: SKSpriteNode {
+class Obstacle: RRBehaviour {
     
     func generateObstacle(scene: SKScene, imageNamed image: String) {
         self.texture = SKTexture(imageNamed: image);

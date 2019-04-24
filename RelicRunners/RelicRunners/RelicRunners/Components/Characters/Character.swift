@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Character: SKSpriteNode, RREventListener {
+class Character: RRBehaviour, RREventListener {
     
     var m_CharacterType: CharacterTypes!;
     var gameScene: GameScene!;
@@ -39,7 +39,7 @@ class Character: SKSpriteNode, RREventListener {
     }
     
     init(type characterType: CharacterTypes) {
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize(width: 176, height: 176));
+        super.init();
         
         self.m_CharacterType = characterType;
         

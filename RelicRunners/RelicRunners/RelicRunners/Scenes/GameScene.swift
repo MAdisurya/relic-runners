@@ -29,6 +29,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
     private var m_MoveAmount: CGFloat = 160;
     
+    private var m_StartTime: Double = 0; // Used for deducting from current time - custom timer
+    
     // Getters
     func getSpawner() -> Spawner {
         return m_Spawner;
@@ -171,7 +173,14 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
             }
         }
         
+        for b in RRGameManager.shared.getBehaviours()
+        {
+            b.update(currentTime - m_StartTime); // current - start to find out delta time
+        }
+        
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);
+        
+        m_StartTime = currentTime;
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

@@ -48,6 +48,7 @@
 		F4339ABE218D21830016970A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339ABD218D21830016970A /* Character.swift */; };
 		F4339AC1218DA2DF0016970A /* CharacterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339AC0218DA2DF0016970A /* CharacterTypes.swift */; };
 		F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44D41BB2204E81500EEF363 /* PauseOverlay.swift */; };
+		F4502DB8227135C300F1A137 /* BlueProjectileAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4502DB7227135C300F1A137 /* BlueProjectileAnimation.swift */; };
 		F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4531B3A21AB941B0003FFBF /* Boss.swift */; };
 		F4544073218FAED2005719E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4544072218FAED2005719E4 /* Assets.xcassets */; };
 		F45FA48822703A0F00895C6F /* RRBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45FA48722703A0F00895C6F /* RRBehaviour.swift */; };
@@ -134,6 +135,7 @@
 		F4339ABD218D21830016970A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F4339AC0218DA2DF0016970A /* CharacterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTypes.swift; sourceTree = "<group>"; };
 		F44D41BB2204E81500EEF363 /* PauseOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseOverlay.swift; sourceTree = "<group>"; };
+		F4502DB7227135C300F1A137 /* BlueProjectileAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueProjectileAnimation.swift; sourceTree = "<group>"; };
 		F4531B3A21AB941B0003FFBF /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 		F4544072218FAED2005719E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = RelicRunners/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F45FA48722703A0F00895C6F /* RRBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRBehaviour.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				F42A19052220C09600FD3F48 /* BigExplosionAnimation.swift */,
 				F468B6BB2229D7F4004EB0E9 /* SpikeAnimation.swift */,
 				F415F222223B43FD0087035B /* FireWispAnimation.swift */,
+				F4502DB7227135C300F1A137 /* BlueProjectileAnimation.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				F4531B3B21AB941B0003FFBF /* Boss.swift in Sources */,
 				F4ABA28E218F8EC80085E43C /* LoseScene.swift in Sources */,
 				F4EDB0FB22419887004B11FA /* SpikeStates.swift in Sources */,
+				F4502DB8227135C300F1A137 /* BlueProjectileAnimation.swift in Sources */,
 				F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */,
 				F4ABA28C218F7A550085E43C /* BaseScene.swift in Sources */,
 				F44D41BC2204E81500EEF363 /* PauseOverlay.swift in Sources */,

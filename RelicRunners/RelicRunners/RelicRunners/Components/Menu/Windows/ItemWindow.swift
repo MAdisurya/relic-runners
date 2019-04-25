@@ -55,7 +55,11 @@ class ItemWindow: MenuWindow {
     func changeEquippedItemSlot(itemSlot: ItemSlot) {
         itemSlot.enableBorder();
         
-        m_EquippedItemSlot.disableBorder();
+        if (m_EquippedItemSlot != nil)
+        {
+            m_EquippedItemSlot.disableBorder();
+        }
+        
         m_EquippedItemSlot = itemSlot;
     }
     

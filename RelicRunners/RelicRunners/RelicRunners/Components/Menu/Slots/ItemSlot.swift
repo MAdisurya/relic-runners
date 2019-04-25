@@ -49,6 +49,7 @@ class ItemSlot: SKSpriteNode {
         self.zPosition = 10;
         
         // Setup item slot border
+        self.m_Border.name = "border";
         self.m_Border.size = CGSize(width: 160, height: 160);
         self.m_Border.position = CGPoint(x: 8, y: 0);
         self.m_Border.zPosition = -1;

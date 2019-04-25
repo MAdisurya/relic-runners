@@ -166,7 +166,7 @@ class Spawner: SKNode {
             fireWispSpawnPos = 1;
         }
         
-        if (imp.shouldSpawn(percentage: 30)) {
+        if (imp.shouldSpawn(percentage: 100)) {
             gameScene.addChild(imp);
         } else {
             impSpawnPos = 1;

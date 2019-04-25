@@ -10,10 +10,10 @@ import SpriteKit
 
 class RRInventoryManager {
     
-    var m_EquippedSword: String? = "sword1";
-    var m_EquippedRanged: String? = "ranged1";
-    var m_EquippedMagic: String? = "magic1";
-    var m_EquippedArmour: String? = "armour1";
+    var m_EquippedSword: String? = "fire-sword";
+    var m_EquippedRanged: String? = "fire-bow";
+    var m_EquippedMagic: String? = "fire-staff";
+    var m_EquippedArmour: String? = "fire-armour";
     
     private let m_UserDefaults = UserDefaults.standard;
     

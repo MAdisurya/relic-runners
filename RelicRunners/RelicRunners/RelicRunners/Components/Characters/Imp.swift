@@ -10,7 +10,9 @@ import SpriteKit
 
 class Imp: Character {
     
-    let m_Projectile = Weapon(imageName: "imp-projectile-0", speed: 2, distance: -1180)
+    let m_ProjAnim = BlueProjectilAnimation();
+    
+    let m_Projectile = Weapon(speed: 2, distance: -1180);
     
     let m_Cooldown: Double = 1.0;
     
@@ -18,6 +20,7 @@ class Imp: Character {
         super.init(type: characterType);
         
         self.m_Health = 1;
+        self.m_Projectile.size = CGSize(width: 196, height: 128);
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,5 +29,11 @@ class Imp: Character {
     
     override func generateCharacter(scene: GameScene, imageNamed image: String, enemyName name: String) {
         super.generateCharacter(scene: scene, imageNamed: image, enemyName: name);
+    }
+    
+    override func shootProjectile(projectile p: Weapon, cooldown: Double) {
+        super.shootProjectile(projectile: p, cooldown: cooldown);
+        
+        p.run(m_ProjAnim.animate(speed: 0.2));
     }
 }

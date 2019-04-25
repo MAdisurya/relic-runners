@@ -35,16 +35,6 @@ class SpikeObstacle: Obstacle
         m_SpikeState = state;
     }
     
-    private func resetWaitInterval()
-    {
-        let waitInterval = m_WaitInterval;
-        m_WaitInterval = (m_WaitInterval <= 0) ? m_WaitInterval : 0;
-        
-        self.run(SKAction.wait(forDuration: waitInterval)) {
-            self.m_WaitInterval = waitInterval;
-        }
-    }
-    
     override func update(_ deltaTime: Double)
     {
         if (m_WaitInterval <= 0)
@@ -79,7 +69,6 @@ class SpikeObstacle: Obstacle
         self.physicsBody?.categoryBitMask = CategoryBitMask.obstacle;
         
         self.setSpikeState(state: .opened);
-//        resetWaitInterval();
     }
     
     // Handles closing of spike obstacle
@@ -97,6 +86,5 @@ class SpikeObstacle: Obstacle
         self.physicsBody?.categoryBitMask = 0;
         
         self.setSpikeState(state: .closed);
-//        resetWaitInterval();
     }
 }

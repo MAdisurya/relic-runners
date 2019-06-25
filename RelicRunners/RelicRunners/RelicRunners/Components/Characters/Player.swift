@@ -53,6 +53,8 @@ class Player: Character {
         self.physicsBody?.categoryBitMask = CategoryBitMask.player;
         self.position = CGPoint(x: -gameScene.size.width, y: 0);
         self.zPosition = 2.5;
+        self.removeAllActions();
+        self.run(m_Animation.run(speed: 0.1));
         self.m_Health = m_MaxHealth;
         self.m_CurrentLane = 0;
         self.m_PowerUpType = .none;

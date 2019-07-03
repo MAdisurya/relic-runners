@@ -19,6 +19,7 @@
 		7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A33F68721865D8500CDFA96 /* MainMenuScene.sks */; };
 		7A33F68A21865DD700CDFA96 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */; };
 		7A33F68C21865ED900CDFA96 /* BGSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33F68B21865ED900CDFA96 /* BGSprite.swift */; };
+		F4054D7422CC1658006DC697 /* RRSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4054D7322CC1658006DC697 /* RRSceneManager.swift */; };
 		F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */; };
 		F4079AA22217543F005DB987 /* ShopWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4079AA12217543F005DB987 /* ShopWindow.swift */; };
 		F40F2B2322096E80001D86C4 /* ItemSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F2B2222096E80001D86C4 /* ItemSlot.swift */; };
@@ -107,6 +108,7 @@
 		7A33F68721865D8500CDFA96 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
 		7A33F68921865DD700CDFA96 /* InfiniteScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
 		7A33F68B21865ED900CDFA96 /* BGSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSprite.swift; sourceTree = "<group>"; };
+		F4054D7322CC1658006DC697 /* RRSceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRSceneManager.swift; sourceTree = "<group>"; };
 		F405C6FC21F9900C00389AE8 /* InventoryWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryWindow.swift; sourceTree = "<group>"; };
 		F4079AA12217543F005DB987 /* ShopWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopWindow.swift; sourceTree = "<group>"; };
 		F40F2B2222096E80001D86C4 /* ItemSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSlot.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				F46109C021A253A0004CFB18 /* RRScoreManager.swift */,
 				F4D0245C21F6E14B00F5B095 /* RRSoundManager.swift */,
 				F46229BA221157D000283349 /* RRInventoryManager.swift */,
+				F4054D7322CC1658006DC697 /* RRSceneManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				F41784E821EC47EE00B0D21C /* MenuButton.swift in Sources */,
 				F40F2B272209741A001D86C4 /* ItemWindow.swift in Sources */,
 				F471919921B1E05F00B09143 /* PowerUp.swift in Sources */,
+				F4054D7422CC1658006DC697 /* RRSceneManager.swift in Sources */,
 				F4F0F8C8220C205F00114C12 /* RRRanged.swift in Sources */,
 				F46229BB221157D000283349 /* RRInventoryManager.swift in Sources */,
 				F471919B21B1E0C500B09143 /* MultiStrike.swift in Sources */,

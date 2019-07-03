@@ -8,11 +8,22 @@
 
 import SpriteKit
 
-class BaseScene: SKScene {
-    
-    func goToScene(scene: SKScene) {
-        let reveal = SKTransition.reveal(with: .left, duration: 1);
-        
-        self.view?.presentScene(scene, transition: reveal);
+class BaseScene: SKScene
+{
+    override init()
+    {
+        super.init();
+
+        RRGameManager.shared.getSceneManager().registerScene(_SceneName: self.name!, _Scene: self);
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //    func goToScene(scene: SKScene) {
+    //        let reveal = SKTransition.reveal(with: .left, duration: 1);
+    //
+    //        self.view?.presentScene(scene, transition: reveal);
+    //    }
 }

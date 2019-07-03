@@ -24,7 +24,7 @@ class MainMenuScene: BaseScene {
         if (touchedNode.name == playButton.name) {
             if let newScene = SKScene(fileNamed: "GameScene") {
                 newScene.scaleMode = .aspectFill;
-                goToScene(scene: newScene);
+//                goToScene(scene: newScene);
             }
         }
     }

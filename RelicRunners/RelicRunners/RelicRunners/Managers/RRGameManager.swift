@@ -29,6 +29,7 @@ class RRGameManager
     
     // Initialize instances of all managers
     private let m_EventManager = RREventManager();
+    private let m_SceneManager = RRSceneManager();
     private let m_InputManager = RRInputManager();
     private let m_ScoreManager = RRScoreManager();
     private let m_SoundManager = RRSoundManager();
@@ -61,6 +62,11 @@ class RRGameManager
     func getEventManager() -> RREventManager
     {
         return m_EventManager;
+    }
+    
+    func getSceneManager() -> RRSceneManager
+    {
+        return m_SceneManager;
     }
     
     func getInputManager() -> RRInputManager

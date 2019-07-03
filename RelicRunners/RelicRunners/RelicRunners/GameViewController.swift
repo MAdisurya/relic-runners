@@ -18,6 +18,9 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
+                // Set current scene in level manager
+                RRGameManager.shared.getSceneManager().currentScene = scene;
+                
                 // Set the scale mode to scale to fit the window
                 scene.size = CGSize(width: 1024, height: 768);
                 scene.scaleMode = .aspectFill;

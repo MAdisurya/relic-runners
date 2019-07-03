@@ -17,7 +17,6 @@ enum SceneManagerError: Error
 class RRSceneManager
 {
     public var currentScene: SKScene!;
-    public var previousScene: SKScene? = nil;
     
     private var m_AllScenes: [String: SKScene] = [:];
     
@@ -38,7 +37,6 @@ class RRSceneManager
         
         currentScene.view?.presentScene(_Scene, transition: reveal);
         
-        previousScene = currentScene;
         currentScene = _Scene;
     }
     
@@ -60,7 +58,6 @@ class RRSceneManager
         
         currentScene.view?.presentScene(scene, transition: reveal);
         
-        previousScene = currentScene;
         currentScene = scene;
     }
 }

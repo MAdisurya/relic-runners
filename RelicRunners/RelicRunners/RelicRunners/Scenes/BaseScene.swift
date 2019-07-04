@@ -20,10 +20,4 @@ class BaseScene: SKScene
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
     }
-    
-    //    func goToScene(scene: SKScene) {
-    //        let reveal = SKTransition.reveal(with: .left, duration: 1);
-    //
-    //        self.view?.presentScene(scene, transition: reveal);
-    //    }
 }

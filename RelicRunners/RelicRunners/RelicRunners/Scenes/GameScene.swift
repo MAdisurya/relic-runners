@@ -11,25 +11,23 @@ import GameplayKit
 
 class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     
-    private lazy var infiniteScroller = InfiniteScroller(scene: self);
-    private lazy var m_MenuUI = MenuUI(gameScene: self);
+    internal lazy var infiniteScroller = InfiniteScroller(scene: self);
+    internal lazy var m_MenuUI = MenuUI(gameScene: self);
     
-    private let gameCamera = Camera();
-    private let m_Spawner = Spawner();
-    private let m_Player = Player(type: .player);
-    private let m_Boss = Mechazoid(type: .enemy);
+    internal let gameCamera = Camera();
+    internal let m_Spawner = Spawner();
+    internal let m_Player = Player(type: .player);
+    internal let m_Boss = Mechazoid(type: .enemy);
     
-    private let m_HealthBar = HealthBar();
-    private let m_ScoreLabel = SKLabelNode();
-    private let m_GoldLabel = SKLabelNode();
-    private let m_PauseButton = SKSpriteNode();
+    internal let m_HealthBar = HealthBar();
+    internal let m_ScoreLabel = SKLabelNode();
+    internal let m_GoldLabel = SKLabelNode();
+    internal let m_PauseButton = SKSpriteNode();
     
-    private let m_PauseOverlay = PauseOverlay();
-    private let m_PlayOverlay = RROverlay();
+    internal let m_PauseOverlay = PauseOverlay();
+    internal let m_PlayOverlay = RROverlay();
     
-    private var m_MoveAmount: CGFloat = 160;
-    
-    private var m_StartTime: Double = 0; // Used for deducting from current time - custom timer
+    internal var m_MoveAmount: CGFloat = 160;
     
     // Getters
     func getSpawner() -> Spawner {
@@ -72,12 +70,6 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         for fgWall in infiniteScroller.getFGWalls() {
             self.addChild(fgWall);
         }
-        
-        // Generate the MenuUI elements
-        m_MenuUI.generateTitle(sceneSize: self.size);
-        m_MenuUI.generateTapLabel(sceneSize: self.size);
-        // Add MenuUI elements to the camera
-        gameCamera.addChild(m_MenuUI);
         
         // Generate the HealthBar
         m_HealthBar.generate(position: CGPoint(x: -432, y: 224), health: m_Player.m_Health);
@@ -127,6 +119,16 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         RRGameManager.shared.getSoundManager().playBackgroundMusic(name: "robot.wav");
         self.addChild(RRGameManager.shared.getSoundManager().getAudioNode());
         
+        // Generate the MenuUI elements
+        m_MenuUI.generateTitle(sceneSize: self.size);
+        m_MenuUI.generateTapLabel(sceneSize: self.size);
+        
+        if (RRGameManager.shared.getGameState() == .END)
+        {
+            // Add MenuUI elements to the camera
+            gameCamera.addChild(m_MenuUI);
+        }
+        
         // Setup the gold label
         RRGameManager.shared.getScoreManager().addGold(amount: RRGameManager.shared.getScoreManager().retrieveGold());
         m_GoldLabel.zPosition = 10.0;
@@ -175,12 +177,12 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
         
         for b in RRGameManager.shared.getBehaviours()
         {
-            b.update(currentTime - m_StartTime); // current - start to find out delta time
+            b.update(currentTime - RRGameManager.shared.getGameCurrentTime()); // current - start to find out delta time
         }
         
         RRGameManager.shared.getGarbageCollector().garbageCollection(scene: self, camera: gameCamera);
         
-        m_StartTime = currentTime;
+        RRGameManager.shared.setGameCurrentTime(time: currentTime);
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

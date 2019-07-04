@@ -25,6 +25,8 @@ class RRGameManager
     // Initialize instance of GameState
     private var gameState: GameState = .END;
     
+    private var gameCurrentTime: Double = 0;
+    
     private var m_GlobalSceneSize = CGSize(width: 1280, height: 720);
     
     // Initialize instances of all managers
@@ -43,6 +45,11 @@ class RRGameManager
         return gameState;
     }
     
+    func getGameCurrentTime() -> Double
+    {
+        return gameCurrentTime;
+    }
+    
     func getGlobalSceneSize() -> CGSize
     {
         return m_GlobalSceneSize;
@@ -51,6 +58,11 @@ class RRGameManager
     func setGameState(state: GameState)
     {
         gameState = state;
+    }
+    
+    func setGameCurrentTime(time: Double)
+    {
+        gameCurrentTime = time;
     }
     
     func setGlobalSceneSize(size: CGSize)

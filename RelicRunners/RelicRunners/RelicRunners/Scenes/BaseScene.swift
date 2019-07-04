@@ -10,14 +10,10 @@ import SpriteKit
 
 class BaseScene: SKScene
 {
-    override init()
+    override func didMove(to view: SKView)
     {
-        super.init();
-
+        super.didMove(to: view);
+        
         RRGameManager.shared.getSceneManager().registerScene(_SceneName: self.name!, _Scene: self);
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
     }
 }

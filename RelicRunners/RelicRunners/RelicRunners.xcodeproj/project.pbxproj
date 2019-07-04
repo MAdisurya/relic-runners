@@ -79,6 +79,8 @@
 		F4C12FA8218F141F0024BC7D /* RRGarbageCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */; };
 		F4C12FAA218F25570024BC7D /* CategoryBitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */; };
 		F4C12FAC218F38470024BC7D /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C12FAB218F38470024BC7D /* Obstacle.swift */; };
+		F4C97AB022CD8FCA0021D062 /* LevelTwo.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4C97AAF22CD8FCA0021D062 /* LevelTwo.sks */; };
+		F4C97AB222CD8FE30021D062 /* LevelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C97AB122CD8FE30021D062 /* LevelTwo.swift */; };
 		F4D0245D21F6E14B00F5B095 /* RRSoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0245C21F6E14B00F5B095 /* RRSoundManager.swift */; };
 		F4DE7DB821A971FC00F0761B /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB321A96F8800F0761B /* slkscr.ttf */; };
 		F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DE7DB421A96F8800F0761B /* slkscrb.ttf */; };
@@ -168,6 +170,8 @@
 		F4C12FA7218F141F0024BC7D /* RRGarbageCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRGarbageCollector.swift; sourceTree = "<group>"; };
 		F4C12FA9218F25570024BC7D /* CategoryBitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBitMask.swift; sourceTree = "<group>"; };
 		F4C12FAB218F38470024BC7D /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		F4C97AAF22CD8FCA0021D062 /* LevelTwo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelTwo.sks; sourceTree = "<group>"; };
+		F4C97AB122CD8FE30021D062 /* LevelTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTwo.swift; sourceTree = "<group>"; };
 		F4D0245C21F6E14B00F5B095 /* RRSoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRSoundManager.swift; sourceTree = "<group>"; };
 		F4DE7DB321A96F8800F0761B /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
 		F4DE7DB421A96F8800F0761B /* slkscrb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscrb.ttf; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				7A33F68521865D5700CDFA96 /* MainMenuScene.swift */,
 				F4ABA28F218F8EE30085E43C /* LoseScene.sks */,
 				F4ABA28D218F8EC80085E43C /* LoseScene.swift */,
+				F4C97AAF22CD8FCA0021D062 /* LevelTwo.sks */,
+				F4C97AB122CD8FE30021D062 /* LevelTwo.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 				7A33F67521864FEF00CDFA96 /* Main.storyboard in Resources */,
 				7A33F66C21864FEF00CDFA96 /* GameScene.sks in Resources */,
 				7A33F67A21864FF100CDFA96 /* LaunchScreen.storyboard in Resources */,
+				F4C97AB022CD8FCA0021D062 /* LevelTwo.sks in Resources */,
 				7A33F68821865D8500CDFA96 /* MainMenuScene.sks in Resources */,
 				F4544073218FAED2005719E4 /* Assets.xcassets in Resources */,
 				F4DE7DB921A971FF00F0761B /* slkscrb.ttf in Resources */,
@@ -555,6 +562,7 @@
 				F4810C1A2232129700FE45FE /* Wisp.swift in Sources */,
 				F415F225223B58B90087035B /* Imp.swift in Sources */,
 				F405C6FD21F9900C00389AE8 /* InventoryWindow.swift in Sources */,
+				F4C97AB222CD8FE30021D062 /* LevelTwo.swift in Sources */,
 				F4339AB5218D14200016970A /* RREventManager.swift in Sources */,
 				F46109C121A253A0004CFB18 /* RRScoreManager.swift in Sources */,
 				F4F6C5152202BD200019AA15 /* RROverlay.swift in Sources */,

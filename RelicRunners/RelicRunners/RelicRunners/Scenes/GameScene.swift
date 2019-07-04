@@ -107,6 +107,8 @@ class GameScene: BaseScene, SKPhysicsContactDelegate, RREventListener {
     }
     
     override func didMove(to view: SKView) {
+        super.didMove(to: view);
+        
         loadScene();
         // Setup Gesture Recognizers
         if let view = self.view {
